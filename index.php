@@ -12,7 +12,7 @@ include_once('config/parameters.php');
 
 if(!isset($GET['controller'])){
     //Si no se pasa nada, se mostrara pagina principal de pedidos
-    header("Location:".url.'?controller=pedido');
+    //header("Location:".url.'?controller=pedido');
 }else{
     $nombre_controller = $GET['controller'].' Controller ';
 
@@ -30,7 +30,7 @@ if(!isset($GET['controller'])){
 echo 'hola';
         $controller->$action();
     }else{
-        header("Location:".url.'?controller=pedido');
+        //header("Location:".url.'?controller=pedido');
     }
 }
 

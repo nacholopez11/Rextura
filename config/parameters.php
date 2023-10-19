@@ -1,4 +1,4 @@
 <?php
 
-define("url","https://localhost/mvc");
+define("url","https://localhost/rextura");
 define("action_default","index");
