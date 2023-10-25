@@ -13,7 +13,7 @@ protected $precio_normal;
 protected $precio_premium;
 protected $categoria_id;
 
-public function __construct($id, $name,$tipo){
+public function __construct($producto_id, $nombre_producto,$descripcion,$precio_normal,$precio_premium,$categoria_id){
     $this-> producto_id = $producto_id;
     $this-> nombre_producto = $nombre_producto;
     $this-> descripcion = $descripcion;

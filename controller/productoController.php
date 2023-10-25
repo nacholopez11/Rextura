@@ -1,31 +1,15 @@
 <?php
 //Creamos el controlador de pedidos
-include_once('model/Postre.php');
 class productoController{
 
     public function index(){
-        //cabecera
-
-        //panel
-        /*
-        $p1= new Postre(2,'Comida','Postre','Chocolate');
-        
-        $listaproductos = [$p1];
-
-        var_dump($listaproductos);
-
-        foreach($listaproductos as $producto){
-            echo $producto->getName();
-            echo '<br>';
-        }
-*/
-
-        var_dump( ProductoDAO::getAllProducts());
-        //footer
-        echo 'Pagina principal pedidos';
+    $allProducts = ProductoDAO::getAllByType();
+    //cabecera
+    include_once 'views/cabecera.php';
+    //panel
+    include_once 'views/panelpedido.php';
+    //footer
     }
-
-
         public function compra(){
             echo 'Pagina de compra';
         }
