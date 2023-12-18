@@ -1,28 +1,32 @@
 <?php
-include_once('controller/productoController.php');
+include_once('controller/productController.php');
+include_once('controller/usuarioController.php');  
 include_once('config/parameters.php');
 
+if (!isset($_GET['controller'])) {
+    // Si no se pasa nada, se mostrará la página principal de productos
+    header("Location:" . url . '?controller=product');
+} else {
+    $nombre_controller = $_GET['controller'] . 'Controller';
+    if (class_exists($nombre_controller)) {
+        // Miramos si nos pasa una acción
+        // si no mostramos por defecto
 
-if(!isset($_GET['controller'])){
-    //Si no se pasa nada, se mostrara pagina principal de pedidos
-    header("Location:".url.'?controller=pedido');
-}else{
-    $nombre_controller = $_GET['controller'].'Controller';
-    if(class_exists($nombre_controller)){
-        //Miramos si nos pasa una accion
-        //si no mostramos por defecto
-
-        $controller = new $nombre_controller();
-        if(isset($_GET['action']) && method_exists($controller, $_GET['action'])){
-            $action = $_GET['action'];
-        }else{
-            $action = action_default;
+        if ($nombre_controller === 'usuarioController') {
+            // Si el controlador es usuarioController, asegúrate de tener una acción válida
+            $action = isset($_GET['action']) ? $_GET['action'] : 'login';
+            
+            // Instancia el controlador usuarioController
+            $controller = new $nombre_controller();
+        } else {
+            // Para otros controladores, sigue la lógica anterior
+            $controller = new $nombre_controller();
+            $action = isset($_GET['action']) && method_exists($controller, $_GET['action']) ? $_GET['action'] : action_default;
         }
 
         $controller->$action();
-    }else{
-        header("Location:".url.'?controller=producto');
+    } else {
+        header("Location:" . url . '?controller=product');
     }
 }
-
 ?>

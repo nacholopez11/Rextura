@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* FONTS */
+/* Letra grande banner slider */
+@font-face {
+    font-family: "OPTICrawClaredon-Book";
+    src: url(../fonts/OPTICrawClarendon-Book.otf);
+}
+/* Titulos secciones */
+@font-face {
+    font-family: "ClaredonBTPro-Bold";
+    src: url(../fonts/ClarendonBTPro-Bold.ttf);
+}
+/* Primaria normal */
+@font-face {
+    font-family: "Neutra Text TF Book";
+    src: url(../fonts/Neutra\ Text\ TF\ Book.otf);
+}
+/* Primaria gruesa */
+@font-face {
+    font-family: "Neutra Text TF Bold";
+    src: url(../fonts/neutra-text-tf-bold.otf);
+}
+/* Primaria fina */
+@font-face {
+    font-family: "Neutra Text TF Light";
+    src: url(../fonts/neutra-text-tf-light-5871e0fe13bff.otf);
+}
+/* Letra menu y banner slider */
+@font-face {
+    font-family: "Neutra Text TF SC";
+    src: url(../fonts/neutra-text-tf-sc.otf);
+}
+
+
+
+/*Variables CSS*/
+/* CSS CARRITO */
+/* CSS TITULO PAGINA */
+.texto-titulo{
+    font-family: "OPTICrawClaredon-Book";
+    font-size: 32px;
+    color: #212529;
+}
+.paginacion{
+    max-width: 1260px !important;
+    margin: auto !important;
+    padding-top: 10px;
+}
+.texto-titulo-carrito{
+    max-width: 1260px;
+    margin: 0px;
+    margin: auto !important;
+}
+.breadcrumb-item.active{
+    color: #8F8178;
+    font-size: 18px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 700 !important;
+}
+.breadcrumb-item.active::before{
+    color: #8F8178;
+    font-size: 18px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 700 !important;
+}
+.a-breadcrumb{
+    text-decoration: none;
+    color: #8F8178;
+    font-size: 18px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 700 !important;
+}
+/* CSS CONTENIDO CARRITO */
+.contenido{
+    max-width: 1260px;
+    margin: auto;
+}
+.tabla-contenido-carrito{
+    display: flex;
+    justify-content:space-between !important;
+    margin: auto;
+}
+
+
+
+
+
+
+
+.boton-principal {
+    display: block;
+    background-color: black;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    margin-left: 0px;
+    margin-top: auto;
+    font-family: "Neutra Text TF";
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-style:solid;
+}
+.boton-principal:hover {
+    background-color: #fff;
+    color: black;
+    border: black 3px double; 
+    border-width: 0,1px !important;
+}

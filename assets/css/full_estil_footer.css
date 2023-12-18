@@ -1,0 +1,103 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* FONTS */
+/* Letra grande banner slider */
+@font-face {
+    font-family: "OPTICrawClaredon-Book";
+    src: url(../fonts/OPTICrawClarendon-Book.otf);
+}
+/* Titulos secciones */
+@font-face {
+    font-family: "ClaredonBTPro-Bold";
+    src: url(../fonts/ClarendonBTPro-Bold.ttf);
+}
+/* Primaria normal */
+@font-face {
+    font-family: "Neutra Text TF Book";
+    src: url(../fonts/Neutra\ Text\ TF\ Book.otf);
+}
+/* Primaria gruesa */
+@font-face {
+    font-family: "Neutra Text TF Bold";
+    src: url(../fonts/neutra-text-tf-bold.otf);
+}
+/* Primaria fina */
+@font-face {
+    font-family: "Neutra Text TF Light";
+    src: url(../fonts/neutra-text-tf-light-5871e0fe13bff.otf);
+}
+/* Letra menu y banner slider */
+@font-face {
+    font-family: "Neutra Text TF SC";
+    src: url(../fonts/neutra-text-tf-sc.otf);
+}
+
+
+
+/*Variables CSS*/
+
+/* CSS FOOTER */
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black !important;
+    min-height: 200px;
+    /* MODIFICAR ESTO PARA SEPARARLO DEL CONTENIDO */
+    margin-top: 20px;
+}
+.contenido-footer{
+    display: flex;
+    flex-direction: column;
+}
+.p-footer{
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Neutra Text TF Book';
+    align-content: center;
+    margin-top: 10px;
+}
+.texto-footer{
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+.redes-sociales ul{
+    list-style: none;
+}
+.redes-sociales ul li{
+    width: 40px;
+    height: 40px;
+    line-height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: grey;
+    float: left;
+}
+.redes-sociales ul li:hover{
+    width: 40px;
+    height: 40px;
+    line-height: 30px;
+    margin: 0 10px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: white;
+    float: left;
+}
+.redes-sociales ul li .fa{
+    color: black;
+    width: 30px;
+    height: 30px;
+    padding-top: 4px;
+}
+.redes-sociales ul li .fa-facebook{
+    color: black;
+    width: 30px;
+    height: 30px;
+    padding-top: 4px;
+    padding-right: 2px;
+}

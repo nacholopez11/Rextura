@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC>
+<html>
+<head>
+    <title>Platilla de bootstrapp</title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="Descripció web">
+    <meta name="keywords" content="Paraules clau">
+    <meta name="author" content="Autor">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/full_estil.css" rel="stylesheet" type="text/css" media="screen">
+
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid div-header">
+            <div class="row div-fila-header">
+                <div class="buscador-header col-4">
+                    <div class="lolo">    
+                        <ul class="buscador">
+                            <li class="nav-item-buscador">
+                                <img class="icon-buscador" src="/assets/icons/carrito.png"/>
+                                <a class="nav-link-buscador active" aria-current="page" href="#">Buscar</a>
+                            </li>
+                        </ul>
+                    </div>      
+                </div>
+                <div class="logo-header col-4">    
+                    <a class="navbar-brand" href="#">
+                        <img src="/assets/images/textura-logo.jpg"/>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>  
+                <div class="menu-header col-4">  
+                    <div class="as" id="navbarSupportedContent">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <img class="icon-menu-header" src="/assets/icons/carrito.png"/>
+                                <a class="nav-link active" aria-current="page" href="#">Mi cuenta</a>
+                            </li>
+                            <li class="nav-item">
+                                <img class="icon-menu-header" src="/assets/icons/carrito.png"/>
+                                <a class="nav-link active" aria-current="page" href="#">Carta</a>
+                            </li>
+                            <li class="nav-item">
+                                <img class="icon-menu-header" src="/assets/icons/carrito.png"/>
+                                <a class="nav-link" href="#">Bolsa</a>
+                            </li>
+                        </ul>
+                    <!-- <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form> -->  
+                    </div>
+                </div>    
+            </div>
+        </div>
+      </nav>
+
+
+
+
+
+
+    <!-- <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="/assets/images/textura-logo.jpg"/>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav> -->
+
+    <!-- EMPIEZA SECCION SLIDER -->
+    <section class="container">
+            <div id="carouselPrincipal" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="0" class="active indicador-carusel" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselPrincipal" data-bs-slide-to="1" class="indicador-carusel" aria-label="Slide 2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <div class="row">
+                            <div class="col-12 col-md-4" style="background-color: #B8C8A4;">
+                                <div class="div-texto-slider">
+                                    <h6 class="texto1-slider">Secretos de cocina</h6>
+                                    <h6 class="texto2-slider">DESCUBRE LOS NUEVOS PLATOS</h6>
+                                    <button type="button" class="boton-slider-verde">QUIERO VERLOS TODOS</button>
+                                </div>
+                            </div>
+                            <div class="col-0 col-md-8" style="background-image: url(/assets/images/img1-banner1.png);"></div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="10000">
+                        <div class="row">
+                            <div class="col-12 col-md-4" style="background-color: #5E5856;">
+                                <div class="div-texto-slider">
+                                    <h6 class="texto1-slider">Nuestros cocineros</h6>
+                                    <h6 class="texto2-slider">DESCUBRE A NUESTRO EQUIPO</h6>
+                                    <button type="button" class="boton-slider-gris">SABER MÁS</button>
+                                </div>
+                            </div>
+                            <div class="col-0 col-md-8" style="background-image: url(/assets/images/img2-banner1.jpg);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- EMPIEZA SECCION PRODUCTOS -->
+    <section class="container">
+        <div>
+            <h3 class="titulos-secciones">Novedades</h3>
+        </div>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-6 col-lg-3 producto-ind">
+                <div class="card">
+                    <img src="/assets/images/cheesecake.png" class="card-img-top" alt="imagen de un cheesecake">
+                    <div class="card-body">
+                        <h6 class="nuevo">Nuevo</h6>
+                        <h5 class="nombre-producto">Cheesecake Casero  de queso Idiazabal</h5>
+                        <div class="precio">
+                        <p class="precio-normal">7 €</p>
+                        <div class="div-premium">
+                            <p class="precio-premium">6,90 €</p>
+                            <p class="palabra-premium">PREMIUM</p>
+                        </div>
+                        <button href="#" class="boton-principal">Añadir</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-6 col-lg-3 producto-ind">
+                <div class="card">
+                    <img src="/assets/images/postredelacasa.png" class="card-img-top" alt="imagen de un cheesecake">
+                    <div class="card-body">
+                        <h6 class="nuevo">Nuevo</h6>
+                        <h5 class="nombre-producto">Postre de la casa</h5>
+                        <div class="precio">
+                        <p class="precio-normal">7 €</p>
+                        <div class="div-premium">
+                            <p class="precio-premium">6,90 €</p>
+                            <p class="palabra-premium">PREMIUM</p>
+                        </div>
+                        <button href="#" class="boton-principal">Añadir</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-6 col-lg-3 producto-ind">
+                <div class="card">
+                    <img src="/assets/images/milhojas con fresas.png" class="card-img-top" alt="imagen de un cheesecake">
+                    <div class="card-body">
+                        <h6 class="nuevo">Nuevo</h6>
+                        <h5 class="nombre-producto">Milhojas con fresas</h5>
+                        <div class="precio">
+                        <p class="precio-normal">7 €</p>
+                        <div class="div-premium">
+                            <p class="precio-premium">6,90 €</p>
+                            <p class="palabra-premium">PREMIUM</p>
+                        </div>
+                        <button href="#" class="boton-principal">Añadir</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-6 col-lg-3 producto-ind">
+                <div class="card">
+                    <img src="/assets/images/mejillones.png" class="card-img-top" alt="imagen de un cheesecake">
+                    <div class="card-body">
+                        <h6 class="nuevo">Nuevo</h6>
+                        <h5 class="nombre-producto">Mejillones</h5>
+                        <div class="precio">
+                        <p class="precio-normal">7 €</p>
+                        <div class="div-premium">
+                            <p class="precio-premium">6,90 €</p>
+                            <p class="palabra-premium">PREMIUM</p>
+                        </div>
+                        <button href="#" class="boton-principal">Añadir</button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- EMPIEZA DIV CATEGORIAS -->
+    <section class="container">
+        <div class="container text-center">
+            <div class="row">
+              <div class="col-12 col-lg-4">
+                <a href="#" class="contenedor">
+                    <div class="text-superpuesto">
+                        <div class=""><p class="c-t-1">Platos principales</p></div>
+                        <div class=""><p class="c-t-2">Nuestra especialidad</p></div>
+                    </div>
+                    <img src="assets/images/categoria-1.png" class="imagen" alt="...">
+                </a>
+              </div>
+              <div class="col-12 col-lg-4 categorias">
+                <a href="#" class="contenedor">
+                    <div class="text-superpuesto">
+                        <div class=""><p class="c-t-1">Nuestros postres</p></div>
+                        <div class=""><p class="c-t-2">Todos caseros</p></div>
+                    </div>
+                    <img src="assets/images/categoria-2.jpg" class="imagen" alt="...">
+                </a>
+              </div>
+              <div class="col-12 col-lg-4 categorias">
+                <a href="#" class="contenedor">
+                    <div class="text-superpuesto">
+                        <div class=""><p class="c-t-1">Y para beber...</p></div>
+                        <div class=""><p class="c-t-2">Nuevas incorporaciones</p></div>
+                    </div>
+                    <img src="assets/images/categoria-3.jpg" class="imagen" alt="...">
+                </a>
+              </div>
+            </div>
+        </div>
+    </section>
+    <!-- EMPIEZA SECCION INFO -->
+    <section class="container seccion-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-4 div-info">
+                    <div class="caja-contenido-info">
+                        <img src="/assets/icons/usuario.png" class="icon-info">
+                        <h3 class="texto-1-info">envíos gratis a partir de 50€</h3>
+                        <p class="texto-2-info">Para aquellos que prefieren estar en casa.</p>
+                        <p class="texto-2-info">Tus pedidos llegarán en menos de 30 minutos.</p>
+                    </div>
+                </div>
+                <div class="col-4 div-info">
+                    <div class="caja-contenido-info">
+                        <img src="/assets/icons/usuario.png" class="icon-info">
+                        <h3 class="texto-1-info">nuestros restaurantes</h3>
+                        <p class="texto-2-info">¿Quieres ver qué restaurante  está más cerca de tu casa?</p>
+                        <p class="texto-2-info">Aquí estará el tuyo.</p>
+                    </div>
+                </div>
+                <div class="col-4 div-info">
+                    <div class="caja-contenido-info">
+                        <img src="/assets/icons/usuario.png" class="icon-info">
+                        <h3 class="texto-1-info">refrescos gratuitos</h3>
+                        <p class="texto-2-info">¿Eres de beber?</p>
+                        <p class="texto-2-info">Por cada 30 € de cuenta te daremos un refresco gratuito.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<footer>
+    <div class="footer">
+        <div class="redes-sociales">
+            <a href="#" class="icono-footer" src="../assets/icons/carrito.png">
+                <img src="/assets/icons/usuario.png"/>
+            </a>
+            <a></a>
+            <a></a>
+        </div>
+        <p class="p-footer">Copyrigth 2023 | Nacho López Tutusaus</p>
+    </div>
+</footer>
+
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+
+</html>

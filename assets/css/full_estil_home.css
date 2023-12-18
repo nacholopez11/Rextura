@@ -1,0 +1,399 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* FONTS */
+/* Letra grande banner slider */
+@font-face {
+    font-family: "OPTICrawClaredon-Book";
+    src: url(../fonts/OPTICrawClarendon-Book.otf);
+}
+/* Titulos secciones */
+@font-face {
+    font-family: "ClaredonBTPro-Bold";
+    src: url(../fonts/ClarendonBTPro-Bold.ttf);
+}
+/* Primaria normal */
+@font-face {
+    font-family: "Neutra Text TF Book";
+    src: url(../fonts/Neutra\ Text\ TF\ Book.otf);
+}
+/* Primaria gruesa */
+@font-face {
+    font-family: "Neutra Text TF Bold";
+    src: url(../fonts/neutra-text-tf-bold.otf);
+}
+/* Primaria fina */
+@font-face {
+    font-family: "Neutra Text TF Light";
+    src: url(../fonts/neutra-text-tf-light-5871e0fe13bff.otf);
+}
+/* Letra menu y banner slider */
+@font-face {
+    font-family: "Neutra Text TF SC";
+    src: url(../fonts/neutra-text-tf-sc.otf);
+}
+
+
+
+/*Variables CSS*/
+
+/* CSS HOME */
+/* CSS SLIDER */
+section.container:first-child {
+    padding-top: 30px;
+}
+section.container{
+    max-width: 1260px;
+    padding: 0px;
+}
+.carousel-inner{
+    margin-left:auto;
+    margin-right: auto;
+}
+.imagen-slider{
+    align-items: center;
+    object-fit:cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 660px;
+ }
+.div-texto-slider{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center ;
+    height: 660px;
+    padding-left: 12px;
+}
+.texto1-slider{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #FEFFFE;
+    align-items: center;
+    text-align: center;
+    font-size: 36px;
+    font-family: 'OPTICrawClaredon-Book';
+}
+.texto2-slider{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #FEFFFE;
+    align-items: center;
+    font-size: 11px;
+    font-family: 'Neutra Text TF SC';
+    margin-top: 10px;
+    font-weight: 700;
+}
+.boton-slider-verde{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #FEFFFE;
+    background-color: #B8C8A4;
+    border-color: #FEFFFE;
+    border-style:solid;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Neutra Text TF SC';
+    min-width: 210px;
+    margin-top: 100px;
+    padding: 10px;
+}
+.boton-slider-gris{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #FEFFFE;
+    background-color: #5E5856;
+    border-color: #FEFFFE;
+    border-style:solid;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Neutra Text TF SC';
+    min-width: 210px;
+    margin-top: 100px;
+    padding: 10px;
+}
+.indicador-carusel{
+    max-width: 13px; 
+    min-height: 13px;
+    border-radius: 50%;
+    background-color: #fff; 
+    margin-right: 5px; 
+    cursor: pointer; 
+}
+.indicador-carusel.active {
+    background-color: white;
+}
+
+
+
+
+ /* CSS TITULOS ENTRE SECCIONES */
+.titulos-secciones{
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 10px;
+    /* REVISAR CAMBIOS PADDING EN TITULOS */
+    font-family: 'ClaredonBTPro-Bold';
+}
+
+
+/* CSS PRODUCTOS */
+.card{
+    border-radius: 0%;
+    border-style: none;
+    width: 313px;
+}
+.card-img-top{
+    display: flex;
+    justify-content: center;
+    /* height: 313px; */
+    width: auto;
+    border-radius: 0%;
+}
+.p1{
+    display: flex;
+    justify-content: space-between;
+}
+.card-body{
+    height: 107.4px;
+    width: auto;
+    padding: 0%;
+}
+.div-premium{
+    height: 45px;
+}
+.nuevo{
+    font-family:'Neutra Text TF';
+    font-weight:400;
+    font-size: 16px;
+    text-align: left;
+    width: 156.5px;
+    color: rgb(193, 193, 193);
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    text-size-adjust: 100%;
+    user-select: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.nombre-producto{
+    color: rgb(35, 31, 32); 
+    text-align: left;
+    cursor: pointer;
+    font-family: "Neutra Text TF";
+    font-size: 18px;
+    font-weight: 400;
+    height: auto;
+    line-height: 27px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    text-align: left;
+    text-decoration-color: rgb(35, 31, 32);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    text-align: left;
+    width: 313px;
+}
+.precio{
+    display: flex;
+    padding-top: 0%;
+}
+.precio-normal{
+    box-sizing: border-box;
+    color: rgb(143, 129, 120);
+    display: inline;
+    font-family: "Neutra Text TF";
+    font-size: 22px;
+    font-weight: 400;
+    height: 25px;
+    width: 60px;
+    text-align: left;
+    user-select: none;
+    padding-top: 0px;
+}
+.precio-premium{
+    width: 60px;
+    box-sizing: border-box;
+    color: rgb(33, 37, 41);
+    display: inline;
+    font-family: "Neutra Text TF";
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    text-align: left;
+    user-select: none;
+}
+p.palabra-premium{
+    height: 15px;
+    color: #212529;
+    font-family: "Neutra Text TF";
+    font-size: 10px;
+}
+.boton-principal {
+    display: block;
+    background-color: black;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    margin-left: auto;
+    margin-top: auto;
+    font-family: "Neutra Text TF";
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-style:solid;
+}
+.boton-principal:hover {
+    background-color: #fff;
+    color: black;
+    border: black 3px double; 
+    border-width: 0,1px !important;
+}
+
+.producto-ind{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+
+/* CSS CATEGORIAS */
+  .seccion-3 {
+    padding: 30px 0;
+  }
+  
+  .categorias {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: #FEFFFE;
+    border-color: #212529;
+    margin-bottom: 20px;
+    padding: 0px;
+  }
+  .tutu{
+    padding: 0px;
+    
+  }
+  
+  .contenedor {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+  
+  .text-superpuesto {
+    display: flex;
+    position: absolute;
+    color: #8F8178;
+    font-size: 18px;
+    font-family: 'Neutra Text TF Bold';
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    background-color: #fff;
+    width: 370px;
+    height: 100px;
+    margin: 15px;
+  }
+  
+  .c-t-1 {
+    color: #8F8178;
+    font-size: 18px;
+    font-family: 'Neutra Text TF Bold';
+  }
+  
+  .c-t-2 {
+    color: #212529;
+    font-size: 20px;
+    font-family: 'Neutra Text TF SC';
+  }
+  
+  .imagen {
+    width: 400px;
+    height: 513px; 
+    display: block;
+    z-index: 0;
+    object-fit: cover;
+  }
+
+.text-superpuesto p{
+    margin: 0;
+    padding:0;
+}
+
+
+
+/* CSS SECCION INFO */
+.seccion-4 {
+    padding: 0px;
+}
+
+.div-info {
+    display: flex !important;
+    justify-content: center !important;
+    background-color: #e7e7e7;
+}
+.caja-contenido-info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-top: 50px !important;
+    margin-top: 0px !important;
+    align-self: center;
+    
+}
+.icon-info{
+    max-width: 60px;
+    max-height: 60px;
+}
+.texto-1-info{
+    font-family: 'Neutra Text TF SC';
+    font-weight: 1000px;
+    color: #000;
+    text-align: center;
+    font-size: 16px;font-size: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.texto-2-info{
+    display: flex;
+    color: #000;
+    text-align: center;
+    font-family: 'Neutra Text TF Light';
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+
+/* Estilos para pantallas grandes (mayores o iguales a 922px) */
+@media (min-width: 922px) {
+    .seccion-4 .container {
+        max-width: 1260px;
+    }
+}
+
+/* Estilos para pantallas más pequeñas que 922px */
+@media (max-width: 922px) {
+    .seccion-4 .row {
+        display: none; 
+    }
+}
