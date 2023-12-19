@@ -18,9 +18,7 @@ class ProductController {
 
     if (!isset($_SESSION['selecciones'])) {
         $_SESSION['selecciones'] = array();
-    }
-
-    if (isset($_POST['id'])) {
+    }else if (isset($_POST['id'])) {
         $id = $_POST['id'];
         $existing_key = null;
 
@@ -73,7 +71,7 @@ class ProductController {
 
     public function panelHome() {
         session_start();
-        $products = ProductDAO::getAllProducts();
+        $product = ProductDAO::getAllProducts();
         include_once 'view/header.php';
         include_once 'view/panelHome.php';
         include_once 'view/footer.php';
@@ -226,101 +224,19 @@ class ProductController {
         }
     }
 
-
-
-
-
-
-
-    // public function confirmar() {
-    //     session_start();
+    public function edit() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'edit') {
+            $id = $_POST['id'];
+            $product = ProductDAO::getProductById($id);
     
-    //     // Verifica si hay productos en el carrito
-    //     if (isset($_SESSION['selecciones']) && !empty($_SESSION['selecciones'])) {
-    //         // Obtén la información del carrito
-    //         $carritoInfo = array();
-    //         $totalPedido = 0; // Inicializa el total del pedido
-    
-    //         foreach ($_SESSION['selecciones'] as $pedido) {
-    //             $productoInfo = array(
-    //                 'id' => $pedido->getProducto()->getId(),
-    //                 'nombre' => $pedido->getProducto()->getNombre(),
-    //                 'precio' => $pedido->getProducto()->getPrecio(),
-    //                 'cantidad' => $pedido->getCantidad(),
-    //                 'subtotal' => $pedido->devuelvePrecioTotal()
-    //             );
-    //             $carritoInfo[] = $productoInfo;
-    
-    //             // Suma al total del pedido
-    //             $totalPedido += $pedido->devuelvePrecioTotal();
-    //         }
-    
-    //         // Obtén el nombre de usuario del usuario actual desde la sesión
-    //         $username = $_SESSION['user']['username'];
-    
-    //         // Obtén el id del usuario actual usando la función getUserId de UsuarioDAO
-    //         $usuario_id = UsuarioDAO::getUserId($username);
-    
-    //         // Inserta el pedido en la tabla pedidos
-    //         $con = DB::getConnection();
-    //         $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, total) VALUES (?, ?)");
-    //         $stmt->bind_param("id", $usuario_id, $totalPedido);
-    //         $stmt->execute();
-    //         $pedido_id = $stmt->insert_id; // Obtiene el ID del pedido recién insertado
-    
-    //         // Inserta los productos del carrito en la tabla productos_pedido
-    //         foreach ($carritoInfo as $producto) {
-    //             $stmt = $con->prepare("INSERT INTO productos_pedido (pedido_id, producto_id, precio, cantidad, subtotal) VALUES (?, ?, ?, ?, ?)");
-    //             $stmt->bind_param("iisid", $pedido_id, $producto['id'], $producto['precio'], $producto['cantidad'], $producto['subtotal']);
-    //             $stmt->execute();
-    //         }
-    
-    //         // Limpia el carrito en la sesión
-    //         unset($_SESSION['selecciones']);
-    
-    //         // Después de insertar el pedido en la tabla pedidos
-    //         $pedido_id = $stmt->insert_id;
-
-    //         // Actualiza la cookie para incluir el ID del pedido
-    //         $carritoInfo['pedido_id'] = $pedido_id;
-    //         $carritoJson = json_encode($carritoInfo);
-    //         setcookie('carrito', $carritoJson, time() + (30 * 1), "/"); // Cookie válida por 30 días
-    
-    //         $con->close();
-    
-    //         // Redirige a la página de visualización de pedidos o a donde desees
-    //         header("Location: index.php?controller=product&action=panelHome");
-    //         exit();
-    //     } else {
-    //         // No hay productos en el carrito, puedes manejar esto de acuerdo a tus necesidades
-    //         echo "No hay productos en el carrito.";
-    //         exit();
-    //     }
-    // }
-
-
-
-
-
-
-
-
-
-
-
-
-    public function edit(){
-        echo 'Pagina de editar';
-        if($_POST['categoria'] == 'Bebida'){
-            $product = ProductDAO::getBebidaById($_POST['id']);
-        }elseif($_POST['categoria'] == 'Postre'){
-            $product = ProductDAO::getPostreById($_POST['id']);
-        }else{
-            $product = ProductDAO::getPlatoPrincipalById($_POST['id']);
+            // Renderiza la vista de edición con los detalles del producto
+            include_once 'view/header.php';
+            include_once 'view/panelEditProduct.php';
+            include_once 'view/footer.php';
+        } else {
+            // Maneja el caso en que la solicitud no sea válida
+            echo "Solicitud no válida.";
         }
-
-        // REVISAR QUE ARCHIVO PONER EN EL INCLUDE
-        include_once 'view/panelEditProduct.php';
     }
 
     public function editProductById() {
@@ -330,13 +246,16 @@ class ProductController {
             $nombre = $_POST['nombre'];
             $categoria = $_POST['categoria'];
             $precio = $_POST['precio'];
-
+            $precio_premium = $_POST['precio_premium'];
+            $image = $_POST['image'];
+            $categoria_id = $_POST['categoria_id'];
+    
             // Realiza la actualización en la base de datos
-            $success = ProductDAO::updateProduct($id, $nombre, $categoria, $precio);
-
+            $success = ProductDAO::updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
+    
             if ($success) {
                 // Redirige o muestra un mensaje de éxito
-                header("Location: index.php?controller=product&action=panelEditProduct");
+                header("Location: index.php?controller=product&action=products");
                 exit();
             } else {
                 // Maneja el caso en que la actualización falla
@@ -350,37 +269,65 @@ class ProductController {
         }
     }
 
+    public function panelAñadirProducto() {
+        session_start();
+        include_once 'view/header.php';
+        include_once 'view/panelAñadirProducto.php';
+        include_once 'view/footer.php';
+    }
+
+
+    public function addProduct() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Obtén los datos del formulario
+            $nombre = $_POST['nombre'];
+            $categoria = $_POST['categoria'];
+            $precio = $_POST['precio'];
+            $precio_premium = isset($_POST['precio_premium']) ? $_POST['precio_premium'] : null;
+            $image = isset($_POST['image']) ? $_POST['image'] : null;
+            $categoria_id = $_POST['categoria_id'];
+    
+            // Llama a la función en el DAO para agregar el nuevo producto
+            $success = ProductDAO::addProduct($nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
+    
+            if ($success) {
+                // Redirige o muestra un mensaje de éxito
+                header("Location: index.php?controller=product&action=panelEditProduct");
+                exit();
+            } else {
+                // Maneja el caso en que la inserción falla
+                echo "Error al agregar el nuevo producto.";
+                exit();
+            }
+        } else {
+            // Si no es una solicitud POST, muestra un mensaje o redirige según sea necesario
+            echo "Solicitud no válida.";
+            exit();
+        }
+    }
 
 
 
+    public function eliminarProduct() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $success = ProductDAO::deleteProduct($id);
+    
+            if ($success) {
+                header("Location: index.php?controller=product&action=products");
+                exit();
+            } else {
+                echo "Error al eliminar el producto.";
+                exit();
+            }
+        } else {
+            echo "Solicitud no válida.";
+            exit();
+        }
+    }
 
 
 
-    // MIRAR EN QUE ARCHIVO PONER
-    // public function eliminar(){
-    //     $id_product = $_POST['id'];
-    //     ProductDAO::deleteProduct($id_product);
-    //     header("Location: ".url.'?controller=product');
-    // }
-
-    // public function editar(){
-    //     $id = $_POST['id'];
-    //     $product = ProductDAO::getProductById($id);
-    //     include_once 'view/editarPedido.php';
-    // }
-
-    // public function actualizar(){
-    //     $id = $_POST['id']; 
-    //     $nombre = $_POST['nombre'];
-    //     $categoria = $_POST['categoria'];
-    //     $precio = $_POST['precio'];
-    //     $precio_premium = $_POST['precio_premium'];
-    //     $image = $_POST['image'];
-    //     $categoria_id = $_POST['categoria_id'];
-
-    //     ProductDAO::updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
-    //     header("Location: ".url.'?controller=product');
-    // }
 
 }
 ?>

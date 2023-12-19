@@ -108,56 +108,53 @@ class ProductDAO {
         return $result->fetch_object('Bebidas');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    // FALTA IMPLEMENTAR CODIGO
-    public static function editProductById($id){
-        $con = DB::getConnection(); 
-    }
-
-    public static function deleteProduct($id){
-        $con = DB::getConnection();  
-
-        $stmt = $con->prepare("DELETE FROM products WHERE id=?");
-        $stmt ->bind_param("i",$id);
-
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $con->close();
-        return $result;
-
-    }
-
-    public static function updateProduct($id, $nombre, $categoria, $precio) {
+    public static function updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id) {
         $con = DB::getConnection();
-
-        $stmt = $con->prepare("UPDATE products SET nombre=?, categoria=?, precio=? WHERE id=?");
-        $stmt->bind_param("ssdi", $nombre, $categoria, $precio, $id);
+    
+        // Corrección en la declaración del SQL, elimina la coma después de 'categoria_id=?'
+        $stmt = $con->prepare("UPDATE products SET nombre=?, categoria=?, precio=?, precio_premium=?, image=?, categoria_id=? WHERE id=?");
+        
+        // Corrección en la cadena de tipos de parámetros y la asignación de parámetros
+        $stmt->bind_param("sssdsii", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $id);
+    
         $success = $stmt->execute();
-
+    
         $stmt->close();
         $con->close();
-
+    
         return $success;
     }
+
+    public static function addProduct($nombre, $categoria, $precio, $precio_premium, $image, $categoria_id) {
+        $con = DB::getConnection();
+    
+        $stmt = $con->prepare("INSERT INTO products (nombre, categoria, precio, precio_premium, image, categoria_id) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssdiss", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
+        $success = $stmt->execute();
+    
+        $stmt->close();
+        $con->close();
+    
+        return $success;
+    }
+
+
+    public static function deleteProduct($id) {
+        $con = DB::getConnection();
+    
+        $stmt = $con->prepare("DELETE FROM products WHERE id=?");
+        $stmt->bind_param("i", $id);
+        $success = $stmt->execute();
+    
+        $stmt->close();
+        $con->close();
+    
+        return $success;
+    }
+
+
+
+
 
 }
 ?>

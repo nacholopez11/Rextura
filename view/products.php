@@ -23,6 +23,10 @@
 </section>
 <section class="container">
     <div class="container text-center">
+    <form class="boton-carrito" action=<?=url.'?controller=product&action=panelAñadirProducto'?> method="post">
+        <!--BOTON AÑADIR NUEVO PRODUCTO-->
+        <button type="submit"class="boton-principal">AÑADIR PRODUCTO NUEVO</button>
+    </form>
         <div class="row">
             <?php foreach ($products as $product): ?>
                 <article class="col-6 col-lg-3 producto-ind">
@@ -41,9 +45,9 @@
                                         <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
                                         <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
 
-                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=editProductById'?> method="post">
+                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=edit'?> method="post">
                                                 <!--BOTON EDITAR-->    
-                                                <input type="hidden" name="action" value="editar">
+                                                <input type="hidden" name="action" value="edit">
                                                 <input type="hidden" name="id" value="<?=$product->getId(); ?>">
                                                 <button type="submit"class="boton-principal">Editar</button>
                                             </form>
