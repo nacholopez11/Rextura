@@ -41,9 +41,9 @@
                                         <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
                                         <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
 
-                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=editarProduct'?> method="post">
+                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=editProductById'?> method="post">
                                                 <!--BOTON EDITAR-->    
-                                                <input type="hidden" name="action" value="añadirCarrito">
+                                                <input type="hidden" name="action" value="editar">
                                                 <input type="hidden" name="id" value="<?=$product->getId(); ?>">
                                                 <button type="submit"class="boton-principal">Editar</button>
                                             </form>

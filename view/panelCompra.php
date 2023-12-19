@@ -86,13 +86,14 @@ include_once 'controller/productController.php';
                     </tbody> 
                 </table>
                 <?php } else {
-                // La variable de sesión no existe o está vacía
                 echo "No hay productos en el carrito.";?>
                 <form action=<?=url.'?controller=product&action=products'?> method='post'>
                     <td><button class="boton-principal" type="submit"> IR A CARTA </button></td>                  
                 </form>
+                <form action=<?=url.'?controller=product&action=recuperarUltimoPedido'?> method='post'>
+                    <td><button class="boton-principal" type="submit"> RECUPERAR ULTIMO PEDIDO </button></td>                  
+                </form>
                 <?php }
-                // No olvides cerrar la sesión al finalizar
                 session_write_close();?>
             </div>
             <div class="col-6">

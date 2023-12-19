@@ -146,18 +146,17 @@ class ProductDAO {
 
     }
 
-    public static function updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id){
-        $con = DB::getConnection();  
+    public static function updateProduct($id, $nombre, $categoria, $precio) {
+        $con = DB::getConnection();
 
-        $stmt = $con->prepare("UPDATE products SET nombre =?, categoria=?, precio =?, precio_premium =?, image =?, categoria_id =? WHERE id=?");
-        $stmt->bind_param("ssissii", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $id);
+        $stmt = $con->prepare("UPDATE products SET nombre=?, categoria=?, precio=? WHERE id=?");
+        $stmt->bind_param("ssdi", $nombre, $categoria, $precio, $id);
+        $success = $stmt->execute();
 
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
+        $stmt->close();
         $con->close();
-        return $result;
+
+        return $success;
     }
 
 }
