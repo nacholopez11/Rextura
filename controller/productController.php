@@ -71,7 +71,7 @@ class ProductController {
 
     public function panelHome() {
         session_start();
-        $product = ProductDAO::getAllProducts();
+        $products = ProductDAO::getFourProducts();
         include_once 'view/header.php';
         include_once 'view/panelHome.php';
         include_once 'view/footer.php';

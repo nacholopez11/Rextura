@@ -137,8 +137,8 @@ div.row{
 }
 .precio{
     display: flex;
-    justify-content: space-between;
-    padding-top: 0%;
+    justify-content:flex-start;
+    padding: 0px !important;
 }
 
 .precio-normal{
@@ -173,6 +173,13 @@ p.palabra-premium{
     font-family: "Neutra Text TF";
     font-size: 10px;
 }
+
+.botones{
+    display: flex;
+    justify-content:flex-end;
+    padding: 0px !important;
+}
+
 .boton-carrito{
     display: flex;
     align-items: flex-end;

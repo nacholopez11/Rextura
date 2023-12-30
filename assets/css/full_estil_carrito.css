@@ -72,16 +72,80 @@
     font-family: "Neutra Text TF Book";
     font-weight: 700 !important;
 }
+
+
+
+
+
+
 /* CSS CONTENIDO CARRITO */
 .contenido{
+    display: flex;
+    flex-direction: row;
     max-width: 1260px;
     margin: auto;
 }
 .tabla-contenido-carrito{
     display: flex;
+    flex-direction: column;
     justify-content:space-between !important;
     margin: auto;
 }
+
+/* CABECERA */
+.tabla-contenido-carrito thead {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+}
+
+.tabla-contenido-carrito .fila-titulos {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.tabla-contenido-carrito .col-nombre {
+    flex: 3 !important;
+}
+
+.tabla-contenido-carrito .col-precio,
+.tabla-contenido-carrito .col-cantidad,
+.tabla-contenido-carrito .col-precio-total {
+    flex: 1 !important;
+}
+
+/* CUERPO */
+.tabla-contenido-carrito tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabla-contenido-carrito .fila-producto {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.tabla-contenido-carrito .fila-producto td {
+    flex: 1;
+}
+
+.tabla-contenido-carrito .col-nombre-info {
+    flex: 3 !important;
+}
+
+.tabla-contenido-carrito .col-precio-info,
+.tabla-contenido-carrito .col-cantidad-info,
+.tabla-contenido-carrito .col-precio-total-info {
+    flex: 1 !important;
+}
+
+.producto-contenedor{
+    display: flex;
+    flex-direction: column !important;
+}
+
 
 
 

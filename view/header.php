@@ -8,6 +8,7 @@
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_header.css" rel="stylesheet" type="text/css" media="screen">
+    
 </head>
 
 <body>
@@ -45,12 +46,12 @@
                                         </li>
                                         <li class="nav-item">
                                             <img class="icon-menu-header" src="./assets/icons/carta.png" />
-                                            <a class="nav-link" aria-current="page" href=<?= "index.php?controller=product&action=products" ?>>Carta</a>
+                                            <a class="nav-link" aria-current="page" href=<?= "index.php?controller=product&action=products" ?>>Panel Admin</a>
                                         </li>
-                                        <li class="nav-item">
+                                        <!-- <li class="nav-item">
                                             <img class="icon-menu-header" src="./assets/icons/bolsa.png" />
                                             <a class="nav-link" href=<?= "index.php?controller=product&action=panelCompra" ?>>Bolsa</a>
-                                        </li>
+                                        </li> -->
                                     <?php else : ?>
                                         <!-- User -->
                                         <li class="nav-item">

@@ -38,8 +38,8 @@ include_once 'controller/productController.php';
                 <?php if (isset($_SESSION['selecciones']) && !empty($_SESSION['selecciones'])) {?>
                 <table class="tabla-contenido-carrito">
                     <thead>
-                        <tr>
-                            <td class="col-articulo">
+                        <tr class="fila-titulos">
+                            <td class="col-nombre">
                                 <span class="s-articulo">Articulo</span>
                             </td>
                             <td class="col-precio">
@@ -58,33 +58,41 @@ include_once 'controller/productController.php';
                         <?php
                         $pos = 0;
                         foreach($_SESSION['selecciones'] as $pedido){?>
-                        <tr>
-                            <td><?=$pedido->getProducto()->getNombre()?></td>
-                            <td><?=$pedido->getProducto()->getPrecio()?></td>
-                            <td><?=$pedido->getCantidad()?></td>
-                            <td><?=$pedido->devuelvePrecioTotal()?></td>
-                            <!-- BOTON MODIFICAR CANTIDAD -->
-                            <form action=<?=url.'?controller=product&action=funcionalidadesCarrito'?> method='post'>
-                                <input type="hidden" name="pos" value="<?=$pos?>">
-                                <td><button class="bet-button w3-black w3-section" type="submit" name="Add">+</button></td>
-                                <td><button class="bet-button w3-black w3-section" type="submit" name="Del">-</button></td>
-                            </form>
+                        <tr class="fila-producto">
+                            <td class="col-nombre-info">
+                                <div class="producto-contenedor row">
+                                    <div class="producto-imagen col-6">
+                                        <img src="./assets/images/productos/<?= $pedido->getProducto()->getImage() ?>" alt="Imagen del producto">
+                                    </div>
+                                    <div class="producto-detalles col-6">
+                                        <p><?= $pedido->getProducto()->getNombre() ?></p>
+                                        <p>Categoría: <?= $pedido->getProducto()->getCategoria() ?></p>
+                                        <form action="<?= url . '?controller=product&action=eliminarCarritoEntero' ?>" method="post">
+                                            <input type="hidden" name="pos" value="<?= $pos ?>">
+                                            <button type="submit" class="eliminar-icono" title="Eliminar">
+                                                <img src="ruta/icono_papelera.png" alt="Icono de papelera">
+                                                <span>Eliminar</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="col-precio-info"><?= $pedido->getProducto()->getPrecio() ?></td>
+                            <td class="col-cantidad-info">
+                                <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
+                                    <input type="hidden" name="pos" value="<?= $pos ?>">
+                                    <button class="bet-button w3-black w3-section" type="submit" name="Add">+</button>
+                                    <span><?= $pedido->getCantidad() ?></span>
+                                    <button class="bet-button w3-black w3-section" type="submit" name="Del">-</button>
+                                </form>
+                            </td>
+                            <td class="col-precio-total-info"><?= $pedido->devuelvePrecioTotal() ?></td>
                         </tr>
                         <?php
                             $pos++;
-                        }?>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>PRECIO FINAL PEDIDO:</td>
-                            <td><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?></td>
-                            <form action=<?=url.'?controller=product&action=confirmar'?> method='post'>
-                                <td><button class="boton-principal" type="submit"> CONFIRMAR </button></td>                  
-                            </form>
-                            <td></td>
-                        </tr>
+                        } ?>
                     </tbody> 
-                </table>
+                </table>             
                 <?php } else {
                 echo "No hay productos en el carrito.";?>
                 <form action=<?=url.'?controller=product&action=products'?> method='post'>
@@ -97,7 +105,18 @@ include_once 'controller/productController.php';
                 session_write_close();?>
             </div>
             <div class="col-6">
-
+                <table>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>PRECIO FINAL PEDIDO:</td>
+                        <td><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?></td>
+                        <form action=<?=url.'?controller=product&action=confirmar'?> method='post'>
+                            <td><button class="boton-principal" type="submit"> CONFIRMAR </button></td>                  
+                        </form>
+                        <td></td>
+                    </tr>
+                </table>
             </div>
         </div>
       </section>

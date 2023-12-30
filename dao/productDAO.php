@@ -33,8 +33,6 @@ class ProductDAO {
     // FUNCION PARA RECUPERAR TODOS LOS PRODUCTOS SEGUN LA CATEGORIA
     public static function getAllProductsByType($tipo){
         $con = DB::getConnection(); 
-        // $query = "SELECT products.id, products.nombre, products.categoria, products.precio, products.precio_premium, products.image, products.categoria_id FROM products JOIN categorias ON products.categoria_id = categorias.categoria_id WHERE categorias.nombre_categoria = ?;";
-        // $stmt = $con->prepare($query);
         $stmt = $con->prepare("SELECT * FROM products WHERE categoria=?");
         $stmt->bind_param("s",$tipo);
         $stmt->execute();
@@ -152,7 +150,29 @@ class ProductDAO {
         return $success;
     }
 
+    public static function getFourProducts() {
+        $con = DB::getConnection();
+        $stmt = $con->prepare("SELECT * FROM products ORDER BY id DESC LIMIT 4");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $con->close();
 
+        $products = [];
+        while ($row = $result->fetch_assoc()) {
+            $product = new Product(
+                $row['id'],
+                $row['nombre'],
+                $row['categoria'],
+                $row['precio'],
+                $row['precio_premium'],
+                $row['image'],
+                $row['categoria_id']
+            );
+            $products[] = $product;
+        }
+
+        return $products;
+    }
 
 
 

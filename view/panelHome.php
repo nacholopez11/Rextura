@@ -50,37 +50,40 @@
     </section>
     <!-- EMPIEZA SECCION PRODUCTOS -->
     <section class="container">
-        <div>
-            <h1 class="titulos-secciones">Novedades</h3>
-        </div>
-        <div class="container text-center">
+    <div>
+        <h1 class="titulos-secciones">Novedades</h1>
+    </div>
+    <div class="container text-center">
         <div class="row">
-            <?php for($i=0; $i<4; $i++){ ?>
+            <?php 
+            $products = ProductDAO::getFourProducts(); // Obtener los 4 productos
+            foreach ($products as $product) { // Iterar sobre la lista de productos
+            ?>
                 <article class="col-6 col-lg-3 producto-ind">
-                        <div class="card">
-                            <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
-                            <div class="card-body">
-                                <h6 class="nuevo">Nuevo</h6>
-                                <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
-                                <div class="precio">
-                                    <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
-                                    <div class="div-premium">
-                                        <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
-                                        <p class="palabra-premium">PREMIUM</p>
-                                    </div>
-                                    <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
-                                        <input type="hidden" name="action" value="añadirCarrito">
-                                        <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                        <button type="submit"class="boton-principal">Añadir</button>
-                                    </form>
+                    <div class="card">
+                        <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
+                        <div class="card-body">
+                            <h6 class="nuevo">Nuevo</h6>
+                            <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
+                            <div class="precio">
+                                <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
+                                <div class="div-premium">
+                                    <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
+                                    <p class="palabra-premium">PREMIUM</p>
                                 </div>
+                                <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
+                                    <input type="hidden" name="action" value="añadirCarrito">
+                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                    <button type="submit" class="boton-principal">Añadir</button>
+                                </form>
                             </div>
                         </div>
+                    </div>
                 </article>
             <?php } ?>
         </div>
     </div>
-    </section>
+</section>
      <!-- EMPIEZA DIV CATEGORIAS -->
     <section class="container">
         <div class="container text-center">
