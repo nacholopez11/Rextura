@@ -40,16 +40,24 @@ include_once 'controller/productController.php';
                     <thead>
                         <tr class="fila-titulos">
                             <td class="col-nombre">
-                                <span class="s-articulo">Articulo</span>
+                                <div class="pos-titulos-1">    
+                                    <span class="s-titulo">Articulo</span>
+                                </div>
                             </td>
                             <td class="col-precio">
-                                <span class="s-precio">Precio</span>
+                                <div class="pos-titulos-2">    
+                                    <span class="s-titulo">Precio</span>
+                                </div>
                             </td>
                             <td class="col-cantidad">
-                                <span class="s-cantidad">Cantidad</span>
+                                <div class="pos-titulos-2">    
+                                    <span class="s-titulo">Cantidad</span>
+                                </div>
                             </td>
                             <td class="col-precio-total">
-                                <span class="s-precio-total">Subtotal</span>
+                                <div class="pos-titulos-3">    
+                                    <span class="s-titulo">Subtotal</span>
+                                </div>
                             </td>
                         </tr>
                     </thead>
@@ -59,35 +67,47 @@ include_once 'controller/productController.php';
                         $pos = 0;
                         foreach($_SESSION['selecciones'] as $pedido){?>
                         <tr class="fila-producto">
-                            <td class="col-nombre-info">
-                                <div class="producto-contenedor row">
-                                    <div class="producto-imagen col-6">
-                                        <img src="./assets/images/productos/<?= $pedido->getProducto()->getImage() ?>" alt="Imagen del producto">
-                                    </div>
-                                    <div class="producto-detalles col-6">
-                                        <p><?= $pedido->getProducto()->getNombre() ?></p>
-                                        <p>Categoría: <?= $pedido->getProducto()->getCategoria() ?></p>
-                                        <form action="<?= url . '?controller=product&action=eliminarCarritoEntero' ?>" method="post">
-                                            <input type="hidden" name="pos" value="<?= $pos ?>">
-                                            <button type="submit" class="eliminar-icono" title="Eliminar">
-                                                <img src="ruta/icono_papelera.png" alt="Icono de papelera">
-                                                <span>Eliminar</span>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="col-precio-info"><?= $pedido->getProducto()->getPrecio() ?></td>
-                            <td class="col-cantidad-info">
-                                <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
-                                    <input type="hidden" name="pos" value="<?= $pos ?>">
-                                    <button class="bet-button w3-black w3-section" type="submit" name="Add">+</button>
-                                    <span><?= $pedido->getCantidad() ?></span>
-                                    <button class="bet-button w3-black w3-section" type="submit" name="Del">-</button>
-                                </form>
-                            </td>
-                            <td class="col-precio-total-info"><?= $pedido->devuelvePrecioTotal() ?></td>
-                        </tr>
+        <td class="col-nombre-info">
+            <div class="contenido-col-1">
+                <div class="producto-contenedor">
+                    <div class="producto-imagen col-6">
+                        <img src="./assets/images/productos/<?= $pedido->getProducto()->getImage() ?>" alt="Imagen del producto">
+                    </div>
+                    <div class="producto-detalles col-6">
+                        <p class="palabra-nombre"><?= $pedido->getProducto()->getNombre() ?></p>
+                        <p class="palabra-categoria"><?= $pedido->getProducto()->getCategoria() ?></p>
+                        <form action="<?= url . '?controller=product&action=eliminarCarritoEntero' ?>" method="post">
+                            <input type="hidden" name="pos" value="<?= $pos ?>">
+                            <button type="submit" class="eliminar-icono" title="Eliminar">
+                                <img src="./assets/icons/basura.png" alt="Icono de papelera" class="basura">
+                                <span class=palabra-eliminar>Eliminar</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </td>
+        <td class="col-precio-info">
+            <div class="contenido-col-2">
+                <p class="palabra-precio"><?= $pedido->getProducto()->getPrecio() ?> €</p>
+            </div>
+        </td>
+        <td class="col-cantidad-info">
+            <div class="contenido-col-2">
+                <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
+                    <input type="hidden" name="pos" value="<?= $pos ?>">
+                    <button class="bet-button w3-black w3-section" type="submit" name="Add">+</button>
+                    <span><?= $pedido->getCantidad() ?></span>
+                    <button class="bet-button w3-black w3-section" type="submit" name="Del">-</button>
+                </form>
+            </div>
+        </td>
+        <td class="col-precio-total-info">
+            <div class="contenido-col-3">
+                <p class="palabara-subtotal"><?= $pedido->devuelvePrecioTotal() ?> €</p>
+            </div>
+        </td>
+    </tr>
                         <?php
                             $pos++;
                         } ?>

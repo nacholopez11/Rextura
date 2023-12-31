@@ -54,13 +54,13 @@
     margin: auto !important;
 }
 .breadcrumb-item.active{
-    color: #8F8178;
+    color: #8F8178 !important;
     font-size: 18px;
     font-family: "Neutra Text TF Book";
     font-weight: 700 !important;
 }
 .breadcrumb-item.active::before{
-    color: #8F8178;
+    color: #8F8178 !important;
     font-size: 18px;
     font-family: "Neutra Text TF Book";
     font-weight: 700 !important;
@@ -103,17 +103,31 @@
     display: flex;
     flex: 1;
     align-items: center;
+    border-bottom: 3px solid #dee2e6; 
+    padding-bottom: 12px;
 }
 
 .tabla-contenido-carrito .col-nombre {
-    flex: 3 !important;
+    flex: 3;
+    text-align: left; /* Alineación a la izquierda */
 }
 
 .tabla-contenido-carrito .col-precio,
-.tabla-contenido-carrito .col-cantidad,
-.tabla-contenido-carrito .col-precio-total {
-    flex: 1 !important;
+.tabla-contenido-carrito .col-cantidad {
+    flex: 1;
+    text-align: center; /* Alineación al centro */
 }
+
+.tabla-contenido-carrito .col-precio-total {
+    flex: 1;
+    text-align: right; /* Alineación a la derecha */
+}
+
+
+
+
+
+
 
 /* CUERPO */
 .tabla-contenido-carrito tbody {
@@ -124,11 +138,14 @@
 .tabla-contenido-carrito .fila-producto {
     display: flex;
     flex: 1;
-    align-items: center;
+    align-items :flex-start;
+    border-bottom: 1px solid #ccc; 
+    height: 100% !important;
 }
 
 .tabla-contenido-carrito .fila-producto td {
     flex: 1;
+    height: 100% !important;
 }
 
 .tabla-contenido-carrito .col-nombre-info {
@@ -136,15 +153,123 @@
 }
 
 .tabla-contenido-carrito .col-precio-info,
-.tabla-contenido-carrito .col-cantidad-info,
+.tabla-contenido-carrito .col-cantidad-info {
+    flex: 1 !important;
+    text-align: center; /* Alineación al centro */
+}
+
 .tabla-contenido-carrito .col-precio-total-info {
     flex: 1 !important;
+    text-align: right; /* Alineación a la derecha */
+    height: auto !important;
 }
 
 .producto-contenedor{
     display: flex;
-    flex-direction: column !important;
+    flex-direction: row !important;
 }
+
+.producto-imagen{
+    padding-right: 15px;
+}
+
+.producto-imagen img {
+    max-width: 100%; 
+    max-height: 100%; 
+    width: auto; 
+    height: auto; 
+    object-fit: contain; 
+    min-width: 140px !important;
+    min-height: 140px !important;
+}
+
+.tabla-contenido-carrito.fila-producto.col-precio-info{
+    padding-top: 20px;
+}
+
+.contenido-col-1 {
+    height: 100% !important;
+    padding: 20px 12px 30px 0px !important;
+    
+}
+
+.contenido-col-2 {
+    height: 100% !important;
+    padding: 20px 12px 30px 12px !important;
+    
+}
+
+.contenido-col-3 {
+    height: 100% !important;
+    padding: 20px 0px 30px 12px !important;
+    
+}
+
+.pos-titulos-2 {
+    /* display: flex; */
+    text-align: right;
+    padding-right: 12px;
+}
+
+.eliminar-icono{
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border: none;
+    padding-left: 0px;
+}
+
+.basura{
+    width: 18px;
+    height: 18px;
+}
+
+.palabra-eliminar{
+    color:#231F20 ;
+    font-size: 14px;
+    font-family: "Neutra Text TF Book";
+
+}
+
+.palabra-categoria{
+    color: #8F8178;
+    font-size: 16px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 100 !important;
+}
+
+.palabra-nombre {
+    color: #231F20;
+    font-size: 16px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 600 !important;
+}
+
+.s-titulo{
+    color: #212529;
+    font-size: 16px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 600 !important;
+}
+
+.palabra-precio{
+    color: #212529;
+    font-size: 24px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 100 !important;
+    text-align: right;
+}
+
+.palabara-subtotal{
+    color: #212529;
+    font-size: 24px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 600 !important;
+    text-align: right;
+}
+
+
+
 
 
 
