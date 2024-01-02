@@ -133,37 +133,47 @@ section.container{
 
 
 
- /* CSS TITULOS ENTRE SECCIONES */
+ /* CSS SECCION 2 */
 .titulos-secciones{
     text-align: center;
-    padding-top: 30px;
+    padding-top: 80px;
     padding-bottom: 10px;
     font-family: 'ClaredonBTPro-Bold';
     font-size: 32px;
 }
 
-
 /* CSS PRODUCTOS */
+div.container.text-center{
+    max-width: 1260px;
+    padding: 0px;
+}
+
+div.row{
+    max-width: 1260px !important;
+    margin: auto;
+}
+.producto-ind{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 0px 5px !important;
+}
 .card{
-    border-radius: 0%;
-    border-style: none;
-    width: 313px;
+    border-radius: 0% !important;
+    border-style: none !important;
+    /* width: 313px; */
 }
 .card-img-top{
     display: flex;
     justify-content: center;
-    /* height: 313px; */
-    width: auto;
-    border-radius: 0%;
-}
-.p1{
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    border-radius: 0% !important;
 }
 .card-body{
-    height: 107.4px;
     width: auto;
-    padding: 0%;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 .div-premium{
     height: 45px;
@@ -203,13 +213,13 @@ section.container{
     text-decoration-line: none;
     text-decoration-style: solid;
     text-decoration-thickness: auto;
-    text-align: left;
-    width: 313px;
 }
 .precio{
     display: flex;
-    padding-top: 0%;
+    justify-content:flex-start;
+    padding: 0px !important;
 }
+
 .precio-normal{
     box-sizing: border-box;
     color: rgb(143, 129, 120);
@@ -218,10 +228,11 @@ section.container{
     font-size: 22px;
     font-weight: 400;
     height: 25px;
-    width: 60px;
     text-align: left;
     user-select: none;
     padding-top: 0px;
+    padding-right: 15px;
+    margin-left: 0 !important;
 }
 .precio-premium{
     width: 60px;
@@ -241,13 +252,24 @@ p.palabra-premium{
     font-family: "Neutra Text TF";
     font-size: 10px;
 }
+
+.botones{
+    display: flex;
+    justify-content:flex-end;
+    padding: 0px !important;
+}
+
+.boton-carrito{
+    display: flex;
+    align-items: flex-end;
+}
 .boton-principal {
     display: block;
     background-color: black;
     color: #fff;
     width: 100px;
     height: 30px;
-    margin-left: auto;
+    margin-left: 0px;
     margin-top: auto;
     font-family: "Neutra Text TF";
     font-size: 16px;
@@ -260,12 +282,6 @@ p.palabra-premium{
     color: black;
     border: black 3px double; 
     border-width: 0,1px !important;
-}
-
-.producto-ind{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 30px;
 }
 
 

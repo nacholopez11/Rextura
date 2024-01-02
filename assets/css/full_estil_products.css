@@ -77,7 +77,7 @@ div.row{
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
-    padding: 7px !important;
+    padding: 0px 5px !important;
 }
 .card{
     border-radius: 0% !important;

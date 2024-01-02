@@ -335,7 +335,7 @@ a.seguir-comprando{
     background-color: #F6F6F6;
 }
 
-.boton-principal {
+.boton-confirmar {
     background-color: #231F20;
     color: #fff;
     font-family: "Neutra Text TF";
@@ -347,7 +347,7 @@ a.seguir-comprando{
     margin-top: 16px;
     border-style:solid;
 }
-.boton-principal:hover {
+.boton-confirmar:hover {
     background-color: #fff;
     color: black;
     border: black 3px double; 
@@ -356,14 +356,153 @@ a.seguir-comprando{
 
 
 
-
-
-
-
+/* CSS SECCION 2 */
 .titulos-secciones{
     text-align: center;
-    padding-top: 30px;
+    padding-top: 80px;
     padding-bottom: 10px;
     font-family: 'ClaredonBTPro-Bold';
     font-size: 32px;
+}
+
+/* CSS PRODUCTOS */
+div.container.text-center{
+    max-width: 1260px;
+    padding: 0px;
+}
+
+div.row{
+    max-width: 1260px !important;
+    margin: auto;
+}
+.producto-ind{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 0px 5px !important;
+}
+.card{
+    border-radius: 0% !important;
+    border-style: none !important;
+    /* width: 313px; */
+}
+.card-img-top{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 0% !important;
+}
+.card-body{
+    width: auto;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.div-premium{
+    height: 45px;
+}
+.nuevo{
+    font-family:'Neutra Text TF';
+    font-weight:400;
+    font-size: 16px;
+    text-align: left;
+    width: 156.5px;
+    color: rgb(193, 193, 193);
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    text-size-adjust: 100%;
+    user-select: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.nombre-producto{
+    color: rgb(35, 31, 32); 
+    text-align: left;
+    cursor: pointer;
+    font-family: "Neutra Text TF";
+    font-size: 18px;
+    font-weight: 400;
+    height: auto;
+    line-height: 27px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    text-align: left;
+    text-decoration-color: rgb(35, 31, 32);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+}
+.precio{
+    display: flex;
+    justify-content:flex-start;
+    padding: 0px !important;
+}
+
+.precio-normal{
+    box-sizing: border-box;
+    color: rgb(143, 129, 120);
+    display: inline;
+    font-family: "Neutra Text TF";
+    font-size: 22px;
+    font-weight: 400;
+    height: 25px;
+    text-align: left;
+    user-select: none;
+    padding-top: 0px;
+    padding-right: 15px;
+    margin-left: 0 !important;
+}
+.precio-premium{
+    width: 60px;
+    box-sizing: border-box;
+    color: rgb(33, 37, 41);
+    display: inline;
+    font-family: "Neutra Text TF";
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    text-align: left;
+    user-select: none;
+}
+p.palabra-premium{
+    height: 15px;
+    color: #212529;
+    font-family: "Neutra Text TF";
+    font-size: 10px;
+}
+
+.botones{
+    display: flex;
+    justify-content:flex-end;
+    padding: 0px !important;
+}
+
+.boton-carrito{
+    display: flex;
+    align-items: flex-end;
+}
+.boton-principal {
+    display: block;
+    background-color: black;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    margin-left: 0px;
+    margin-top: auto;
+    font-family: "Neutra Text TF";
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    border-style:solid;
+}
+.boton-principal:hover {
+    background-color: #fff;
+    color: black;
+    border: black 3px double; 
+    border-width: 0,1px !important;
 }

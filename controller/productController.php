@@ -45,6 +45,40 @@ class ProductController {
     }
 
 
+    public function añadirCarritoDesdeCarrito() {
+        session_start();
+    
+        if (!isset($_SESSION['selecciones'])) {
+            $_SESSION['selecciones'] = array();
+        }
+    
+        if (isset($_POST['id'])) {
+            $id = $_POST['id'];
+            $existing_key = null;
+    
+            // Buscar si el producto ya está en el carrito
+            foreach ($_SESSION['selecciones'] as $key => $pedido) {
+                if ($pedido->getProducto()->getId() == $id) {
+                    $existing_key = $key;
+                    break;
+                }
+            }
+    
+            if ($existing_key !== null) {
+                // Si el producto ya está en el carrito, incrementar la cantidad
+                $_SESSION['selecciones'][$existing_key]->setCantidad($_SESSION['selecciones'][$existing_key]->getCantidad() + 1);
+            } else {
+                // Si el producto no está en el carrito, añadir un nuevo pedido
+                $product = ProductDAO::getProductById($id);
+                $pedido = new Pedido($product);
+                array_push($_SESSION['selecciones'], $pedido);
+            }
+        }
+    
+        header("Location: index.php?controller=product&action=panelCompra");
+    }
+
+
     public function products() {
         session_start();
         $products = ProductDAO::getAllProducts();

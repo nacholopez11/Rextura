@@ -137,7 +137,7 @@ include_once 'controller/productController.php';
                 </table>
                 <form action=<?=url.'?controller=product&action=confirmar'?> method='post'>
                     <td class="boton-confirmar">
-                        <button class="boton-principal" type="submit"> 
+                        <button class="boton-confirmar" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
                         </button>
                     </td>                  
@@ -157,10 +157,44 @@ include_once 'controller/productController.php';
         </div>
     </section>
     <section class="container">
-        <div class="container text-center">
-            <h1 class="titulos-secciones">También te puede intersesar</h1>
+    <div>
+        <h1 class="titulos-secciones">También te puede intersar</h1>
+    </div>
+    <div class="container text-center">
+        <div class="row">
+            <?php 
+            $products = ProductDAO::getFourProducts(); // Obtener los 4 productos
+            foreach ($products as $product) { // Iterar sobre la lista de productos
+            ?>
+                <article class="col-6 col-lg-3 producto-ind">
+                        <div class="card">
+                            <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
+                            <div class="card-body">
+                                <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
+                                <div class="row">
+                                    <div class="precio col-6">
+                                        <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
+                                        <div class="div-premium">
+                                            <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
+                                            <p class="palabra-premium">PREMIUM</p>
+                                        </div>
+                                    </div>
+                                    <div class="botones col-6">
+                                        <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarritoDesdeCarrito'?> method="post">
+                                            <!--BOTON AÑADIR-->
+                                            <input type="hidden" name="action" value="añadirCarrito">
+                                            <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                            <button type="submit"class="boton-principal">Añadir</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </article>
+            <?php } ?>
         </div>
-    </section>
+    </div>
+</section>
       <?php
     // Incluye el footer
     include_once 'footer.php';
