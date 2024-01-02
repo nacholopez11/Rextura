@@ -19,7 +19,7 @@ include_once 'controller/productController.php';
     // Incluye el header
     include_once 'header.php';
     ?>
-<section>
+    <section>
         <div class="titulo-pagina">
             <h1 class="texto-titulo-carrito">
                 <span class="texto-titulo">Tu bolsa</span>
@@ -65,81 +65,102 @@ include_once 'controller/productController.php';
                         <!-- Creamos una fila por cada producto -->
                         <?php
                         $pos = 0;
-                        foreach($_SESSION['selecciones'] as $pedido){?>
-                        <tr class="fila-producto">
-        <td class="col-nombre-info">
-            <div class="contenido-col-1">
-                <div class="producto-contenedor">
-                    <div class="producto-imagen col-6">
-                        <img src="./assets/images/productos/<?= $pedido->getProducto()->getImage() ?>" alt="Imagen del producto">
-                    </div>
-                    <div class="producto-detalles col-6">
-                        <p class="palabra-nombre"><?= $pedido->getProducto()->getNombre() ?></p>
-                        <p class="palabra-categoria"><?= $pedido->getProducto()->getCategoria() ?></p>
-                        <form action="<?= url . '?controller=product&action=eliminarCarritoEntero' ?>" method="post">
-                            <input type="hidden" name="pos" value="<?= $pos ?>">
-                            <button type="submit" class="eliminar-icono" title="Eliminar">
-                                <img src="./assets/icons/basura.png" alt="Icono de papelera" class="basura">
-                                <span class=palabra-eliminar>Eliminar</span>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </td>
-        <td class="col-precio-info">
-            <div class="contenido-col-2">
-                <p class="palabra-precio"><?= $pedido->getProducto()->getPrecio() ?> €</p>
-            </div>
-        </td>
-        <td class="col-cantidad-info">
-            <div class="contenido-col-2">
-                <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
-                    <input type="hidden" name="pos" value="<?= $pos ?>">
-                    <button class="bet-button w3-black w3-section" type="submit" name="Add">+</button>
-                    <span><?= $pedido->getCantidad() ?></span>
-                    <button class="bet-button w3-black w3-section" type="submit" name="Del">-</button>
-                </form>
-            </div>
-        </td>
-        <td class="col-precio-total-info">
-            <div class="contenido-col-3">
-                <p class="palabara-subtotal"><?= $pedido->devuelvePrecioTotal() ?> €</p>
-            </div>
-        </td>
-    </tr>
+                        foreach($_SESSION['selecciones'] as $pedido){
+                            // Verifica si la cantidad es mayor que 0 antes de mostrar el producto
+                            if ($pedido->getCantidad() > 0) {
+                            ?>
+                            <tr class="fila-producto">
+                                <td class="col-nombre-info">
+                                    <div class="contenido-col-1">
+                                        <div class="producto-contenedor">
+                                            <div class="producto-imagen col-6">
+                                                <img src="./assets/images/productos/<?= $pedido->getProducto()->getImage() ?>" alt="Imagen del producto">
+                                            </div>
+                                            <div class="producto-detalles col-6">
+                                                <p class="palabra-nombre"><?= $pedido->getProducto()->getNombre() ?></p>
+                                                <p class="palabra-categoria"><?= $pedido->getProducto()->getCategoria() ?></p>
+                                                <form action="<?= url . '?controller=product&action=eliminarProductoCarritoEntero' ?>" method="post">
+                                                    <input type="hidden" name="pos" value="<?= $pos ?>">
+                                                    <button type="submit" class="eliminar-icono" title="Eliminar">
+                                                        <img src="./assets/icons/basura.png" alt="Icono de papelera" class="basura">
+                                                        <span class=palabra-eliminar>Eliminar</span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="col-precio-info">
+                                    <div class="contenido-col-2">
+                                        <p class="palabra-precio"><?= $pedido->getProducto()->getPrecio() ?> €</p>
+                                    </div>
+                                </td>
+                                <td class="col-cantidad-info">
+                                    <div class="contenido-col-2">
+                                        <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
+                                            <input type="hidden" name="pos" value="<?= $pos ?>">
+                                            <button class="bet-button w3-black w3-section" type="submit" name="Add">+</button>
+                                            <span><?= $pedido->getCantidad() ?></span>
+                                            <button class="bet-button w3-black w3-section" type="submit" name="Del">-</button>
+                                        </form>
+                                    </div>
+                                </td>
+                                <td class="col-precio-total-info">
+                                    <div class="contenido-col-3">
+                                        <p class="palabara-subtotal"><?= $pedido->devuelvePrecioTotal() ?> €</p>
+                                    </div>
+                                </td>
+                            </tr>
                         <?php
+                            }
                             $pos++;
                         } ?>
                     </tbody> 
                 </table>             
-                <?php } else {
-                echo "No hay productos en el carrito.";?>
-                <form action=<?=url.'?controller=product&action=products'?> method='post'>
-                    <td><button class="boton-principal" type="submit"> IR A CARTA </button></td>                  
-                </form>
-                <form action=<?=url.'?controller=product&action=recuperarUltimoPedido'?> method='post'>
-                    <td><button class="boton-principal" type="submit"> RECUPERAR ULTIMO PEDIDO </button></td>                  
-                </form>
-                <?php }
-                session_write_close();?>
             </div>
-            <div class="col-6">
+            <div class="col-6 contenido-resumen">
+                <h2 class="titulo-uno">RESUMEN</h2>
+                <div class="texto-subtotal">
+                    <span class="mensaje-subtotal">Desde el equipo de REXTURA te deseamos una feliz comida.</span>
+                </div>
                 <table>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>PRECIO FINAL PEDIDO:</td>
-                        <td><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?></td>
-                        <form action=<?=url.'?controller=product&action=confirmar'?> method='post'>
-                            <td><button class="boton-principal" type="submit"> CONFIRMAR </button></td>                  
-                        </form>
-                        <td></td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <th class="palabra-dos">Subtotal</th>
+                            <td class="precio-uno"><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?> €</td>
+                        </tr>
+                        <tr class="total-pedido">
+                            <th class="palabra-tres">Total del pedido</th>
+                            <td class="precio-dos"><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?> €</td>
+                        </tr>
+                    <tbody>
                 </table>
+                <form action=<?=url.'?controller=product&action=confirmar'?> method='post'>
+                    <td class="boton-confirmar">
+                        <button class="boton-principal" type="submit"> 
+                            <span class="palabra-confirmar">Tramitar pedido</span>
+                        </button>
+                    </td>                  
+                </form>
+                <a class="seguir-comprando" href="https://localhost/rextura/index.php?controller=product&action=products">Seguir comprando</a>
             </div>
+            <?php } else {
+            echo "No hay productos en el carrito.";?>
+            <form action=<?=url.'?controller=product&action=products'?> method='post'>
+                <td><button class="boton-principal" type="submit"> IR A CARTA </button></td>                  
+            </form>
+            <form action=<?=url.'?controller=product&action=recuperarUltimoPedido'?> method='post'>
+                <td><button class="boton-principal" type="submit"> RECUPERAR ULTIMO PEDIDO </button></td>                  
+            </form>
+            <?php }
+            session_write_close();?>
         </div>
-      </section>
+    </section>
+    <section class="container">
+        <div class="container text-center">
+            <h1 class="titulos-secciones">También te puede intersesar</h1>
+        </div>
+    </section>
       <?php
     // Incluye el footer
     include_once 'footer.php';

@@ -7,39 +7,40 @@ class ProductController {
     public function index() {
                 
         $products = ProductDAO::getAllProducts();
-       
-        // include_once 'view\products.php'; 
         include_once 'view\panelHome.php'; 
     }
 
 
     public function añadirCarrito() {
-    session_start();
-
-    if (!isset($_SESSION['selecciones'])) {
-        $_SESSION['selecciones'] = array();
-    }else if (isset($_POST['id'])) {
-        $id = $_POST['id'];
-        $existing_key = null;
-
-        // Buscar si el producto ya está en el carrito
-        foreach ($_SESSION['selecciones'] as $key => $pedido) {
-            if ($pedido->getProducto()->getId() == $id) {
-                $existing_key = $key;
-                break;
+        session_start();
+    
+        if (!isset($_SESSION['selecciones'])) {
+            $_SESSION['selecciones'] = array();
+        }
+    
+        if (isset($_POST['id'])) {
+            $id = $_POST['id'];
+            $existing_key = null;
+    
+            // Buscar si el producto ya está en el carrito
+            foreach ($_SESSION['selecciones'] as $key => $pedido) {
+                if ($pedido->getProducto()->getId() == $id) {
+                    $existing_key = $key;
+                    break;
+                }
+            }
+    
+            if ($existing_key !== null) {
+                // Si el producto ya está en el carrito, incrementar la cantidad
+                $_SESSION['selecciones'][$existing_key]->setCantidad($_SESSION['selecciones'][$existing_key]->getCantidad() + 1);
+            } else {
+                // Si el producto no está en el carrito, añadir un nuevo pedido
+                $product = ProductDAO::getProductById($id);
+                $pedido = new Pedido($product);
+                array_push($_SESSION['selecciones'], $pedido);
             }
         }
-
-        if ($existing_key !== null) {
-            // Si el producto ya está en el carrito, incrementar la cantidad
-            $_SESSION['selecciones'][$existing_key]->setCantidad($_SESSION['selecciones'][$existing_key]->getCantidad() + 1);
-        } else {
-            // Si el producto no está en el carrito, agregar un nuevo pedido
-            $product = ProductDAO::getProductById($id);
-            $pedido = new Pedido($product);
-            array_push($_SESSION['selecciones'], $pedido);
-        }
-    }
+    
         header("Location: index.php?controller=product&action=products");
     }
 
@@ -113,17 +114,19 @@ class ProductController {
             $totalPedido = 0; // Inicializa el total del pedido
     
             foreach ($_SESSION['selecciones'] as $pedido) {
-                $productoInfo = array(
-                    'id' => $pedido->getProducto()->getId(),
-                    'nombre' => $pedido->getProducto()->getNombre(),
-                    'precio' => $pedido->getProducto()->getPrecio(),
-                    'cantidad' => $pedido->getCantidad(),
-                    'subtotal' => $pedido->devuelvePrecioTotal()
-                );
-                $carritoInfo[] = $productoInfo;
-    
-                // Suma al total del pedido
-                $totalPedido += $pedido->devuelvePrecioTotal();
+                if ($pedido->getCantidad() > 0) {
+                    $productoInfo = array(
+                        'id' => $pedido->getProducto()->getId(),
+                        'nombre' => $pedido->getProducto()->getNombre(),
+                        'precio' => $pedido->getProducto()->getPrecio(),
+                        'cantidad' => $pedido->getCantidad(),
+                        'subtotal' => $pedido->devuelvePrecioTotal()
+                    );
+                    $carritoInfo[] = $productoInfo;
+        
+                    // Suma al total del pedido
+                    $totalPedido += $pedido->devuelvePrecioTotal();
+                }
             }
     
             // Obtén el nombre de usuario del usuario actual desde la sesión
@@ -324,6 +327,25 @@ class ProductController {
             echo "Solicitud no válida.";
             exit();
         }
+    }
+
+
+
+    public function eliminarProductoCarritoEntero() {
+        session_start();
+    
+        if (isset($_POST['pos'])) {
+            $pos = $_POST['pos'];
+    
+            // Verifica si la posición es válida en el array de selecciones
+            if (isset($_SESSION['selecciones'][$pos])) {
+                // Establece la cantidad del producto en 0 para eliminarlo del carrito
+                $_SESSION['selecciones'][$pos]->setCantidad(0);
+            }
+        }
+    
+        // Redirige de vuelta a la página del carrito
+        header("Location: index.php?controller=product&action=panelCompra");
     }
 
 
