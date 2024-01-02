@@ -44,8 +44,6 @@
     align-items: center;
     background-color: black !important;
     min-height: 200px;
-    /* MODIFICAR ESTO PARA SEPARARLO DEL CONTENIDO */
-    margin-top: 20px;
 }
 .contenido-footer{
     display: flex;

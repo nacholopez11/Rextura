@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* FONTS */
+/* Letra grande banner slider */
+@font-face {
+    font-family: "OPTICrawClaredon-Book";
+    src: url(../fonts/OPTICrawClarendon-Book.otf);
+}
+/* Titulos secciones */
+@font-face {
+    font-family: "ClaredonBTPro-Bold";
+    src: url(../fonts/ClarendonBTPro-Bold.ttf);
+}
+/* Titulos seccionesfina */
+@font-face {
+    font-family: "ClaredonBTPro-Light";
+    src: url(../fonts/clarendon-light-bt.ttf);
+}
+/* Primaria normal */
+@font-face {
+    font-family: "Neutra Text TF Book";
+    src: url(../fonts/Neutra\ Text\ TF\ Book.otf);
+}
+/* Primaria gruesa */
+@font-face {
+    font-family: "Neutra Text TF Bold";
+    src: url(../fonts/neutra-text-tf-bold.otf);
+}
+/* Primaria fina */
+@font-face {
+    font-family: "Neutra Text TF Light";
+    src: url(../fonts/neutra-text-tf-light-5871e0fe13bff.otf);
+}
+/* Letra menu y banner slider */
+@font-face {
+    font-family: "Neutra Text TF SC";
+    src: url(../fonts/neutra-text-tf-sc.otf);
+}
+
+
+
+/*Variables CSS*/
+body {
+    font-family: "Neutra Text TF Book", Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.boton-principal {
+    background-color: #231F20;
+    color: #fff;
+    font-family: "Neutra Text TF";
+    font-size: 24px;
+    font-weight: 600 !important;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-top: 16px;
+    border-style:solid;
+}
+.boton-principal:hover {
+    background-color: #fff;
+    color: black;
+    border: black 3px double; 
+    border-width: 0,1px !important;
+}
+
+section{
+    display: flex;
+    flex-direction:  row !important;
+}
+
+.container {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 100px;
+    padding-top: 40px;
+}
+
+.container h2 {
+    font-family: "ClaredonBTPro-Bold";
+    font-size: 32px;
+    margin-bottom: 16px;
+}

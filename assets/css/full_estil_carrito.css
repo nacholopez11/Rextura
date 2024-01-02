@@ -490,8 +490,8 @@ p.palabra-premium{
     display: block;
     background-color: black;
     color: #fff;
-    width: 100px;
-    height: 30px;
+    width: auto;
+    height: auto;
     margin-left: 0px;
     margin-top: auto;
     font-family: "Neutra Text TF";
@@ -505,4 +505,8 @@ p.palabra-premium{
     color: black;
     border: black 3px double; 
     border-width: 0,1px !important;
+}
+
+.row{
+    padding-bottom: 20px;
 }

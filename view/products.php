@@ -11,7 +11,7 @@
 <body>
 <?php
     // Incluye el header
-    // include_once 'header.php';
+    include_once 'header.php';
     ?>
 <section class="container">
     <div class="container text-center">
@@ -42,7 +42,7 @@
                 <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
                     <form class="boton-carrito" action=<?=url.'?controller=product&action=panelAñadirProducto'?> method="post">
                         <!--BOTON AÑADIR NUEVO PRODUCTO-->
-                        <button type="submit"class="boton-principal">NUEVO</button>
+                        <button type="submit"class="boton-principal">Añadir producto nuevo</button>
                     </form>
                 <?php } ?>
             <?php } ?>
@@ -98,10 +98,10 @@
         </div>
     </div>
 </section>
-    <?php
-    // Incluye el footer
-    include_once 'footer.php';
-    ?>
+<?php
+// Incluye el footer
+include_once 'footer.php';
+?>
 </body>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 </html>
