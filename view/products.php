@@ -49,7 +49,7 @@
         </div>
         <div class="row">
             <?php foreach ($products as $product): ?>
-                <article class="col-6 col-lg-3 producto-ind">
+                <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
                         <div class="card">
                             <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
                             <div class="card-body">
@@ -61,6 +61,12 @@
                                             <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
                                             <p class="palabra-premium">PREMIUM</p>
                                         </div>
+                                        <?php if ($product instanceof Bebida && $product->getConAlcohol()): ?>
+                                        <div class="div-edad">
+                                            <p class="mayor-de-18">+18</p>
+                                            <p class="palabra-mayor-de-18">AÑOS</p>
+                                        </div>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="botones col-6">
                                         <!--COMPRUEBA QUE SE HA INICIADO SESION-->

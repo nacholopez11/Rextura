@@ -1,28 +1,20 @@
 <?php
 class Bebida extends Product {
-    protected $alcoholic;
+    private $conAlcohol;
 
-    // $id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcoholic
-    public function __construct() {
-        // parent::__construct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
-        // $this->alcoholic = $alcoholic;
-        }
-
-    /**
-     * Get the value of alcoholic
-     */
-    public function getAlcoholic()
-    {
-        return $this->alcoholic;
+    public function __construct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $conAlcohol) {
+        parent::__construct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
+        $this->conAlcohol = $conAlcohol;
     }
 
-    /**
-     * Set the value of alcoholic
-     */
-    public function setAlcoholic($alcoholic): self
+    public function getConAlcohol()
     {
-        $this->alcoholic = $alcoholic;
+        return $this->conAlcohol;
+    }
 
+    public function setConAlcohol($conAlcohol): self
+    {
+        $this->conAlcohol = $conAlcohol;
         return $this;
     }
 }

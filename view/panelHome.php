@@ -55,32 +55,59 @@
     </div>
     <div class="container text-center">
         <div class="row">
-            <?php 
-            $products = ProductDAO::getFourProducts(); // Obtener los 4 productos
-            foreach ($products as $product) { // Iterar sobre la lista de productos
-            ?>
+            <?php foreach ($products as $product): ?>
                 <article class="col-6 col-lg-3 producto-ind">
-                    <div class="card">
-                        <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
-                        <div class="card-body">
-                            <h6 class="nuevo">Nuevo</h6>
-                            <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
-                            <div class="precio">
-                                <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
-                                <div class="div-premium">
-                                    <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
-                                    <p class="palabra-premium">PREMIUM</p>
+                        <div class="card">
+                            <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
+                            <div class="card-body">
+                                <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
+                                <div class="row">
+                                    <div class="precio col-6">
+                                        <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
+                                        <div class="div-premium">
+                                            <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
+                                            <p class="palabra-premium">PREMIUM</p>
+                                        </div>
+                                        <?php if ($product instanceof Bebida && $product->getConAlcohol()): ?>
+                                        <div class="div-edad">
+                                            <p class="mayor-de-18">+18</p>
+                                            <p class="palabra-mayor-de-18">AÑOS</p>
+                                        </div>
+                                        <?php endif; ?>
+                                    </div>
+                                    <div class="botones col-6">
+                                        <!--COMPRUEBA QUE SE HA INICIADO SESION-->
+                                        <?php if (isset($_SESSION['user'])) { ?>
+                                            <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
+                                            <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
+
+                                                <form class="boton-carrito" action=<?=url.'?controller=product&action=edit'?> method="post">
+                                                    <!--BOTON EDITAR-->    
+                                                    <input type="hidden" name="action" value="edit">
+                                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                    <button type="submit"class="boton-principal">Editar</button>
+                                                </form>
+                                                <form class="boton-carrito" action=<?=url.'?controller=product&action=eliminarProduct'?> method="post">
+                                                    <!--BOTON ELIMINAR-->
+                                                    <input type="hidden" name="action" value="eliminar">
+                                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                    <button type="submit"class="boton-principal">Eliminar</button>
+                                                </form>
+                                            <?php } else { ?>
+                                                <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
+                                                    <!--BOTON AÑADIR-->
+                                                    <input type="hidden" name="action" value="añadirCarrito">
+                                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                    <button type="submit"class="boton-principal">Añadir</button>
+                                                </form>
+                                            <?php } ?>
+                                        <?php } ?>
+                                    </div>
                                 </div>
-                                <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
-                                    <input type="hidden" name="action" value="añadirCarrito">
-                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                    <button type="submit" class="boton-principal">Añadir</button>
-                                </form>
                             </div>
                         </div>
-                    </div>
                 </article>
-            <?php } ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

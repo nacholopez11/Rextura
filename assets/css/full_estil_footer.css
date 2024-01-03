@@ -61,10 +61,15 @@
     align-items: center;
     margin: auto;
 }
-.redes-sociales ul{
+
+.redes-sociales ul {
     list-style: none;
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    padding: 0; /* Elimina el padding predeterminado de la lista */
 }
-.redes-sociales ul li{
+
+.redes-sociales ul li {
     width: 40px;
     height: 40px;
     line-height: 30px;
@@ -73,25 +78,22 @@
     cursor: pointer;
     border-radius: 50%;
     background-color: grey;
-    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.redes-sociales ul li:hover{
-    width: 40px;
-    height: 40px;
-    line-height: 30px;
-    margin: 0 10px;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 50%;
+
+.redes-sociales ul li:hover {
     background-color: white;
-    float: left;
 }
-.redes-sociales ul li .fa{
+
+.redes-sociales ul li .fa {
     color: black;
-    width: 30px;
-    height: 30px;
-    padding-top: 4px;
+    font-size: 25px; 
+    margin: 0; 
+    line-height: 35px;
 }
+
 .redes-sociales ul li .fa-facebook{
     color: black;
     width: 30px;

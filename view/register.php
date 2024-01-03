@@ -14,32 +14,50 @@
 include_once 'header.php';
 ?>
     <section>
-        <!-- REGISTRARSE -->
-        <div class="container">
-            <h2>Registrarse</h2>
-            <form method="post" action="index.php?controller=usuario&action=register">
-                <label for="username">Usuario:</label>
-                <input type="text" name="username" required>
-
-                <label for="password">Contraseña:</label>
-                <input type="password" name="password" required>
-
-                <button class="boton-principal" type="submit">Registrarse</button>
-            </form>
+        <div class="titulo-pagina">
+            <h1 class="texto-titulo-carrito">
+                <span class="texto-titulo">Tu cuenta</span>
+            </h1>
+            <div class="paginacion">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a class="a-breadcrumb" href="#">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Entrar</li>
+                    </ol>
+                </nav>
+            </div>
         </div>
-        <!-- INICIAR SESION -->
-        <div class="container">
-            <h2>Iniciar Sesión</h2>
-            <form action="index.php?controller=usuario&action=login" method="post">
-                <label for="username">Usuario:</label>
-                <input type="text" id="username" name="username" required>
+        <div class="row">
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                <!-- REGISTRARSE -->
+                <div class="container">
+                    <h2>Registrarse</h2>
+                    <form method="post" action="index.php?controller=usuario&action=register">
+                        <label for="username">Usuario:</label>
+                        <input type="text" name="username" required>
 
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required>
+                        <label for="password">Contraseña:</label>
+                        <input type="password" name="password" required>
 
-                <button class="boton-principal" type="submit">Iniciar Sesión</button>
-            </form>
-        </div>
+                        <button class="boton-principal" type="submit">Registrarse</button>
+                    </form>
+                </div>             
+            </div>
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                <!-- INICIAR SESION -->
+                <div class="container">
+                    <h2>Iniciar Sesión</h2>
+                    <form action="index.php?controller=usuario&action=login" method="post">
+                        <label for="username">Usuario:</label>
+                        <input type="text" id="username" name="username" placeholder="ej: tuNombre" required>
+
+                        <label for="password">Contraseña:</label>
+                        <input type="password" id="password" name="password" required>
+
+                        <button class="boton-principal" type="submit">Iniciar Sesión</button>
+                    </form>
+                </div>
+            </div>
     </section>
 <?php
 // Incluye el footer

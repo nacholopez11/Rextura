@@ -203,6 +203,52 @@
     padding-right: 12px;
 }
 
+.pos-titulos-3 {
+    text-align: center;
+    padding-right: 12px;
+    padding-left: 12px;
+}
+
+/* BOTON CANTIDAD */
+.sitio-boton{
+    padding: 20px 12px 30px 12px;
+}
+
+.boton-cantidad{
+    background-color: #F6F6F6;
+    border-style:ridge;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #838383;
+}
+
+.cantidad-numero{
+    padding: 10px 0px 10px 16px;
+    text-align: left;
+    color: #212529;
+    font-size: 20px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 100 !important;
+}
+
+.modificador{
+    flex-direction: column;
+    align-content: space-between;
+    
+}
+
+.modificadores{
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: #F6F6F6;
+    color: #8F8178;
+}
+
+
+
+
 .eliminar-icono{
     display: flex;
     flex-direction: row;
@@ -401,6 +447,11 @@ div.row{
 .div-premium{
     height: 45px;
 }
+
+.div-edad{
+    height: 45px;
+}
+
 .nuevo{
     font-family:'Neutra Text TF';
     font-weight:400;
@@ -469,11 +520,32 @@ div.row{
     text-align: left;
     user-select: none;
 }
+
+P.mayor-de-18{
+    color: #D10000;
+    display: inline;
+    font-family: "Neutra Text TF";
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    text-align: left;
+    user-select: none;
+    padding-left: 10px;
+}
+
 p.palabra-premium{
     height: 15px;
     color: #212529;
     font-family: "Neutra Text TF";
     font-size: 10px;
+}
+
+p.palabra-mayor-de-18{
+    height: 15px;
+    color: #D10000;
+    font-family: "Neutra Text TF";
+    font-size: 10px;
+    text-align: right;
 }
 
 .botones{
@@ -486,19 +558,21 @@ p.palabra-premium{
     display: flex;
     align-items: flex-end;
 }
+
 .boton-principal {
-    display: block;
     background-color: black;
     color: #fff;
-    width: auto;
-    height: auto;
-    margin-left: 0px;
+    width: auto !important;
+    height: 30px;
+    margin-left: 5px;
     margin-top: auto;
     font-family: "Neutra Text TF";
     font-size: 16px;
     font-weight: 600;
     text-align: center;
     border-style:solid;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .boton-principal:hover {
     background-color: #fff;

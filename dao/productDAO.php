@@ -37,12 +37,17 @@ class ProductDAO {
         $stmt->bind_param("s",$tipo);
         $stmt->execute();
         $result = $stmt->get_result();
-        $con ->close();
+        $con->close();
         $products = [];
-        while ($row = $result->fetch_object($tipo)) {
-            // $product = new Product($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id);
-            $products[] = $row;
+    
+        while ($row = $result->fetch_assoc()) {
+            // Usa un operador ternario para decidir qué tipo de objeto crear
+            $product = $tipo === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) :
+                                           new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
+    
+            $products[] = $product;
         }
+    
         return $products;
     }
    
@@ -156,21 +161,16 @@ class ProductDAO {
         $stmt->execute();
         $result = $stmt->get_result();
         $con->close();
-
+    
         $products = [];
         while ($row = $result->fetch_assoc()) {
-            $product = new Product(
-                $row['id'],
-                $row['nombre'],
-                $row['categoria'],
-                $row['precio'],
-                $row['precio_premium'],
-                $row['image'],
-                $row['categoria_id']
-            );
+            // Usa un operador ternario para decidir qué tipo de objeto crear
+            $product = $row['categoria'] === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) :
+                                                       new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
+            
             $products[] = $product;
         }
-
+    
         return $products;
     }
 

@@ -178,6 +178,11 @@ div.row{
 .div-premium{
     height: 45px;
 }
+
+.div-edad{
+    height: 45px;
+}
+
 .nuevo{
     font-family:'Neutra Text TF';
     font-weight:400;
@@ -246,11 +251,32 @@ div.row{
     text-align: left;
     user-select: none;
 }
+
+P.mayor-de-18{
+    color: #D10000;
+    display: inline;
+    font-family: "Neutra Text TF";
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    text-align: left;
+    user-select: none;
+    padding-left: 10px;
+}
+
 p.palabra-premium{
     height: 15px;
     color: #212529;
     font-family: "Neutra Text TF";
     font-size: 10px;
+}
+
+p.palabra-mayor-de-18{
+    height: 15px;
+    color: #D10000;
+    font-family: "Neutra Text TF";
+    font-size: 10px;
+    text-align: right;
 }
 
 .botones{
@@ -263,19 +289,21 @@ p.palabra-premium{
     display: flex;
     align-items: flex-end;
 }
+
 .boton-principal {
-    display: block;
     background-color: black;
     color: #fff;
-    width: 100px;
+    width: auto !important;
     height: 30px;
-    margin-left: 0px;
+    margin-left: 5px;
     margin-top: auto;
     font-family: "Neutra Text TF";
     font-size: 16px;
     font-weight: 600;
     text-align: center;
     border-style:solid;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .boton-principal:hover {
     background-color: #fff;
@@ -359,6 +387,10 @@ p.palabra-premium{
     padding: 0px;
 }
 
+.sitio-informacion{
+    background-color: aqua;
+}
+
 .div-info {
     display: flex !important;
     justify-content: center !important;
@@ -407,9 +439,6 @@ p.palabra-premium{
     }
 }
 
-/* Estilos para pantallas más pequeñas que 922px */
-@media (max-width: 922px) {
-    .seccion-4 .row {
-        display: none; 
-    }
+@media (min-width: 576px) and (max-width: 921px) {
+    
 }

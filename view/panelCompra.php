@@ -50,12 +50,12 @@ include_once 'controller/productController.php';
                                 </div>
                             </td>
                             <td class="col-cantidad">
-                                <div class="pos-titulos-2">    
+                                <div class="pos-titulos-3">    
                                     <span class="s-titulo">Cantidad</span>
                                 </div>
                             </td>
                             <td class="col-precio-total">
-                                <div class="pos-titulos-3">    
+                                <div>    
                                     <span class="s-titulo">Subtotal</span>
                                 </div>
                             </td>
@@ -96,13 +96,19 @@ include_once 'controller/productController.php';
                                     </div>
                                 </td>
                                 <td class="col-cantidad-info">
-                                    <div class="contenido-col-2">
-                                        <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
-                                            <input type="hidden" name="pos" value="<?= $pos ?>">
-                                            <button class="bet-button w3-black w3-section" type="submit" name="Add">+</button>
-                                            <span><?= $pedido->getCantidad() ?></span>
-                                            <button class="bet-button w3-black w3-section" type="submit" name="Del">-</button>
-                                        </form>
+                                    <div class="sitio-boton">
+                                        <div class="contenido-col-2 boton-cantidad">
+                                            <div class="cantidad-numero col-9">
+                                                <span><?= $pedido->getCantidad() ?></span>
+                                            </div>
+                                            <div class="modificador col-3">
+                                                <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
+                                                    <input type="hidden" name="pos" value="<?= $pos ?>">
+                                                    <button class="modificadores" type="submit" name="Add">+</button>
+                                                    <button class="modificadores" type="submit" name="Del">-</button>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </div>
                                 </td>
                                 <td class="col-precio-total-info">
@@ -178,6 +184,12 @@ include_once 'controller/productController.php';
                                             <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
                                             <p class="palabra-premium">PREMIUM</p>
                                         </div>
+                                        <?php if ($product instanceof Bebida && $product->getConAlcohol()): ?>
+                                        <div class="div-edad">
+                                            <p class="mayor-de-18">+18</p>
+                                            <p class="palabra-mayor-de-18">AÑOS</p>
+                                        </div>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="botones col-6">
                                         <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarritoDesdeCarrito'?> method="post">
