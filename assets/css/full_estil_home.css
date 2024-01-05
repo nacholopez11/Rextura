@@ -314,7 +314,7 @@ p.palabra-mayor-de-18{
 
 
 /* CSS CATEGORIAS */
-  .contenedor-categorias{
+.contenedor-categorias {
     margin-top: 54px;
   }
   
@@ -325,7 +325,7 @@ p.palabra-mayor-de-18{
     color: #FEFFFE;
     border-color: #212529;
     margin-bottom: 20px;
-    padding: 0px 15px !important;
+    padding: 0px !important;
   }
   
   .contenedor {
@@ -333,8 +333,6 @@ p.palabra-mayor-de-18{
     display: flex;
     justify-content: center;
     align-items: end;
-    
-    
   }
   
   .text-superpuesto {
@@ -348,7 +346,8 @@ p.palabra-mayor-de-18{
     flex-direction: column;
     z-index: 1;
     background-color: #fff;
-    width: 370px;
+    width: 90%; 
+    max-width: 90% !important; 
     height: 100px;
     margin: 15px;
   }
@@ -366,17 +365,18 @@ p.palabra-mayor-de-18{
   }
   
   .imagen {
-    width: 400px;
-    height: 513px; 
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Añadido para que las imágenes mantengan la proporción y se ajusten al tamaño del contenedor */
     display: block;
     z-index: 0;
-    object-fit: cover;
+    padding: 0px 15px;
   }
-
-.text-superpuesto p{
+  
+  .text-superpuesto p {
     margin: 0;
-    padding:0;
-}
+    padding: 0;
+  }
 
 
 
@@ -428,13 +428,32 @@ p.palabra-mayor-de-18{
     margin-bottom: 0px;
 }
 
-/* Estilos para pantallas grandes (mayores o iguales a 922px) */
-@media (min-width: 922px) {
-    .seccion-4 .container {
-        max-width: 1260px;
+
+@media (min-width: 993px) {
+    section.container{
+        max-width: 1440px !important;
+        padding: 0px 90px !important;
+    }
+    .contenido-resumen{
+        padding-left: 215px !important;
     }
 }
 
-@media (min-width: 576px) and (max-width: 921px) {
+
+@media (max-width: 992px) {
+    section.container {
+        max-width: 100% !important;
+        padding: 0px 15px !important;
+    }
+
+    div.container {
+        padding: 0px !important;
+    }
+
     
+    .categorias .imagen {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Quita el !important */
+    }
 }

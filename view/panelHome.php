@@ -115,7 +115,7 @@
     <section class="container contenedor-categorias">
         <div class="container text-center">
             <div class="row">
-              <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12 categorias">
+              <div class="col-12 col-lg-4 col-md-12 col-sm-12 col-xs-12 categorias">
                 <a href="#" class="contenedor">
                     <div class="text-superpuesto">
                         <div class=""><p class="c-t-1">Platos principales</p></div>
@@ -124,7 +124,7 @@
                     <img src="./assets/images/categoria-1.png" class="imagen" alt="imagen banner categoria platos principales">
                 </a>
               </div>
-              <div class="col-12 col-lg-4 categorias">
+              <div class="col-12 col-lg-4 col-md-12 col-sm-12 col-xs-12 categorias">
                 <a href="#" class="contenedor">
                     <div class="text-superpuesto">
                         <div class=""><p class="c-t-1">Nuestros postres</p></div>
@@ -133,7 +133,7 @@
                     <img src="assets/images/categoria-2.jpg" class="imagen" alt="imagen banner categoria postres">
                 </a>
               </div>
-              <div class="col-12 col-lg-4 categorias">
+              <div class="col-12 col-lg-4 col-md-12 col-sm-12 col-xs-12 categorias">
                 <a href="#" class="contenedor">
                     <div class="text-superpuesto">
                         <div class=""><p class="c-t-1">Y para beber...</p></div>
