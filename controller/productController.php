@@ -6,7 +6,7 @@ include_once './dao/productDAO.php';
 class ProductController {
     public function index() {
                 
-        $products = ProductDAO::getAllProducts();
+        $products = ProductDAO::getFourProducts();
         include_once 'view\panelHome.php'; 
     }
 

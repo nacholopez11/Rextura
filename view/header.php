@@ -48,10 +48,6 @@
                                             <img class="icon-menu-header" src="./assets/icons/carta.png" />
                                             <a class="nav-link" aria-current="page" href=<?= "index.php?controller=product&action=products" ?>>Panel Admin</a>
                                         </li>
-                                        <!-- <li class="nav-item">
-                                            <img class="icon-menu-header" src="./assets/icons/bolsa.png" />
-                                            <a class="nav-link" href=<?= "index.php?controller=product&action=panelCompra" ?>>Bolsa</a>
-                                        </li> -->
                                     <?php else : ?>
                                         <!-- User -->
                                         <li class="nav-item">

@@ -56,11 +56,11 @@
     <div class="container text-center">
         <div class="row">
             <?php foreach ($products as $product): ?>
-                <article class="col-6 col-lg-3 producto-ind">
+                <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
                         <div class="card">
                             <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
                             <div class="card-body">
-                                <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
+                                <h2 class="nombre-producto"><?=$product->getNombre(); ?></h2>
                                 <div class="row">
                                     <div class="precio col-6">
                                         <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
@@ -112,16 +112,16 @@
     </div>
 </section>
      <!-- EMPIEZA DIV CATEGORIAS -->
-    <section class="container">
+    <section class="container contenedor-categorias">
         <div class="container text-center">
             <div class="row">
-              <div class="col-12 col-lg-4 categorias">
+              <div class="col-12 col-lg-4 col-md-4 col-sm-12 col-xs-12 categorias">
                 <a href="#" class="contenedor">
                     <div class="text-superpuesto">
                         <div class=""><p class="c-t-1">Platos principales</p></div>
                         <div class=""><p class="c-t-2">Nuestra especialidad</p></div>
                     </div>
-                    <img src="./assets/images/categoria-1.png" class="imagen" alt="...">
+                    <img src="./assets/images/categoria-1.png" class="imagen" alt="imagen banner categoria platos principales">
                 </a>
               </div>
               <div class="col-12 col-lg-4 categorias">
@@ -130,7 +130,7 @@
                         <div class=""><p class="c-t-1">Nuestros postres</p></div>
                         <div class=""><p class="c-t-2">Todos caseros</p></div>
                     </div>
-                    <img src="assets/images/categoria-2.jpg" class="imagen" alt="...">
+                    <img src="assets/images/categoria-2.jpg" class="imagen" alt="imagen banner categoria postres">
                 </a>
               </div>
               <div class="col-12 col-lg-4 categorias">
@@ -139,35 +139,35 @@
                         <div class=""><p class="c-t-1">Y para beber...</p></div>
                         <div class=""><p class="c-t-2">Nuevas incorporaciones</p></div>
                     </div>
-                    <img src="assets/images/categoria-3.jpg" class="imagen" alt="...">
+                    <img src="assets/images/categoria-3.jpg" class="imagen" alt="imagen banner categoria bebidas">
                 </a>
               </div>
             </div>
         </div>
     </section>
     <!-- EMPIEZA SECCION INFO -->
-    <section class="container seccion-4">
+    <section class="seccion-4">
         <div class="container text-center">
             <div class="row">
-                <div class="col-4 div-info">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 div-info">
                     <div class="caja-contenido-info">
-                        <img src="./assets/icons/envio-gris.png" class="icon-info">
+                        <img src="./assets/icons/envio-gris.png" class="icon-info" alt="icono envio gratis">
                         <h3 class="texto-1-info">envíos gratis a partir de 50€</h3>
                         <p class="texto-2-info">Para todos aquellos que les gusta estar en casa.</p>
                         <p class="texto-2-info">Tus pedidos llegarán en menos de 30 minutos.</p>
                     </div>
                 </div>
-                <div class="col-4 div-info">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 div-info">
                     <div class="caja-contenido-info">
-                        <img src="./assets/icons/ubi-gris.png" class="icon-info">
+                        <img src="./assets/icons/ubi-gris.png" class="icon-info" alt="icono nuestros restaurantes">
                         <h3 class="texto-1-info">nuestros restaurantes</h3>
                         <p class="texto-2-info">¿Quieres ver qué restaurante  está más cerca de tu casa?</p>
                         <p class="texto-2-info">Aquí estará el tuyo.</p>
                     </div>
                 </div>
-                <div class="col-4 div-info">
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 div-info">
                     <div class="caja-contenido-info">
-                        <img src="./assets/icons/regalo-gris.png" class="icon-info">
+                        <img src="./assets/icons/regalo-gris.png" class="icon-info" alt="icono refrescos gratuitos">
                         <h3 class="texto-1-info">refrescos gratuitos</h3>
                         <p class="texto-2-info">¿Eres de beber?</p>
                         <p class="texto-2-info">Por cada 30 € de cuenta te daremos un refresco gratuito.</p>

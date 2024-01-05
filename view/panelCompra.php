@@ -19,7 +19,7 @@ include_once 'controller/productController.php';
     // Incluye el header
     include_once 'header.php';
     ?>
-    <section>
+    <section class="container">
         <div class="titulo-pagina">
             <h1 class="texto-titulo-carrito">
                 <span class="texto-titulo">Tu bolsa</span>
@@ -33,8 +33,8 @@ include_once 'controller/productController.php';
                 </nav>
             </div>
         </div>
-        <div class="contenido">
-            <div class="col-6">
+        <div class=" row contenido">
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-0">
                 <?php if (isset($_SESSION['selecciones']) && !empty($_SESSION['selecciones'])) {?>
                 <table class="tabla-contenido-carrito">
                     <thead>
@@ -98,14 +98,14 @@ include_once 'controller/productController.php';
                                 <td class="col-cantidad-info">
                                     <div class="sitio-boton">
                                         <div class="contenido-col-2 boton-cantidad">
-                                            <div class="cantidad-numero col-9">
+                                            <div class="cantidad-numero col-9 col-md-6 col-xs-6">
                                                 <span><?= $pedido->getCantidad() ?></span>
                                             </div>
-                                            <div class="modificador col-3">
+                                            <div class="modificador col-3 col-md-6 col-xs-6">
                                                 <form action="<?= url . '?controller=product&action=funcionalidadesCarrito' ?>" method='post'>
                                                     <input type="hidden" name="pos" value="<?= $pos ?>">
-                                                    <button class="modificadores" type="submit" name="Add">+</button>
-                                                    <button class="modificadores" type="submit" name="Del">-</button>
+                                                    <button class="modificadores col-12" type="submit" name="Add">+</button>
+                                                    <button class="modificadores col-12" type="submit" name="Del">-</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -124,8 +124,8 @@ include_once 'controller/productController.php';
                     </tbody> 
                 </table>             
             </div>
-            <div class="col-6 contenido-resumen">
-                <h2 class="titulo-uno">RESUMEN</h2>
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12 contenido-resumen pe-0">
+                <h3 class="titulo-uno">RESUMEN</h3>
                 <div class="texto-subtotal">
                     <span class="mensaje-subtotal">Desde el equipo de REXTURA te deseamos una feliz comida.</span>
                 </div>
@@ -161,52 +161,50 @@ include_once 'controller/productController.php';
             <?php }
             session_write_close();?>
         </div>
-    </section>
-    <section class="container">
-    <div>
-        <h1 class="titulos-secciones">También te puede intersar</h1>
-    </div>
-    <div class="container text-center">
-        <div class="row">
-            <?php 
-            $products = ProductDAO::getFourProducts(); // Obtener los 4 productos
-            foreach ($products as $product) { // Iterar sobre la lista de productos
-            ?>
-                <article class="col-6 col-lg-3 producto-ind">
-                        <div class="card">
-                            <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
-                            <div class="card-body">
-                                <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
-                                <div class="row">
-                                    <div class="precio col-6">
-                                        <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
-                                        <div class="div-premium">
-                                            <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
-                                            <p class="palabra-premium">PREMIUM</p>
+        <div>
+            <h2 class="titulos-secciones">También te puede intersar</h2>
+        </div>
+        <div class="container text-center">
+            <div class="row fila-productos">
+                <?php 
+                $products = ProductDAO::getFourProducts(); // Obtener los 4 productos
+                foreach ($products as $product) { // Iterar sobre la lista de productos
+                ?>
+                    <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
+                            <div class="card">
+                                <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
+                                <div class="card-body">
+                                    <h4 class="nombre-producto"><?=$product->getNombre(); ?></h4>
+                                    <div class="row">
+                                        <div class="precio col-6">
+                                            <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
+                                            <div class="div-premium">
+                                                <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
+                                                <p class="palabra-premium">PREMIUM</p>
+                                            </div>
+                                            <?php if ($product instanceof Bebida && $product->getConAlcohol()): ?>
+                                            <div class="div-edad">
+                                                <p class="mayor-de-18">+18</p>
+                                                <p class="palabra-mayor-de-18">AÑOS</p>
+                                            </div>
+                                            <?php endif; ?>
                                         </div>
-                                        <?php if ($product instanceof Bebida && $product->getConAlcohol()): ?>
-                                        <div class="div-edad">
-                                            <p class="mayor-de-18">+18</p>
-                                            <p class="palabra-mayor-de-18">AÑOS</p>
+                                        <div class="botones col-6">
+                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarritoDesdeCarrito'?> method="post">
+                                                <!--BOTON AÑADIR-->
+                                                <input type="hidden" name="action" value="añadirCarrito">
+                                                <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                <button type="submit"class="boton-principal">Añadir</button>
+                                            </form>
                                         </div>
-                                        <?php endif; ?>
-                                    </div>
-                                    <div class="botones col-6">
-                                        <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarritoDesdeCarrito'?> method="post">
-                                            <!--BOTON AÑADIR-->
-                                            <input type="hidden" name="action" value="añadirCarrito">
-                                            <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                            <button type="submit"class="boton-principal">Añadir</button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                </article>
-            <?php } ?>
+                    </article>
+                <?php } ?>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
       <?php
     // Incluye el footer
     include_once 'footer.php';

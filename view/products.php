@@ -14,7 +14,7 @@
     include_once 'header.php';
     ?>
 <section class="container">
-    <div class="container text-center">
+    <div class="container">
         <?php if (isset($_SESSION['user'])) { ?>
             <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
             <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
@@ -49,11 +49,11 @@
         </div>
         <div class="row">
             <?php foreach ($products as $product): ?>
-                <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
+                <article class="col-12 col-lg-3 col-md-3 col-sm-6 col-xs-12 producto-ind">
                         <div class="card">
                             <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
                             <div class="card-body">
-                                <h5 class="nombre-producto"><?=$product->getNombre(); ?></h5>
+                                <h2 class="nombre-producto"><?=$product->getNombre(); ?></h2>
                                 <div class="row">
                                     <div class="precio col-6">
                                         <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>

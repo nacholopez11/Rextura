@@ -14,9 +14,9 @@
             <div class="contenido-footer">
                 <div class="redes-sociales">
                     <ul>
-                        <li class="facebook"><a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a></li>
-                        <li class="instagram"><a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true"></i></a></li>
-                        <li class="youtube"><a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true"></i></a></li>
+                        <li class="facebook"><a href="#"><i class="fa fa-facebook fa-2x" aria-hidden="true" alt="icono facebook"></i></a></li>
+                        <li class="instagram"><a href="#"><i class="fa fa-instagram fa-2x" aria-hidden="true" alt="icono instagram"></i></a></li>
+                        <li class="youtube"><a href="#"><i class="fa fa-youtube fa-2x" aria-hidden="true" alt="icono youtube"></i></a></li>
                     </ul>                    
                 </div>
                 <div class="texto-footer">            

@@ -43,12 +43,13 @@ section.container:first-child {
     padding-top: 30px;
 }
 section.container{
-    max-width: 1260px;
-    padding: 0px;
+    max-width: 1440px;
+    padding: 0px 90px !important;
 }
 .carousel-inner{
     margin-left:auto;
     margin-right: auto;
+    padding-top: 30px;
 }
 .imagen-slider{
     align-items: center;
@@ -63,7 +64,7 @@ section.container{
     flex-direction: column;
     align-items: center ;
     height: 660px;
-    padding-left: 12px;
+    padding-left: 0px !important;
 }
 .texto1-slider{
     display: flex;
@@ -149,7 +150,6 @@ div.container.text-center{
 }
 
 div.row{
-    max-width: 1260px !important;
     margin: auto;
 }
 .producto-ind{
@@ -314,8 +314,8 @@ p.palabra-mayor-de-18{
 
 
 /* CSS CATEGORIAS */
-  .seccion-3 {
-    padding: 30px 0;
+  .contenedor-categorias{
+    margin-top: 54px;
   }
   
   .categorias {
@@ -325,11 +325,7 @@ p.palabra-mayor-de-18{
     color: #FEFFFE;
     border-color: #212529;
     margin-bottom: 20px;
-    padding: 0px;
-  }
-  .tutu{
-    padding: 0px;
-    
+    padding: 0px 15px !important;
   }
   
   .contenedor {
@@ -337,6 +333,8 @@ p.palabra-mayor-de-18{
     display: flex;
     justify-content: center;
     align-items: end;
+    
+    
   }
   
   .text-superpuesto {
@@ -385,10 +383,8 @@ p.palabra-mayor-de-18{
 /* CSS SECCION INFO */
 .seccion-4 {
     padding: 0px;
-}
-
-.sitio-informacion{
-    background-color: aqua;
+    margin-top: 80px;
+    background-color: #e7e7e7;
 }
 
 .div-info {
