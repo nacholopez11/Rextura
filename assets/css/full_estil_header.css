@@ -46,21 +46,21 @@
 
 /*Variables CSS*/
 /* CSS HEADER */
-/* @media (min-width: 922px) { */
-    .div-header{
-        display: flex !important;
-        justify-content: center !important;
-        max-width: 1440px;
-        width: 100%;
-        padding: 0px !important;
-    }
-    .div-fila-header{
-        display: flex !important;
-        justify-content: flex-end !important;
-        width: 100%;
-        padding: 0px 90px !important;
-        margin: 0px !important;
-    }
+.div-header {
+    display: flex !important;
+    justify-content: center !important;
+    max-width: 1440px;
+    width: 100%;
+    padding: 0px !important;
+}
+
+.div-fila-header {
+    display: flex !important;
+    justify-content: space-between !important; /* Alinea los elementos al principio y al final */
+    width: 100%;
+    padding: 0px 90px !important;
+    margin: 0px !important;
+}
     .buscador-header{
         display: flex;
         justify-content: flex-start !important;
@@ -69,7 +69,7 @@
     div.logo-header.col-4{
         display: flex;
         justify-content: center;
-        align-items: center;
+        padding-top: 10px;
         padding-left: 40px !important;
     }
     .menu-header{
@@ -109,11 +109,9 @@
     }
     .icon-menu-header{
         display: flex !important;
-        /* padding: 14px 4px 0px 12px !important; */
         margin-top: 10.5px !important;
         margin-left: 25px !important;
         margin-right: 5px !important;
-        /* max-width: 26px; */
         max-height: 25px !important;
     }
     .nav-item-buscador{
@@ -130,31 +128,110 @@
         margin-top: 2px !important;
         max-height: 25px !important;
     }
-    .lolo{
+    .div-buscador{
         display: flex;
         justify-content: flex-start !important;
     }
     .buscador{
         padding: 0px;
     }
-/* } */
 
 
-@media (max-width: 1260px) {
 
-    .div-header{
-        display: flex !important;
-        justify-content: center !important;
-        /* max-width: 1260px; */
-        width: 100%;
-        padding: 0px !important;
-    }
-    .div-fila-header{
-        display: flex !important;
-        justify-content: flex-end !important;
-        width: 100%;
-        padding: 0px 90px !important;
+    @media (max-width: 992px) {
+        .div-fila-header {
+            padding: 0px 15px !important;
+            position: relative; /* Asegúrate de que la posición sea relativa */
+        }
+    
+        .navbar-toggler {
+            order: 1;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+        }
+    
+        .as {
+            order: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: absolute;
+            top: 60px;
+            right: 15px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+            display: none; /* Oculta inicialmente el menú desplegable */
+        }
+    
+        .navbar-toggler:focus + .as,
+        .as:hover {
+            display: flex; /* Muestra el menú desplegable cuando el botón está enfocado o se coloca sobre él */
+        }
+    
+        .navbar-nav {
+            text-align: right;
+        }
+    
+        .nav-item {
+            display: block;
+            margin-top: 10px;
+            border-bottom: 1px solid #ccc; 
+        }
+    
+        img.icon-menu-header {
+            display: none !important;
+        }
+    
+        a.nav-link-buscador {
+            display: none !important;
+        }
+    
+        .icon-menu-header {
+            margin: 0;
+        }
+    
+        .menu-header {
+            flex-direction: column !important;
+            align-content: flex-end !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
     }
     
+    @media (min-width: 993px) {
+        .navbar-toggler {
+            display: none; /* Oculta el botón en resoluciones mayores a 992px */
+        }
+    
+        .as {
+            display: flex !important; /* Muestra el menú desplegable en resoluciones mayores a 992px */
+        }
+    
+        .nav-item {
+            border-bottom: none; /* Elimina la línea divisoria entre elementos del menú */
+        }
+    
+        a.nav-link-buscador {
+            display: flex !important; /* Muestra el enlace del buscador en resoluciones mayores a 992px */
+        }
+    }
 
-}
+
+    @media (max-width: 1340px) and (min-width: 992px) {
+        a.nav-link {
+            display: none;
+        }
+
+        img.icon-menu-header {
+            margin-right: 0px !important;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .img-logo {
+            max-width: 200px;
+        }
+    }

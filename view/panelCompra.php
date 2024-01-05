@@ -35,7 +35,7 @@ include_once 'controller/productController.php';
         </div>
         <div class=" row contenido">
             <div class="col-12 col-lg-6 col-md-12 col-sm-12 col-xs-12 p-0">
-                <?php if (isset($_SESSION['selecciones']) && !empty($_SESSION['selecciones'])) {?>
+            <?php if (isset($_SESSION['selecciones']) && (count($_SESSION['selecciones']) > 0)) { ?>
                 <table class="tabla-contenido-carrito">
                     <thead>
                         <tr class="fila-titulos">

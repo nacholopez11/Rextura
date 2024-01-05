@@ -27,7 +27,7 @@
                                 <div class="div-texto-slider">
                                     <h6 class="texto1-slider">Secretos de cocina</h6>
                                     <h6 class="texto2-slider">DESCUBRE LOS NUEVOS PLATOS</h6>
-                                    <button type="button" class="boton-slider-verde">QUIERO VERLOS TODOS</button>
+                                    <a class="texto-boton" href=<?= "index.php?controller=product&action=products" ?>><button type="button" class="boton-slider-verde">QUIERO VERLOS TODOS</button></a>
                                 </div>
                             </div>
                             <div class="col-0 col-md-8" style="background-image: url(./assets/images/img1-banner1.png);"></div>
@@ -39,7 +39,7 @@
                                 <div class="div-texto-slider">
                                     <h6 class="texto1-slider">Nuestros cocineros</h6>
                                     <h6 class="texto2-slider">DESCUBRE A NUESTRO EQUIPO</h6>
-                                    <button type="button" class="boton-slider-gris">SABER MÁS</button>
+                                    <a class="texto-boton" href=<?= "index.php?controller=product&action=products" ?>><button type="button" class="boton-slider-gris">SABER MÁS</button></a>
                                 </div>
                             </div>
                             <div class="col-0 col-md-8" style="background-image: url(./assets/images/img2-banner1.jpg);"></div>
@@ -116,7 +116,7 @@
         <div class="container text-center">
             <div class="row">
               <div class="col-12 col-lg-4 col-md-12 col-sm-12 col-xs-12 categorias">
-                <a href="#" class="contenedor">
+                <a href=<?= "index.php?controller=product&action=products" ?> class="contenedor">
                     <div class="text-superpuesto">
                         <div class=""><p class="c-t-1">Platos principales</p></div>
                         <div class=""><p class="c-t-2">Nuestra especialidad</p></div>
@@ -125,7 +125,7 @@
                 </a>
               </div>
               <div class="col-12 col-lg-4 col-md-12 col-sm-12 col-xs-12 categorias">
-                <a href="#" class="contenedor">
+                <a href=<?= "index.php?controller=product&action=products" ?> class="contenedor">
                     <div class="text-superpuesto">
                         <div class=""><p class="c-t-1">Nuestros postres</p></div>
                         <div class=""><p class="c-t-2">Todos caseros</p></div>
@@ -134,7 +134,7 @@
                 </a>
               </div>
               <div class="col-12 col-lg-4 col-md-12 col-sm-12 col-xs-12 categorias">
-                <a href="#" class="contenedor">
+                <a href=<?= "index.php?controller=product&action=products" ?> class="contenedor">
                     <div class="text-superpuesto">
                         <div class=""><p class="c-t-1">Y para beber...</p></div>
                         <div class=""><p class="c-t-2">Nuevas incorporaciones</p></div>

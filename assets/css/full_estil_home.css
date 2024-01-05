@@ -87,6 +87,11 @@ section.container{
     margin-top: 10px;
     font-weight: 700;
 }
+
+a.texto-boton{
+    text-decoration: none;
+}
+
 .boton-slider-verde{
     display: flex;
     justify-content: center;
@@ -346,8 +351,8 @@ p.palabra-mayor-de-18{
     flex-direction: column;
     z-index: 1;
     background-color: #fff;
-    width: 90%; 
-    max-width: 90% !important; 
+    width: 90%;
+    max-width: 360px !important; 
     height: 100px;
     margin: 15px;
   }
@@ -367,7 +372,7 @@ p.palabra-mayor-de-18{
   .imagen {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Añadido para que las imágenes mantengan la proporción y se ajusten al tamaño del contenedor */
+    object-fit: cover; 
     display: block;
     z-index: 0;
     padding: 0px 15px;
@@ -454,6 +459,12 @@ p.palabra-mayor-de-18{
     .categorias .imagen {
         width: 100%;
         height: 100%;
-        object-fit: cover; /* Quita el !important */
+        object-fit: cover;
+        padding: 0px;
+    }
+
+    .text-superpuesto {
+        /* width: 90%; */
+        max-width: 910px !important; 
     }
 }

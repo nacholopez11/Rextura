@@ -17,7 +17,7 @@
             <div class="container-fluid div-header">
                 <div class="row div-fila-header">
                     <div class="buscador-header col-4">
-                        <div class="lolo">
+                        <div class="div-buscador">
                             <ul class="buscador">
                                 <li class="nav-item-buscador">
                                     <img class="icon-buscador" src="./assets/icons/buscador.png" />
@@ -28,49 +28,49 @@
                     </div>
                     <div class="logo-header col-4">
                         <a class="navbar-brand" href=<?= "index.php?controller=product&action=panelHome" ?>>
-                            <img src="./assets/images/textura-logo.jpg" />
+                            <img class="img-logo" src="./assets/images/textura-logo.jpg" />
                         </a>
+                    </div>
+                    <div class="menu-header col-4">
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                    </div>
-                    <div class="menu-header col-4">
                         <div class="as" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <?php if (isset($_SESSION['user'])) : ?>
                                     <?php if ($_SESSION['user']['rol'] === 'admin') : ?>
                                         <!-- Admin -->
                                         <li class="nav-item">
-                                            <img class="icon-menu-header" src="./assets/icons/cuenta.png" />
+                                            <a href=<?= "index.php?controller=usuario&action=logout" ?>><img class="icon-menu-header" src="./assets/icons/cuenta.png"/></a>
                                             <a class="nav-link active" aria-current="page" href=<?= "index.php?controller=usuario&action=logout" ?>>Cerrar Sesión</a>
                                         </li>
                                         <li class="nav-item">
-                                            <img class="icon-menu-header" src="./assets/icons/carta.png" />
+                                            <a href=<?= "index.php?controller=product&action=products" ?>><img class="icon-menu-header" src="./assets/icons/carta.png"/></a>
                                             <a class="nav-link" aria-current="page" href=<?= "index.php?controller=product&action=products" ?>>Panel Admin</a>
                                         </li>
                                     <?php else : ?>
                                         <!-- User -->
                                         <li class="nav-item">
-                                            <img class="icon-menu-header" src="./assets/icons/cuenta.png" />
+                                            <a href=<?= "index.php?controller=usuario&action=logout" ?>><img class="icon-menu-header" src="./assets/icons/cuenta.png"/></a>
                                             <a class="nav-link active" aria-current="page" href=<?= "index.php?controller=usuario&action=logout" ?>>Cerrar Sesión</a>
                                         </li>
                                         <li class="nav-item">
-                                            <img class="icon-menu-header" src="./assets/icons/carta.png" />
+                                            <a href=<?= "index.php?controller=product&action=products" ?>><img class="icon-menu-header" src="./assets/icons/carta.png"/></a>
                                             <a class="nav-link" aria-current="page" href=<?= "index.php?controller=product&action=products" ?>>Carta</a>
                                         </li>
                                         <li class="nav-item">
-                                            <img class="icon-menu-header" src="./assets/icons/bolsa.png" />
+                                            <a href=<?= "index.php?controller=product&action=panelCompra" ?>><img class="icon-menu-header" src="./assets/icons/bolsa.png"/></a>
                                             <a class="nav-link" href=<?= "index.php?controller=product&action=panelCompra" ?>>Bolsa</a>
                                         </li>
                                     <?php endif; ?>
                                 <?php else : ?>
                                     <!-- No Session -->
                                     <li class="nav-item">
-                                        <img class="icon-menu-header" src="./assets/icons/cuenta.png" />
+                                        <a href=<?= "index.php?controller=usuario&action=index" ?>><img class="icon-menu-header" src="./assets/icons/cuenta.png"/></a>
                                         <a class="nav-link active" aria-current="page" href=<?= "index.php?controller=usuario&action=index" ?>>Iniciar Sesión</a>
                                     </li>
                                     <li class="nav-item">
-                                        <img class="icon-menu-header" src="./assets/icons/carta.png" />
+                                        <a href=<?= "index.php?controller=product&action=products" ?>><img class="icon-menu-header" src="./assets/icons/carta.png"/></a>
                                         <a class="nav-link" aria-current="page" href=<?= "index.php?controller=product&action=products" ?>>Carta</a>
                                     </li>
                                 <?php endif; ?>

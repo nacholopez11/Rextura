@@ -373,8 +373,11 @@ class ProductController {
     
             // Verifica si la posición es válida en el array de selecciones
             if (isset($_SESSION['selecciones'][$pos])) {
-                // Establece la cantidad del producto en 0 para eliminarlo del carrito
-                $_SESSION['selecciones'][$pos]->setCantidad(0);
+                // Elimina el producto de la sesión utilizando unset
+                unset($_SESSION['selecciones'][$pos]);
+    
+                // Reindexar el array
+                $_SESSION['selecciones'] = array_values($_SESSION['selecciones']);
             }
         }
     
