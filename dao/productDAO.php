@@ -54,15 +54,21 @@ class ProductDAO {
 
     public static function getProductById($id) {
         $con = DB::getConnection();
-
+    
         $query = "SELECT * FROM products WHERE id = $id";
         $result = $con->query($query);
-
+    
         $row = $result->fetch_object();
-        $product = new Product($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id);
-
+    
+        // Verifica si es una bebida
+        if ($row->categoria_id == 3) {
+            $product = new Bebida($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id, $row->conAlcohol);
+        } else {
+            $product = new Product($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id);
+        }
+    
         $con->close();
-
+    
         return $product;
     }
 
@@ -111,14 +117,14 @@ class ProductDAO {
         return $result->fetch_object('Bebidas');
     }
 
-    public static function updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id) {
+    public static function updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol) {
         $con = DB::getConnection();
     
         // Corrección en la declaración del SQL, elimina la coma después de 'categoria_id=?'
-        $stmt = $con->prepare("UPDATE products SET nombre=?, categoria=?, precio=?, precio_premium=?, image=?, categoria_id=? WHERE id=?");
+        $stmt = $con->prepare("UPDATE products SET nombre=?, categoria=?, precio=?, precio_premium=?, image=?, categoria_id=?, conAlcohol=? WHERE id=?");
         
         // Corrección en la cadena de tipos de parámetros y la asignación de parámetros
-        $stmt->bind_param("sssdsii", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $id);
+        $stmt->bind_param("sssdsiii", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol, $id);
     
         $success = $stmt->execute();
     
@@ -128,11 +134,11 @@ class ProductDAO {
         return $success;
     }
 
-    public static function addProduct($nombre, $categoria, $precio, $precio_premium, $image, $categoria_id) {
+    public static function addProduct($nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol) {
         $con = DB::getConnection();
     
-        $stmt = $con->prepare("INSERT INTO products (nombre, categoria, precio, precio_premium, image, categoria_id) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssdiss", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
+        $stmt = $con->prepare("INSERT INTO products (nombre, categoria, precio, precio_premium, image, categoria_id, conAlcohol) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssdissi", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol);
         $success = $stmt->execute();
     
         $stmt->close();
@@ -173,8 +179,5 @@ class ProductDAO {
     
         return $products;
     }
-
-
-
 }
 ?>

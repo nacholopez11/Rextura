@@ -33,6 +33,12 @@
                 <option value="2">2 (Postre)</option>
                 <option value="3">3 (Bebida)</option>
             </select>
+            <div class="espaciador"></div>
+            <label for="alcohol">Alcohol:</label>
+            <select name="alcohol" required>
+                <option value="0">No</option>
+                <option value="1">Si</option>
+            </select>
 
             <button type="submit" class="boton-principal">Guardar Producto</button>
         </form>

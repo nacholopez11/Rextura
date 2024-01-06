@@ -38,7 +38,7 @@
             <div class="botonadd">            
                 <!--COMPRUEBA QUE SE HA INICIADO SESION-->
                 <?php if (isset($_SESSION['user'])) { ?>
-                    <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
+                    <!--COMPRUEBA SI TIENES ROL ADMINISTRADOR AL INICIAR SESION-->
                     <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
                         <form class="boton-carrito" action=<?=url.'?controller=product&action=panelAñadirProducto'?> method="post">
                             <!--BOTON AÑADIR NUEVO PRODUCTO-->

@@ -270,9 +270,6 @@ class ProductController {
             include_once 'view/header.php';
             include_once 'view/panelEditProduct.php';
             include_once 'view/footer.php';
-        } else {
-            // Maneja el caso en que la solicitud no sea válida
-            echo "Solicitud no válida.";
         }
     }
 
@@ -286,24 +283,17 @@ class ProductController {
             $precio_premium = $_POST['precio_premium'];
             $image = $_POST['image'];
             $categoria_id = $_POST['categoria_id'];
+            $alcohol = $_POST['alcohol'];
     
             // Realiza la actualización en la base de datos
-            $success = ProductDAO::updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
+            $success = ProductDAO::updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol);
     
             if ($success) {
                 // Redirige o muestra un mensaje de éxito
                 header("Location: index.php?controller=product&action=products");
                 exit();
-            } else {
-                // Maneja el caso en que la actualización falla
-                echo "Error al actualizar el producto.";
-                exit();
-            }
-        } else {
-            // Si no es una solicitud POST, muestra un mensaje o redirige según sea necesario
-            echo "Solicitud no válida.";
-            exit();
-        }
+            } 
+        } 
     }
 
     public function panelAñadirProducto() {
@@ -323,13 +313,14 @@ class ProductController {
             $precio_premium = isset($_POST['precio_premium']) ? $_POST['precio_premium'] : null;
             $image = isset($_POST['image']) ? $_POST['image'] : null;
             $categoria_id = $_POST['categoria_id'];
+            $alcohol = $_POST['alcohol'];
     
-            // Llama a la función en el DAO para agregar el nuevo producto
-            $success = ProductDAO::addProduct($nombre, $categoria, $precio, $precio_premium, $image, $categoria_id);
+            // Llama a la función en el DAO para añadir el nuevo producto
+            $success = ProductDAO::addProduct($nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol);
     
             if ($success) {
                 // Redirige o muestra un mensaje de éxito
-                header("Location: index.php?controller=product&action=panelEditProduct");
+                header("Location: index.php?controller=product&action=products");
                 exit();
             } else {
                 // Maneja el caso en que la inserción falla
