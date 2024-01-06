@@ -150,13 +150,13 @@ include_once 'controller/productController.php';
                 </form>
                 <a class="seguir-comprando" href="https://localhost/rextura/index.php?controller=product&action=products">Seguir comprando</a>
             </div>
-            <?php } else {
-            echo "No hay productos en el carrito.";?>
+            <?php } else { ?>
+            <p class="no-art">No hay productos en el carrito.</p>
             <form action=<?=url.'?controller=product&action=products'?> method='post'>
-                <td><button class="boton-principal" type="submit"> IR A CARTA </button></td>                  
+                <td><button class="boton-principal" style="margin-bottom: 16px" type="submit"> IR A CARTA </button></td>                  
             </form>
             <form action=<?=url.'?controller=product&action=recuperarUltimoPedido'?> method='post'>
-                <td><button class="boton-principal" type="submit"> RECUPERAR ULTIMO PEDIDO </button></td>                  
+                <td><button class="boton-principal" type="submit"> RECUPERAR ÚLTIMO PEDIDO </button></td>                  
             </form>
             <?php }
             session_write_close();?>

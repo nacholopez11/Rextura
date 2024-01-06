@@ -95,6 +95,11 @@
         color: #231F20;
         font-weight: 600 !important;
     }
+
+    a.nav-link:hover {
+        color: #000;
+    }
+
     .nav-link-buscador{
         display: flex;
         justify-content: flex-end;

@@ -590,6 +590,14 @@ p.palabra-mayor-de-18{
     padding-bottom: 20px;
 }
 
+p.no-art{
+    color: #212529;
+    font-family: "Neutra Text TF";
+    font-size: 16px;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
 
 @media (min-width: 993px) {
     section.container{
