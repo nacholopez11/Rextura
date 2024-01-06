@@ -9,7 +9,7 @@ include_once 'controller/productController.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Productos</title>
+    <title>Carrito</title>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_carrito.css" rel="stylesheet" type="text/css" media="screen">
@@ -27,7 +27,7 @@ include_once 'controller/productController.php';
             <div class="paginacion">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="a-breadcrumb" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="a-breadcrumb" href=<?= "index.php?controller=product&action=panelHome" ?>>Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Bolsa</li>
                     </ol>
                 </nav>
@@ -62,13 +62,11 @@ include_once 'controller/productController.php';
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- Creamos una fila por cada producto -->
                         <?php
                         $pos = 0;
                         foreach($_SESSION['selecciones'] as $pedido){
                             // Verifica si la cantidad es mayor que 0 antes de mostrar el producto
-                            if ($pedido->getCantidad() > 0) {
-                            ?>
+                            if ($pedido->getCantidad() > 0) { ?>
                             <tr class="fila-producto">
                                 <td class="col-nombre-info">
                                     <div class="contenido-col-1">
@@ -167,8 +165,8 @@ include_once 'controller/productController.php';
         <div class="container text-center">
             <div class="row fila-productos">
                 <?php 
-                $products = ProductDAO::getFourProducts(); // Obtener los 4 productos
-                foreach ($products as $product) { // Iterar sobre la lista de productos
+                $products = ProductDAO::getFourProducts(); 
+                foreach ($products as $product) { 
                 ?>
                     <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
                             <div class="card">

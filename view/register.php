@@ -21,7 +21,7 @@ include_once 'header.php';
             <div class="paginacion">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a class="a-breadcrumb" href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a class="a-breadcrumb" href=<?= "index.php?controller=product&action=panelHome" ?>>Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Entrar</li>
                     </ol>
                 </nav>
@@ -35,7 +35,6 @@ include_once 'header.php';
                     <form method="post" action="index.php?controller=usuario&action=register">
                         <label class="n-label" for="username">Usuario:</label>
                         <input type="text" name="username" required>
-
                         <label class="n-label" for="password">Contraseña:</label>
                         <input type="password" name="password" required>
 
@@ -50,7 +49,6 @@ include_once 'header.php';
                     <form action="index.php?controller=usuario&action=login" method="post">
                         <label class="n-label" for="username">Usuario:</label>
                         <input type="text" id="username" name="username" placeholder="ej: tuNombre" required>
-
                         <label class="n-label" for="password">Contraseña:</label>
                         <input type="password" id="password" name="password" required>
 

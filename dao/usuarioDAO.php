@@ -3,7 +3,7 @@ include_once 'config/DB.php';
 include_once 'model/Usuario.php';
 
 class UsuarioDAO{
-
+    // FUNCION PARA AÑADIR UN USUARIO A LA BD
     public static function registrarUsuario($username, $password, $rol) {
         $con = DB::getConnection();
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -13,6 +13,7 @@ class UsuarioDAO{
         $con->close();
     }
 
+    // FUNCION PARA VERIFICAR UN USUARIO AL INICIAR SESION
     public static function verificarUsuario($username, $password) {
         $con = DB::getConnection();
         $stmt = $con->prepare("SELECT * FROM usuarios WHERE username = ?");
@@ -33,6 +34,7 @@ class UsuarioDAO{
         return null;
     }
     
+    // FUNCION PARA OBTENER UN USUARIO POR SU NOMBRE
     public static function getUserByUsername($username) {
         $con = DB::getConnection();
         $stmt = $con->prepare("SELECT * FROM usuarios WHERE username = ?");
@@ -43,7 +45,7 @@ class UsuarioDAO{
         return $result->fetch_assoc();
     }
 
-    //Obtiene el ID del usuario que le pasas (utilizado para asignar un usuario a cada pedido)
+    // FUNCION PARA OBTENEREL ID DE UN USUARIO QUE LE PASAS EL NOMBRE, DESPUES SE USA PARA ASIGNAR UN USUARIO A UN PEDIDO
     public static function getUserId($username) {
         $con = DB::getConnection();
         $stmt = $con->prepare("SELECT id FROM usuarios WHERE username = ?");
@@ -59,6 +61,5 @@ class UsuarioDAO{
 
         return null;
     }
-
 }
 ?>

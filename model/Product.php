@@ -1,4 +1,5 @@
 <?php
+// CLASE PRODUCTO
 class Product {
     protected $id;
     protected $nombre;
@@ -19,7 +20,6 @@ class Product {
         $this->categoria_id = $categoria_id;
     }
     
-
     /**
      * Get the value of id
      */

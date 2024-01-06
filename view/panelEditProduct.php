@@ -25,8 +25,11 @@
             <input type="text" name="image" value="<?=$product->getImage();?>">
             <label for="categoria_id">Categoria ID:</label>
             <input type="text" name="categoria_id" value="<?=$product->getCategoriaId();?>">
-            <label for="alcohol">Alcohol:</label>
-            <input type="text" name="alcohol" value="<?=$product->getConAlcohol();?>">
+            <!-- Revisa el tipo de objeto -->
+            <?php if ($product->getCategoriaId() == 3): ?>
+                <label for="alcohol">Alcohol:</label>
+                <input type="text" name="alcohol" value="<?=$product->getConAlcohol();?>">
+            <?php endif; ?>
 
             <button type="submit" class="boton-principal">Guardar cambios</button>
         </form>

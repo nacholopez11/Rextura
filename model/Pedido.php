@@ -1,8 +1,9 @@
 <?php
-
+// CLASE PEDIDO
 Class Pedido{
     private $producto;
     private $cantidad = 1;
+
 
     public function __construct($producto){
         $this->producto =$producto;
@@ -11,7 +12,6 @@ Class Pedido{
     public function devuelvePrecioTotal() {
         return $this->producto->getPrecio() * $this->cantidad;
     }
-
 
     /**
      * Get the value of producto
@@ -48,7 +48,7 @@ Class Pedido{
 
         return $this;
     }
-
+    // FUNCION PARA CALCULAR PRECIO TOTAL DE UN PRODUCTO
     public function calculaPrecioTotal(){
         return $this->product->getPrecio()*$this->product->getCantidad();
     }

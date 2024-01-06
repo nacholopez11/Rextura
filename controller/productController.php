@@ -4,13 +4,14 @@ include_once './model/Product.php';
 include_once './dao/productDAO.php';
 
 class ProductController {
+    // FUNCION PRINCIPAL
     public function index() {
                 
         $products = ProductDAO::getFourProducts();
         include_once 'view\panelHome.php'; 
     }
 
-
+    // FUNCION PARA AÑADIR UN PRODUCTO AL CARRITO
     public function añadirCarrito() {
         session_start();
     
@@ -22,7 +23,7 @@ class ProductController {
             $id = $_POST['id'];
             $existing_key = null;
     
-            // Buscar si el producto ya está en el carrito
+            // Busca si el producto ya está en el carrito
             foreach ($_SESSION['selecciones'] as $key => $pedido) {
                 if ($pedido->getProducto()->getId() == $id) {
                     $existing_key = $key;
@@ -31,10 +32,10 @@ class ProductController {
             }
     
             if ($existing_key !== null) {
-                // Si el producto ya está en el carrito, incrementar la cantidad
+                // Si el producto ya está en el carrito, incrementa la cantidad
                 $_SESSION['selecciones'][$existing_key]->setCantidad($_SESSION['selecciones'][$existing_key]->getCantidad() + 1);
             } else {
-                // Si el producto no está en el carrito, añadir un nuevo pedido
+                // Si el producto no está en el carrito, añade un nuevo pedido
                 $product = ProductDAO::getProductById($id);
                 $pedido = new Pedido($product);
                 array_push($_SESSION['selecciones'], $pedido);
@@ -44,7 +45,7 @@ class ProductController {
         header("Location: index.php?controller=product&action=products");
     }
 
-
+    // FUNCION PARA AÑADIR UN PRODUCTO AL CARRITO DESDE LA PAGINA DE CARRITO (CAMBIA EL HEADER FINAL, PARA MENTENER LA MISMA PAGINA)
     public function añadirCarritoDesdeCarrito() {
         session_start();
     
@@ -56,7 +57,7 @@ class ProductController {
             $id = $_POST['id'];
             $existing_key = null;
     
-            // Buscar si el producto ya está en el carrito
+            // Busca si el producto ya está en el carrito
             foreach ($_SESSION['selecciones'] as $key => $pedido) {
                 if ($pedido->getProducto()->getId() == $id) {
                     $existing_key = $key;
@@ -65,10 +66,10 @@ class ProductController {
             }
     
             if ($existing_key !== null) {
-                // Si el producto ya está en el carrito, incrementar la cantidad
+                // Si el producto ya está en el carrito, incrementa la cantidad
                 $_SESSION['selecciones'][$existing_key]->setCantidad($_SESSION['selecciones'][$existing_key]->getCantidad() + 1);
             } else {
-                // Si el producto no está en el carrito, añadir un nuevo pedido
+                // Si el producto no está en el carrito, añade un nuevo pedido
                 $product = ProductDAO::getProductById($id);
                 $pedido = new Pedido($product);
                 array_push($_SESSION['selecciones'], $pedido);
@@ -78,7 +79,7 @@ class ProductController {
         header("Location: index.php?controller=product&action=panelCompra");
     }
 
-
+    // FUNCION PARA IR A PAGINA DE CARTA
     public function products() {
         session_start();
         $products = ProductDAO::getAllProducts();
@@ -87,7 +88,7 @@ class ProductController {
         include_once 'view/footer.php';
     }
 
-
+    // FUNCION PARA IR A PAGINA DE EDITAR PRODUCTO (ADMIN)
     public function panelEditProduct() {
         session_start();
         include_once 'view/header.php';
@@ -95,7 +96,7 @@ class ProductController {
         include_once 'view/footer.php';
     }
 
-
+    // FUNCION PARA IR A PAGINA DE CARRITO
     public function panelCompra() {
         session_start();
         include_once 'view/header.php';
@@ -103,7 +104,7 @@ class ProductController {
         include_once 'view/footer.php';
     }
 
-
+    // FUNCION PARA IR A PAGINA PRINCIPAL
     public function panelHome() {
         session_start();
         $products = ProductDAO::getFourProducts();
@@ -112,7 +113,7 @@ class ProductController {
         include_once 'view/footer.php';
     }
 
-
+    // FUNCION PARA MODIFICAR CANTIDAD DE UN PRODUCTO EN EL CARRITO
     public function funcionalidadesCarrito(){
         session_start();
     
@@ -133,11 +134,10 @@ class ProductController {
                 }
             }
         }
-    
         header("Location: index.php?controller=product&action=panelCompra");
     }
 
-
+    // FUNCION PARA GUARDAR DATOS DELL CARRITO EN LA BASE DE DATOS Y EN UNA COOKIE
     public function confirmar() {
         session_start();
     
@@ -163,10 +163,10 @@ class ProductController {
                 }
             }
     
-            // Obtén el nombre de usuario del usuario actual desde la sesión
+            // Obtiene el nombre de usuario del usuario actual desde la sesión
             $username = $_SESSION['user']['username'];
     
-            // Obtén el id del usuario actual usando la función getUserId de UsuarioDAO
+            // Obtiene el id del usuario actual usando la función getUserId de UsuarioDAO
             $usuario_id = UsuarioDAO::getUserId($username);
     
             // Inserta el pedido en la tabla pedidos
@@ -199,14 +199,11 @@ class ProductController {
 
             header("Location: index.php?controller=product&action=panelHome");
             exit();
-        } else {
-            echo "No hay productos en el carrito.";
-            exit();
         }
     }
 
 
-
+    // FUNCION PARA RECUPERAR ÚLTIMO PEDIDO DE CADA USUARIO
     public function recuperarUltimoPedido() {
         session_start();
     
@@ -244,23 +241,14 @@ class ProductController {
                         $pedido->setCantidad($producto['cantidad']);
                         $_SESSION['selecciones'][] = $pedido;
                     }
-    
                     header("Location: index.php?controller=product&action=panelCompra");
                     exit();
-                } else {
-                    echo "El último pedido no contiene productos.";
-                    exit();
                 }
-            } else {
-                echo "No hay pedidos anteriores para este usuario.";
-                exit();
             }
-        } else {
-            echo "No hay un usuario activo.";
-            exit();
         }
     }
 
+    // FUNCION PARA IR A PANEL DE EDICION DE UN PRODUCTO (ADMIN)
     public function edit() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'edit') {
             $id = $_POST['id'];
@@ -273,6 +261,7 @@ class ProductController {
         }
     }
 
+    // FUNCION PARA EDITAR DATOS DE UN PRODUCTO EN BD (ADMIN)
     public function editProductById() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Recibe los datos del formulario
@@ -296,6 +285,7 @@ class ProductController {
         } 
     }
 
+    // FUNCION PARA IR A PAGINA DE AÑADIR PRODUCTO (ADMIN)
     public function panelAñadirProducto() {
         session_start();
         include_once 'view/header.php';
@@ -303,7 +293,7 @@ class ProductController {
         include_once 'view/footer.php';
     }
 
-
+    // FUNCION PARA AÑADIR PRODUCTO A BD (ADMIN)
     public function addProduct() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Obtén los datos del formulario
@@ -322,20 +312,11 @@ class ProductController {
                 // Redirige o muestra un mensaje de éxito
                 header("Location: index.php?controller=product&action=products");
                 exit();
-            } else {
-                // Maneja el caso en que la inserción falla
-                echo "Error al agregar el nuevo producto.";
-                exit();
             }
-        } else {
-            // Si no es una solicitud POST, muestra un mensaje o redirige según sea necesario
-            echo "Solicitud no válida.";
-            exit();
         }
     }
 
-
-
+    // FUNCION PARA ELIMINAR PRODUCTO DE BD (ADMIN)
     public function eliminarProduct() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = $_POST['id'];
@@ -344,18 +325,12 @@ class ProductController {
             if ($success) {
                 header("Location: index.php?controller=product&action=products");
                 exit();
-            } else {
-                echo "Error al eliminar el producto.";
-                exit();
             }
-        } else {
-            echo "Solicitud no válida.";
-            exit();
         }
     }
 
 
-
+    // FUNCION PARA ELIMINAR PRODUCTO (DA IGUAL LA CANTIDAD) DE UN PEDIDO
     public function eliminarProductoCarritoEntero() {
         session_start();
     
@@ -375,9 +350,5 @@ class ProductController {
         // Redirige de vuelta a la página del carrito
         header("Location: index.php?controller=product&action=panelCompra");
     }
-
-
-
-
 }
 ?>

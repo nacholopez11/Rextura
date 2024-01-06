@@ -24,8 +24,7 @@ class ProductDAO {
 
     // FUNCION PARA RECUPERAR TODOS LOS PRODUCTOS
     public static function getAllProducts() {
-        // $con = DB::getConnection(); 
-        $allproducts = array_merge(productDAO::getAllProductsByType('Plato_principal'),productDAO::getAllProductsByType('Bebida'),productDAO::getAllProductsByType('Postre'));
+        $allproducts = array_merge(productDAO::getAllPlatosPrincipales(),productDAO::getAllBebidas(),productDAO::getAllPostres());
 
         return $allproducts;
     }
@@ -41,7 +40,6 @@ class ProductDAO {
         $products = [];
     
         while ($row = $result->fetch_assoc()) {
-            // Usa un operador ternario para decidir qué tipo de objeto crear
             $product = $tipo === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) :
                                            new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
     
@@ -51,13 +49,11 @@ class ProductDAO {
         return $products;
     }
    
-
+    // FUNCION PARA RECUPERAR UN PRODUCTO SEGUN EL ID QUE LE PASAS
     public static function getProductById($id) {
         $con = DB::getConnection();
-    
         $query = "SELECT * FROM products WHERE id = $id";
         $result = $con->query($query);
-    
         $row = $result->fetch_object();
     
         // Verifica si es una bebida
@@ -72,71 +68,21 @@ class ProductDAO {
         return $product;
     }
 
-    public static function getPostreById($id){
-        $con = DB::getConnection(); 
-
-        $stmt = $con->prepare("SELECT * FROM products WHERE id=?");
-        $stmt->bind_param("i",$id);
-
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $con->close();
-
-        return $result->fetch_object('Postre');
-    }
-
-    public static function getPlatoPrincipalById($id){
-        $con = DB::getConnection(); 
-
-        $stmt = $con->prepare("SELECT * FROM products WHERE id=?");
-        $stmt->bind_param("i",$id);
-
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $con->close();
-
-        return $result->fetch_object('Plato_principal');
-    }
-
-    public static function getBebidaById($id){
-        $con = DB::getConnection(); 
-
-        $stmt = $con->prepare("SELECT * FROM products WHERE id=?");
-        $stmt->bind_param("i",$id);
-
-
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $con->close();
-
-        return $result->fetch_object('Bebidas');
-    }
-
+    // FUNCION PARA MODIFICAR UN PRODUCTO DE LA BD
     public static function updateProduct($id, $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol) {
         $con = DB::getConnection();
-    
-        // Corrección en la declaración del SQL, elimina la coma después de 'categoria_id=?'
         $stmt = $con->prepare("UPDATE products SET nombre=?, categoria=?, precio=?, precio_premium=?, image=?, categoria_id=?, conAlcohol=? WHERE id=?");
-        
-        // Corrección en la cadena de tipos de parámetros y la asignación de parámetros
         $stmt->bind_param("sssdsiii", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol, $id);
-    
         $success = $stmt->execute();
-    
         $stmt->close();
         $con->close();
     
         return $success;
     }
 
+    // FUNCION PARA AÑADIR UN PRODUCTO A LA BD
     public static function addProduct($nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol) {
         $con = DB::getConnection();
-    
         $stmt = $con->prepare("INSERT INTO products (nombre, categoria, precio, precio_premium, image, categoria_id, conAlcohol) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssdissi", $nombre, $categoria, $precio, $precio_premium, $image, $categoria_id, $alcohol);
         $success = $stmt->execute();
@@ -147,10 +93,9 @@ class ProductDAO {
         return $success;
     }
 
-
+    // FUNCION PARA ELIMINAR UN PRODUCTO DE LA BD
     public static function deleteProduct($id) {
         $con = DB::getConnection();
-    
         $stmt = $con->prepare("DELETE FROM products WHERE id=?");
         $stmt->bind_param("i", $id);
         $success = $stmt->execute();
@@ -161,6 +106,7 @@ class ProductDAO {
         return $success;
     }
 
+    // FUNCION PARA OBTENER TAN SOLO LOS ÚLTIMOS 4 PRODUCTOS
     public static function getFourProducts() {
         $con = DB::getConnection();
         $stmt = $con->prepare("SELECT * FROM products ORDER BY id DESC LIMIT 4");
@@ -170,9 +116,8 @@ class ProductDAO {
     
         $products = [];
         while ($row = $result->fetch_assoc()) {
-            // Usa un operador ternario para decidir qué tipo de objeto crear
-            $product = $row['categoria'] === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) :
-                                                       new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
+            // Verifica si es una bebida
+            $product = $row['categoria'] === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) : new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
             
             $products[] = $product;
         }
