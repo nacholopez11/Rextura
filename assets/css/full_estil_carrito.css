@@ -36,37 +36,42 @@
 
 
 /*Variables CSS*/
-/* CSS CARRITO */
 
 /* CSS TITULO PAGINA */
-.texto-titulo{
+.texto-titulo {
     font-family: "OPTICrawClaredon-Book";
     font-size: 29px;
     color: #212529;
 }
-.paginacion{
-    max-width: 1260px !important;
-    margin: auto !important;
-    padding-top: 10px;
-}
-.texto-titulo-carrito{
+
+.texto-titulo-carrito {
     max-width: 1260px;
     margin: 0px;
     margin: auto !important;
 }
-.breadcrumb-item.active{
+
+/* CSS PAGINACION */
+.paginacion {
+    max-width: 1260px !important;
+    margin: auto !important;
+    padding-top: 10px;
+}
+
+.breadcrumb-item.active {
     color: #8F8178 !important;
     font-size: 18px;
     font-family: "Neutra Text TF Book";
     font-weight: 700 !important;
 }
-.breadcrumb-item.active::before{
+
+.breadcrumb-item.active::before {
     color: #8F8178 !important;
     font-size: 18px;
     font-family: "Neutra Text TF Book";
     font-weight: 700 !important;
 }
-.a-breadcrumb{
+
+.a-breadcrumb {
     text-decoration: none;
     color: #8F8178;
     font-size: 18px;
@@ -76,19 +81,19 @@
 
 
 /* CSS CONTENIDO CARRITO */
-.contenido{
+.contenido {
     display: flex;
     flex-direction: row;
     max-width: 1260px;
     margin: auto;
 }
-.tabla-contenido-carrito{
+
+.tabla-contenido-carrito {
     display: flex;
     flex-direction: column;
     justify-content:space-between !important;
     margin: auto;
 }
-
 
 /* CABECERA */
 .tabla-contenido-carrito thead {
@@ -159,12 +164,12 @@
     height: auto !important;
 }
 
-.producto-contenedor{
+.producto-contenedor {
     display: flex;
     flex-direction: row !important;
 }
 
-.producto-imagen{
+.producto-imagen {
     padding-right: 15px;
 }
 
@@ -176,7 +181,7 @@
     object-fit: contain; 
 }
 
-.tabla-contenido-carrito.fila-producto.col-precio-info{
+.tabla-contenido-carrito.fila-producto.col-precio-info {
     padding-top: 20px;
 }
 
@@ -210,11 +215,11 @@
 }
 
 /* BOTON CANTIDAD */
-.sitio-boton{
+.sitio-boton {
     padding: 20px 12px 30px 12px;
 }
 
-.boton-cantidad{
+.boton-cantidad {
     background-color: #F6F6F6;
     border-style:ridge;
     padding: 0px !important;
@@ -223,7 +228,7 @@
     border: 1px solid #838383;
 }
 
-.cantidad-numero{
+.cantidad-numero {
     padding: 10px 0px 10px 16px;
     text-align: left;
     color: #212529;
@@ -232,13 +237,13 @@
     font-weight: 100 !important;
 }
 
-.modificador{
+.modificador {
     flex-direction: column;
     align-content: space-between;
     
 }
 
-.modificadores{
+.modificadores {
     border: none;
     padding: 0px;
     margin: 0px;
@@ -246,10 +251,8 @@
     color: #8F8178;
 }
 
-
-
-
-.eliminar-icono{
+/* ELIMINAR PRODUCTO ENTERO */
+.eliminar-icono {
     display: flex;
     flex-direction: row;
     background-color: #fff;
@@ -257,19 +260,20 @@
     padding-left: 0px;
 }
 
-.basura{
+.basura {
     width: 18px;
     height: 18px;
 }
 
-.palabra-eliminar{
+.palabra-eliminar {
     color:#231F20 ;
     font-size: 14px;
     font-family: "Neutra Text TF Book";
 
 }
 
-.palabra-categoria{
+/* DETALLES PRODUCTO */
+.palabra-categoria {
     color: #8F8178;
     font-size: 16px;
     font-family: "Neutra Text TF Book";
@@ -283,14 +287,14 @@
     font-weight: 600 !important;
 }
 
-.s-titulo{
+.s-titulo {
     color: #212529;
     font-size: 16px;
     font-family: "Neutra Text TF Book";
     font-weight: 600 !important;
 }
 
-.palabra-precio{
+.palabra-precio {
     color: #212529;
     font-size: 24px;
     font-family: "Neutra Text TF Book";
@@ -298,7 +302,7 @@
     text-align: right;
 }
 
-.palabara-subtotal{
+.palabara-subtotal {
     color: #212529;
     font-size: 24px;
     font-family: "Neutra Text TF Book";
@@ -307,13 +311,13 @@
 }
 
 /* CSS RESUMEN CARRITO */
-.contenido-resumen{
+.contenido-resumen {
     display: flex;
     align-content: flex-end;
     flex-direction: column;
 }
 
-.titulo-uno{
+.titulo-uno {
     font-size: 20px;
     font-family: "Neutra Text TF SC";
     color: #212529;
@@ -322,18 +326,18 @@
     margin-bottom: 0px;
 }
 
-.texto-subtotal{
+.texto-subtotal {
     padding-bottom: 20px;
 }
 
-.mensaje-subtotal{
+.mensaje-subtotal {
     font-size: 15px;
     font-family: "Neutra Text TF Book";
     color: #212529;
     font-weight: 600;
 }
 
-.palabra-dos{
+.palabra-dos {
     font-size: 20px;
     font-family: "Neutra Text TF Book";
     color: #212529;
@@ -341,7 +345,7 @@
     padding-bottom: 20px;
 }
 
-.precio-uno{
+.precio-uno {
     font-size: 22px;
     font-family: "Neutra Text TF Book";
     color: #212529;
@@ -350,7 +354,7 @@
     padding-bottom: 20px;
 }
 
-.palabra-tres{
+.palabra-tres {
     font-size: 20px;
     font-family: "Neutra Text TF Book";
     color: #212529;
@@ -358,7 +362,7 @@
     padding: 12px 12px;
 }
 
-.precio-dos{
+.precio-dos {
     font-size: 20px;
     font-family: "Neutra Text TF Book";
     color: #212529;
@@ -367,7 +371,7 @@
     text-align: right;
 }
 
-a.seguir-comprando{
+a.seguir-comprando {
     margin-top: 23px;
     padding: 4px 24px;
     text-align: center;
@@ -376,10 +380,11 @@ a.seguir-comprando{
     font-family: "Neutra Text TF Book";
 }
 
-.total-pedido{
+.total-pedido {
     background-color: #F6F6F6;
 }
 
+/* BOTON */
 .boton-confirmar {
     background-color: #231F20;
     color: #fff;
@@ -401,8 +406,8 @@ a.seguir-comprando{
 
 
 
-/* CSS SECCION 2 */
-.titulos-secciones{
+/* CSS TITULO 2 */
+.titulos-secciones {
     text-align: center;
     padding-top: 80px;
     padding-bottom: 10px;
@@ -411,53 +416,56 @@ a.seguir-comprando{
 }
 
 /* CSS PRODUCTOS */
-section.container{
+section.container {
     max-width: 1440px;
     padding: 0px 90px !important;
 }
 
 
-div.container.text-center{
+div.container.text-center {
     max-width: 1260px;
     padding: 0px !important;
 }
 
-div.row{
+div.row {
     margin: auto;
-    
 }
-.producto-ind{
+
+.producto-ind {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
     padding: 0px 5px !important;
 }
-.card{
+
+.card {
     border-radius: 0% !important;
     border-style: none !important;
-    /* width: 313px; */
 }
-.card-img-top{
+
+.card-img-top {
     display: flex;
     justify-content: center;
     width: 100%;
     height: 100%;
     border-radius: 0% !important;
 }
-.card-body{
+
+.card-body {
     width: auto;
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-.div-premium{
+
+.div-premium {
     height: 45px;
 }
 
-.div-edad{
+.div-edad {
     height: 45px;
 }
 
-.nuevo{
+/* .nuevo{
     font-family:'Neutra Text TF';
     font-weight:400;
     font-size: 16px;
@@ -474,8 +482,9 @@ div.row{
     user-select: none;
     padding-top: 8px;
     padding-bottom: 8px;
-}
-.nombre-producto{
+} */
+
+.nombre-producto {
     color: rgb(35, 31, 32); 
     text-align: left;
     cursor: pointer;
@@ -493,13 +502,14 @@ div.row{
     text-decoration-style: solid;
     text-decoration-thickness: auto;
 }
-.precio{
+
+.precio {
     display: flex;
     justify-content:flex-start;
     padding: 0px !important;
 }
 
-.precio-normal{
+.precio-normal {
     box-sizing: border-box;
     color: rgb(143, 129, 120);
     display: inline;
@@ -513,7 +523,8 @@ div.row{
     padding-right: 15px;
     margin-left: 0 !important;
 }
-.precio-premium{
+
+.precio-premium {
     width: 60px;
     box-sizing: border-box;
     color: rgb(33, 37, 41);
@@ -526,7 +537,7 @@ div.row{
     user-select: none;
 }
 
-P.mayor-de-18{
+P.mayor-de-18 {
     color: #D10000;
     display: inline;
     font-family: "Neutra Text TF";
@@ -538,14 +549,14 @@ P.mayor-de-18{
     padding-left: 10px;
 }
 
-p.palabra-premium{
+p.palabra-premium {
     height: 15px;
     color: #212529;
     font-family: "Neutra Text TF";
     font-size: 10px;
 }
 
-p.palabra-mayor-de-18{
+p.palabra-mayor-de-18 {
     height: 15px;
     color: #D10000;
     font-family: "Neutra Text TF";
@@ -553,13 +564,14 @@ p.palabra-mayor-de-18{
     text-align: right;
 }
 
-.botones{
+/* BOTONES */
+.botones {
     display: flex;
     justify-content:flex-end;
     padding: 0px !important;
 }
 
-.boton-carrito{
+.boton-carrito {
     display: flex;
     align-items: flex-end;
 }
@@ -579,6 +591,7 @@ p.palabra-mayor-de-18{
     padding-right: 10px;
     padding-left: 10px;
 }
+
 .boton-principal:hover {
     background-color: #fff;
     color: black;
@@ -586,11 +599,11 @@ p.palabra-mayor-de-18{
     border-width: 0,1px !important;
 }
 
-.row{
+.row {
     padding-bottom: 20px;
 }
 
-p.no-art{
+p.no-art {
     color: #212529;
     font-family: "Neutra Text TF";
     font-size: 16px;
@@ -599,12 +612,14 @@ p.no-art{
 }
 
 
+/* MEDIAS */
 @media (min-width: 993px) {
-    section.container{
+    section.container {
         max-width: 1440px !important;
         padding: 0px 90px !important;
     }
-    .contenido-resumen{
+
+    .contenido-resumen { 
         padding-left: 215px !important;
     }
 }

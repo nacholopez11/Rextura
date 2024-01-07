@@ -41,8 +41,8 @@
 
 
 /*Variables CSS*/
- /* CSS TITULOS ENTRE SECCIONES */
-.titulos-secciones{
+ /* CSS SECCION 1 */
+.titulos-secciones {
     text-align: center;
     padding-top: 30px;
     padding-bottom: 10px;
@@ -51,11 +51,11 @@
     color: #212529;
     margin: 0px;
 }
-.banner-products{
+.banner-products {
     max-width: 1260px !important;
     padding-bottom: 30px;
 }
-.img-banner-products{
+.img-banner-products { 
     width: 100%;
 }
 
@@ -67,26 +67,28 @@ div.container {
     flex-wrap: wrap;
 }
 
-div.container.text-center{
+div.container.text-center {
     max-width: 1260px !important;
     padding: 0px !important;
 }
 
-
-div.row{
+div.row {
     margin: auto;
     padding-bottom: 20px;
 }
-.producto-ind{
+
+.producto-ind {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
     padding: 0px 5px !important;
 }
-.card{
+
+.card {
     border-radius: 0% !important;
     border-style: none !important;
 }
+
 .card-img-top {
     display: flex;
     justify-content: center;
@@ -95,38 +97,22 @@ div.row{
     border-radius: 0% !important;
     object-fit: cover; 
 }
+
 .card-body{
     width: auto;
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-.div-premium{
+
+.div-premium {
     height: 45px;
 }
 
-.div-edad{
+.div-edad {
     height: 45px;
 }
 
-.nuevo{
-    font-family:'Neutra Text TF';
-    font-weight:400;
-    font-size: 16px;
-    text-align: left;
-    width: 156.5px;
-    color: rgb(193, 193, 193);
-    display: block;
-    height: 24px;
-    line-height: 24px;
-    list-style-image: none;
-    list-style-position: outside;
-    list-style-type: none;
-    text-size-adjust: 100%;
-    user-select: none;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-.nombre-producto{
+.nombre-producto {
     color: rgb(35, 31, 32); 
     text-align: left;
     cursor: pointer;
@@ -144,13 +130,14 @@ div.row{
     text-decoration-style: solid;
     text-decoration-thickness: auto;
 }
-.precio{
+
+.precio {
     display: flex;
     justify-content:flex-start;
     padding: 0px !important;
 }
 
-.precio-normal{
+.precio-normal {
     box-sizing: border-box;
     color: rgb(143, 129, 120);
     display: inline;
@@ -164,7 +151,8 @@ div.row{
     padding-right: 15px;
     margin-left: 0 !important;
 }
-.precio-premium{
+
+.precio-premium {
     width: 60px;
     box-sizing: border-box;
     color: rgb(33, 37, 41);
@@ -177,7 +165,7 @@ div.row{
     user-select: none;
 }
 
-P.mayor-de-18{
+P.mayor-de-18 {
     color: #D10000;
     display: inline;
     font-family: "Neutra Text TF";
@@ -189,14 +177,14 @@ P.mayor-de-18{
     padding-left: 10px;
 }
 
-p.palabra-premium{
+p.palabra-premium {
     height: 15px;
     color: #212529;
     font-family: "Neutra Text TF";
     font-size: 10px;
 }
 
-p.palabra-mayor-de-18{
+p.palabra-mayor-de-18 {
     height: 15px;
     color: #D10000;
     font-family: "Neutra Text TF";
@@ -204,13 +192,14 @@ p.palabra-mayor-de-18{
     text-align: right;
 }
 
-.botones{
+/* BOTONES */
+.botones {
     display: flex;
     justify-content:flex-end;
     padding: 0px !important;
 }
 
-.boton-carrito{
+.boton-carrito {
     display: flex;
     align-items: flex-end;
 }
@@ -236,18 +225,14 @@ p.palabra-mayor-de-18{
     border-width: 0,1px !important;
 }
 
-.botonadd{
+.botonadd {
     padding-bottom: 10px;
 }
 
-.mayor-de-18{
-    color: red;
-}
 
-
-
+/* MEDIAS */
 @media (min-width: 992px) {
-    section.container{
+    section.container {
         max-width: 1440px !important;
         width: 100% !important;
         padding: 0px 90px !important;
@@ -261,7 +246,7 @@ p.palabra-mayor-de-18{
 
 
 @media (max-width: 992px) {
-    section.container{
+    section.container { 
         max-width: 1440px !important;
         padding: 0px 15px !important;
     }
@@ -272,20 +257,20 @@ p.palabra-mayor-de-18{
     }
 
     .producto-ind {
-        margin-bottom: 20px; /* Valor predeterminado para la mayoría de los productos */
+        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
     }
 
     .producto-ind:last-child {
-        margin-bottom: 0; /* Elimina el margen inferior del último producto */
+        margin-bottom: 0; 
     }
 
     .card-img-top {
-        border-radius: 0%; /* Puedes ajustar esto según tus preferencias */
+        border-radius: 0%; 
     }
 
     .card-body {
-        padding: 10px; /* Ajusta este valor según sea necesario */
+        padding: 10px; 
     }
 }

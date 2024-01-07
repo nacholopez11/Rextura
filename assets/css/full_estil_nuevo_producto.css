@@ -33,6 +33,7 @@
     src: url(../fonts/neutra-text-tf-sc.otf);
 }
 
+/* VARIABLES CSS */
 section.container {
     max-width: 1440px !important;
     width: 100% !important;
@@ -64,6 +65,7 @@ section.container {
     height: 8px; 
 }
 
+/* BOTONES */
 .boton-principal {
     background-color: #231F20;
     color: #fff;
@@ -85,6 +87,7 @@ section.container {
     border-width: 0,1px !important;
 }
 
+/* MEDIAS */
 @media (max-width: 1200px) {
     div.container {
         padding: 0px 15px 20px 15px !important;

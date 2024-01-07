@@ -34,16 +34,6 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /*Variables CSS*/
 /* CSS HEADER */
 .div-header {
@@ -56,187 +46,196 @@
 
 .div-fila-header {
     display: flex !important;
-    justify-content: space-between !important; /* Alinea los elementos al principio y al final */
+    justify-content: space-between !important; 
     width: 100%;
     padding: 0px 90px !important;
     margin: 0px !important;
 }
-    .buscador-header{
+
+.buscador-header {
+    display: flex;
+    justify-content: flex-start !important;
+    padding-left: 0px !important;
+}
+
+div.logo-header.col-4 {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-left: 40px !important;
+}
+
+.menu-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 0px !important;
+    margin-top: 5px !important;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+a.nav-link {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    align-content: center;
+    font-family: 'Neutra Text TF Light';
+    font-size: 20px !important;
+    color: #231F20;
+    font-weight: 600 !important;
+}
+
+a.nav-link:hover {
+    color: #000;
+}
+
+.nav-link-buscador {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+    align-content: center;
+    font-family: 'Neutra Text TF Light';
+    font-size: 20px;
+    color: #8F8178;
+    font-weight: 600 !important;
+    text-decoration: none;
+}
+
+.icon-menu-header {
+    display: flex !important;
+    margin-top: 10.5px !important;
+    margin-left: 25px !important;
+    margin-right: 5px !important;
+    max-height: 25px !important;
+}
+
+.nav-item-buscador {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    margin-top: 20px;
+}
+
+.icon-buscador {
+    display: flex !important;
+    margin-bottom: 4px !important;
+    margin-right: 5px !important;
+    margin-top: 2px !important;
+    max-height: 25px !important;
+}
+
+.div-buscador {
+    display: flex;
+    justify-content: flex-start !important;
+}
+
+.buscador {
+    padding: 0px;
+}
+
+
+/* MEDIAS */
+@media (max-width: 992px) {
+    .div-fila-header {
+        padding: 0px 15px !important;
+        position: relative; 
+    }
+
+    .navbar-toggler {
+        order: 1;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+
+    .as {
+        order: 2;
         display: flex;
-        justify-content: flex-start !important;
-        padding-left: 0px !important;
-    }
-    div.logo-header.col-4{
-        display: flex;
-        justify-content: center;
-        padding-top: 10px;
-        padding-left: 40px !important;
-    }
-    .menu-header{
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding-right: 0px !important;
-        margin-top: 5px !important;
-    }
-    .nav-item{
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-    }
-    a.nav-link{
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-        align-content: center;
-        font-family: 'Neutra Text TF Light';
-        font-size: 20px !important;
-        color: #231F20;
-        font-weight: 600 !important;
+        flex-direction: column;
+        align-items: flex-end;
+        position: absolute;
+        top: 60px;
+        right: 15px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 1000;
+        display: none; 
     }
 
-    a.nav-link:hover {
-        color: #000;
+    .navbar-toggler:focus + .as,
+    .as:hover {
+        display: flex; 
     }
 
-    .nav-link-buscador{
-        display: flex;
-        justify-content: flex-end;
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-        align-content: center;
-        font-family: 'Neutra Text TF Light';
-        font-size: 20px;
-        color: #8F8178;
-        font-weight: 600 !important;
-        text-decoration: none;
-    }
-    .icon-menu-header{
-        display: flex !important;
-        margin-top: 10.5px !important;
-        margin-left: 25px !important;
-        margin-right: 5px !important;
-        max-height: 25px !important;
-    }
-    .nav-item-buscador{
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        margin-top: 20px;
-    }
- 
-    .icon-buscador{
-        display: flex !important;
-        margin-bottom: 4px !important;
-        margin-right: 5px !important;
-        margin-top: 2px !important;
-        max-height: 25px !important;
-    }
-    .div-buscador{
-        display: flex;
-        justify-content: flex-start !important;
-    }
-    .buscador{
-        padding: 0px;
+    .navbar-nav {
+        text-align: right;
     }
 
-
-
-    @media (max-width: 992px) {
-        .div-fila-header {
-            padding: 0px 15px !important;
-            position: relative; /* Asegúrate de que la posición sea relativa */
-        }
-    
-        .navbar-toggler {
-            order: 1;
-            position: absolute;
-            top: 10px;
-            right: 15px;
-        }
-    
-        .as {
-            order: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            position: absolute;
-            top: 60px;
-            right: 15px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 10px;
-            z-index: 1000;
-            display: none; /* Oculta inicialmente el menú desplegable */
-        }
-    
-        .navbar-toggler:focus + .as,
-        .as:hover {
-            display: flex; /* Muestra el menú desplegable cuando el botón está enfocado o se coloca sobre él */
-        }
-    
-        .navbar-nav {
-            text-align: right;
-        }
-    
-        .nav-item {
-            display: block;
-            margin-top: 10px;
-            border-bottom: 1px solid #ccc; 
-        }
-    
-        img.icon-menu-header {
-            display: none !important;
-        }
-    
-        a.nav-link-buscador {
-            display: none !important;
-        }
-    
-        .icon-menu-header {
-            margin: 0;
-        }
-    
-        .menu-header {
-            flex-direction: column !important;
-            align-content: flex-end !important;
-            flex-wrap: wrap !important;
-            justify-content: center !important;
-        }
-    }
-    
-    @media (min-width: 993px) {
-        .navbar-toggler {
-            display: none; /* Oculta el botón en resoluciones mayores a 992px */
-        }
-    
-        .as {
-            display: flex !important; /* Muestra el menú desplegable en resoluciones mayores a 992px */
-        }
-    
-        .nav-item {
-            border-bottom: none; /* Elimina la línea divisoria entre elementos del menú */
-        }
-    
-        a.nav-link-buscador {
-            display: flex !important; /* Muestra el enlace del buscador en resoluciones mayores a 992px */
-        }
+    .nav-item {
+        display: block;
+        margin-top: 10px;
+        border-bottom: 1px solid #ccc; 
     }
 
-
-    @media (max-width: 1340px) and (min-width: 992px) {
-        a.nav-link {
-            display: none;
-        }
-
-        img.icon-menu-header {
-            margin-right: 0px !important;
-        }
+    img.icon-menu-header {
+        display: none !important;
     }
 
-    @media (max-width: 500px) {
-        .img-logo {
-            max-width: 200px;
-        }
+    a.nav-link-buscador {
+        display: none !important;
     }
+
+    .icon-menu-header {
+        margin: 0;
+    }
+
+    .menu-header {
+        flex-direction: column !important;
+        align-content: flex-end !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}
+
+@media (min-width: 993px) {
+    .navbar-toggler {
+        display: none; 
+    }
+
+    .as {
+        display: flex !important; 
+    }
+
+    .nav-item {
+        border-bottom: none; 
+    }
+
+    a.nav-link-buscador {
+        display: flex !important; 
+    }
+}
+
+
+@media (max-width: 1340px) and (min-width: 992px) {
+    a.nav-link {
+        display: none;
+    }
+
+    img.icon-menu-header {
+        margin-right: 0px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .img-logo {
+        max-width: 200px;
+    }
+}

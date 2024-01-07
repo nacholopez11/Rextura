@@ -40,8 +40,7 @@ class ProductDAO {
         $products = [];
     
         while ($row = $result->fetch_assoc()) {
-            $product = $tipo === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) :
-                                           new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
+            $product = $tipo === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) : new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
     
             $products[] = $product;
         }

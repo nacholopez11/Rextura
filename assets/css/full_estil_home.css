@@ -36,29 +36,31 @@
 
 
 /*Variables CSS*/
-
-/* CSS HOME */
 /* CSS SLIDER */
 section.container:first-child {
     padding-top: 30px;
 }
-section.container{
+
+section.container {
     max-width: 1440px;
     padding: 0px 90px !important;
 }
-.carousel-inner{
+
+.carousel-inner {
     margin-left:auto;
     margin-right: auto;
     padding-top: 10px;
 }
-.imagen-slider{
+
+.imagen-slider {
     align-items: center;
     object-fit:cover;
     background-repeat: no-repeat;
     width: 100%;
     height: 660px;
  }
-.div-texto-slider{
+
+.div-texto-slider {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -66,7 +68,8 @@ section.container{
     height: 660px;
     padding-left: 0px !important;
 }
-.texto1-slider{
+
+.texto1-slider {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -76,7 +79,8 @@ section.container{
     font-size: 36px;
     font-family: 'OPTICrawClaredon-Book';
 }
-.texto2-slider{
+
+.texto2-slider {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -88,11 +92,11 @@ section.container{
     font-weight: 700;
 }
 
-a.texto-boton{
+a.texto-boton {
     text-decoration: none;
 }
 
-.boton-slider-verde{
+.boton-slider-verde {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -108,7 +112,8 @@ a.texto-boton{
     margin-top: 100px;
     padding: 10px;
 }
-.boton-slider-gris{
+
+.boton-slider-gris {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -124,7 +129,8 @@ a.texto-boton{
     margin-top: 100px;
     padding: 10px;
 }
-.indicador-carusel{
+
+.indicador-carusel {
     max-width: 13px; 
     min-height: 13px;
     border-radius: 50%;
@@ -132,15 +138,12 @@ a.texto-boton{
     margin-right: 5px; 
     cursor: pointer; 
 }
+
 .indicador-carusel.active {
     background-color: white;
 }
 
-
-
-
- /* CSS SECCION 2 */
-.titulos-secciones{
+.titulos-secciones {
     text-align: center;
     padding-top: 80px;
     padding-bottom: 10px;
@@ -149,64 +152,50 @@ a.texto-boton{
 }
 
 /* CSS PRODUCTOS */
-div.container.text-center{
+div.container.text-center {
     max-width: 1260px;
     padding: 0px;
 }
 
-div.row{
+div.row {
     margin: auto;
 }
-.producto-ind{
+
+.producto-ind {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
     padding: 0px 5px !important;
 }
-.card{
+
+.card { 
     border-radius: 0% !important;
     border-style: none !important;
-    /* width: 313px; */
 }
-.card-img-top{
+
+.card-img-top {
     display: flex;
     justify-content: center;
     width: 100%;
     height: 100%;
     border-radius: 0% !important;
 }
-.card-body{
+
+.card-body {
     width: auto;
     padding-left: 0px !important;
     padding-right: 0px !important;
 }
-.div-premium{
+
+.div-premium {
     height: 45px;
 }
 
-.div-edad{
+.div-edad {
     height: 45px;
 }
 
-.nuevo{
-    font-family:'Neutra Text TF';
-    font-weight:400;
-    font-size: 16px;
-    text-align: left;
-    width: 156.5px;
-    color: rgb(193, 193, 193);
-    display: block;
-    height: 24px;
-    line-height: 24px;
-    list-style-image: none;
-    list-style-position: outside;
-    list-style-type: none;
-    text-size-adjust: 100%;
-    user-select: none;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-.nombre-producto{
+.nombre-producto {
     color: rgb(35, 31, 32); 
     text-align: left;
     cursor: pointer;
@@ -224,13 +213,14 @@ div.row{
     text-decoration-style: solid;
     text-decoration-thickness: auto;
 }
-.precio{
+
+.precio {
     display: flex;
     justify-content:flex-start;
     padding: 0px !important;
 }
 
-.precio-normal{
+.precio-normal {
     box-sizing: border-box;
     color: rgb(143, 129, 120);
     display: inline;
@@ -244,7 +234,8 @@ div.row{
     padding-right: 15px;
     margin-left: 0 !important;
 }
-.precio-premium{
+
+.precio-premium {
     width: 60px;
     box-sizing: border-box;
     color: rgb(33, 37, 41);
@@ -257,7 +248,7 @@ div.row{
     user-select: none;
 }
 
-P.mayor-de-18{
+P.mayor-de-18 {
     color: #D10000;
     display: inline;
     font-family: "Neutra Text TF";
@@ -269,14 +260,14 @@ P.mayor-de-18{
     padding-left: 10px;
 }
 
-p.palabra-premium{
+p.palabra-premium {
     height: 15px;
     color: #212529;
     font-family: "Neutra Text TF";
     font-size: 10px;
 }
 
-p.palabra-mayor-de-18{
+p.palabra-mayor-de-18 {
     height: 15px;
     color: #D10000;
     font-family: "Neutra Text TF";
@@ -284,13 +275,14 @@ p.palabra-mayor-de-18{
     text-align: right;
 }
 
-.botones{
+/* BOTONES */
+.botones {
     display: flex;
     justify-content:flex-end;
     padding: 0px !important;
 }
 
-.boton-carrito{
+.boton-carrito {
     display: flex;
     align-items: flex-end;
 }
@@ -310,6 +302,7 @@ p.palabra-mayor-de-18{
     padding-right: 10px;
     padding-left: 10px;
 }
+
 .boton-principal:hover {
     background-color: #fff;
     color: black;
@@ -397,7 +390,7 @@ p.palabra-mayor-de-18{
     justify-content: center !important;
     background-color: #e7e7e7;
 }
-.caja-contenido-info{
+.caja-contenido-info {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -409,13 +402,14 @@ p.palabra-mayor-de-18{
     padding-top: 50px !important;
     margin-top: 0px !important;
     align-self: center;
-    
 }
-.icon-info{
+
+.icon-info {
     max-width: 60px;
     max-height: 60px;
 }
-.texto-1-info{
+
+.texto-1-info {
     font-family: 'Neutra Text TF SC';
     font-weight: 1000px;
     color: #000;
@@ -424,7 +418,8 @@ p.palabra-mayor-de-18{
     margin-bottom: 20px;
     margin-top: 20px;
 }
-.texto-2-info{
+
+.texto-2-info {
     display: flex;
     color: #000;
     text-align: center;
@@ -433,13 +428,14 @@ p.palabra-mayor-de-18{
     margin-bottom: 0px;
 }
 
-
+/* MEDIAS */
 @media (min-width: 993px) {
-    section.container{
+    section.container {
         max-width: 1440px !important;
         padding: 0px 90px !important;
     }
-    .contenido-resumen{
+
+    .contenido-resumen {
         padding-left: 215px !important;
     }
 }
@@ -464,7 +460,6 @@ p.palabra-mayor-de-18{
     }
 
     .text-superpuesto {
-        /* width: 90%; */
         max-width: 910px !important; 
     }
 }
