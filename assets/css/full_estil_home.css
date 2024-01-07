@@ -145,7 +145,7 @@ a.texto-boton {
 
 .titulos-secciones {
     text-align: center;
-    padding-top: 80px;
+    padding-top: 75px;
     padding-bottom: 10px;
     font-family: 'ClaredonBTPro-Bold';
     font-size: 32px;
@@ -381,7 +381,7 @@ p.palabra-mayor-de-18 {
 /* CSS SECCION INFO */
 .seccion-4 {
     padding: 0px;
-    margin-top: 80px;
+    margin-top: 55px;
     background-color: #e7e7e7;
 }
 

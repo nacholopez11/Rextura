@@ -45,7 +45,7 @@
 .titulos-secciones {
     text-align: center;
     padding-top: 30px;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     font-family: 'ClaredonBTPro-Light';
     font-size: 32px;
     color: #212529;
@@ -53,7 +53,7 @@
 }
 .banner-products {
     max-width: 1260px !important;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
 }
 .img-banner-products { 
     width: 100%;
@@ -74,7 +74,7 @@ div.container.text-center {
 
 div.row {
     margin: auto;
-    padding-bottom: 20px;
+    padding-bottom: 24px;
 }
 
 .producto-ind {

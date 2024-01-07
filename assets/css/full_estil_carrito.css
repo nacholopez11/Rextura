@@ -54,7 +54,7 @@
 .paginacion {
     max-width: 1260px !important;
     margin: auto !important;
-    padding-top: 10px;
+    padding-top: 8px;
 }
 
 .breadcrumb-item.active {
@@ -409,7 +409,7 @@ a.seguir-comprando {
 /* CSS TITULO 2 */
 .titulos-secciones {
     text-align: center;
-    padding-top: 80px;
+    padding-top: 55px;
     padding-bottom: 10px;
     font-family: 'ClaredonBTPro-Bold';
     font-size: 32px;
@@ -600,7 +600,7 @@ p.palabra-mayor-de-18 {
 }
 
 .row {
-    padding-bottom: 20px;
+    padding-bottom: 24px;
 }
 
 p.no-art {
