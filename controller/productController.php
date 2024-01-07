@@ -250,6 +250,7 @@ class ProductController {
 
     // FUNCION PARA IR A PANEL DE EDICION DE UN PRODUCTO (ADMIN)
     public function edit() {
+        session_start();
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['action'] === 'edit') {
             $id = $_POST['id'];
             $product = ProductDAO::getProductById($id);
