@@ -7,6 +7,7 @@
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_home.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="./assets/css/full_estil_general.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 <body>
 <?php
@@ -55,59 +56,65 @@
     </div>
     <div class="container text-center">
         <div class="row">
-            <?php foreach ($products as $product): ?>
-                <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
-                        <div class="card">
-                            <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
-                            <div class="card-body">
-                                <h2 class="nombre-producto"><?=$product->getNombre(); ?></h2>
-                                <div class="row">
-                                    <div class="precio col-6">
-                                        <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
-                                        <div class="div-premium">
-                                            <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
-                                            <p class="palabra-premium">PREMIUM</p>
+        <?php foreach ($products as $product): ?>
+                    <article class="col-12 col-lg-3 col-md-3 col-sm-6 col-xs-12 producto-ind">
+                            <div class="card">
+                                <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
+                                <div class="card-body">
+                                    <h2 class="nombre-producto"><?=$product->getNombre(); ?></h2>
+                                    <div class="row">
+                                        <div class="precio col-6">
+                                            <p class="precio-normal"><?=$product->getPrecio(); ?>€</p>
+                                            <div class="div-premium">
+                                                <p class="precio-premium"><?=$product->getPrecioPremium(); ?>€</p>
+                                                <p class="palabra-premium">PREMIUM</p>
+                                            </div>
+                                            <?php if ($product instanceof Bebida && $product->getConAlcohol()): ?>
+                                            <div class="div-edad">
+                                                <p class="mayor-de-18">+18</p>
+                                                <p class="palabra-mayor-de-18">AÑOS</p>
+                                            </div>
+                                            <?php endif; ?>
                                         </div>
-                                        <?php if ($product instanceof Bebida && $product->getConAlcohol()): ?>
-                                        <div class="div-edad">
-                                            <p class="mayor-de-18">+18</p>
-                                            <p class="palabra-mayor-de-18">AÑOS</p>
-                                        </div>
-                                        <?php endif; ?>
                                     </div>
-                                    <div class="botones col-6">
+                                    <div class="botones">
                                         <!--COMPRUEBA QUE SE HA INICIADO SESION-->
                                         <?php if (isset($_SESSION['user'])) { ?>
                                             <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
                                             <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
-
                                                 <form class="boton-carrito" action=<?=url.'?controller=product&action=edit'?> method="post">
                                                     <!--BOTON EDITAR-->    
                                                     <input type="hidden" name="action" value="edit">
                                                     <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                    <button type="submit"class="boton-principal">Editar</button>
+                                                    <button type="submit"class="boton-confirmar">Editar</button>
                                                 </form>
                                                 <form class="boton-carrito" action=<?=url.'?controller=product&action=eliminarProduct'?> method="post">
                                                     <!--BOTON ELIMINAR-->
                                                     <input type="hidden" name="action" value="eliminar">
                                                     <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                    <button type="submit"class="boton-principal">Eliminar</button>
+                                                    <button type="submit"class="boton-confirmar">Eliminar</button>
                                                 </form>
                                             <?php } else { ?>
                                                 <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
                                                     <!--BOTON AÑADIR-->
                                                     <input type="hidden" name="action" value="añadirCarrito">
                                                     <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                    <button type="submit"class="boton-principal">Añadir</button>
+                                                    <button type="submit"class="boton-confirmar">Añadir</button>
                                                 </form>
                                             <?php } ?>
+                                        <?php } else { ?>
+                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
+                                                <!--BOTON AÑADIR-->
+                                                <input type="hidden" name="action" value="añadirCarrito">
+                                                <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                <button type="submit"class="boton-confirmar">Añadir</button>
+                                            </form>
                                         <?php } ?>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                </article>
-            <?php endforeach; ?>
+                    </article>
+                <?php endforeach; ?>
         </div>
     </div>
 </section>

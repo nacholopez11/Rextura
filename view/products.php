@@ -7,6 +7,7 @@
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_products.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="./assets/css/full_estil_general.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 <body>
 <?php
@@ -68,34 +69,40 @@
                                             </div>
                                             <?php endif; ?>
                                         </div>
-                                        <div class="botones col-6">
-                                            <!--COMPRUEBA QUE SE HA INICIADO SESION-->
-                                            <?php if (isset($_SESSION['user'])) { ?>
-                                                <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
-                                                <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
-
-                                                    <form class="boton-carrito" action=<?=url.'?controller=product&action=edit'?> method="post">
-                                                        <!--BOTON EDITAR-->    
-                                                        <input type="hidden" name="action" value="edit">
-                                                        <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                        <button type="submit"class="boton-principal">Editar</button>
-                                                    </form>
-                                                    <form class="boton-carrito" action=<?=url.'?controller=product&action=eliminarProduct'?> method="post">
-                                                        <!--BOTON ELIMINAR-->
-                                                        <input type="hidden" name="action" value="eliminar">
-                                                        <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                        <button type="submit"class="boton-principal">Eliminar</button>
-                                                    </form>
-                                                <?php } else { ?>
-                                                    <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
-                                                        <!--BOTON AÑADIR-->
-                                                        <input type="hidden" name="action" value="añadirCarrito">
-                                                        <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                        <button type="submit"class="boton-principal">Añadir</button>
-                                                    </form>
-                                                <?php } ?>
+                                    </div>
+                                    <div class="botones">
+                                        <!--COMPRUEBA QUE SE HA INICIADO SESION-->
+                                        <?php if (isset($_SESSION['user'])) { ?>
+                                            <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
+                                            <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
+                                                <form class="boton-carrito" action=<?=url.'?controller=product&action=edit'?> method="post">
+                                                    <!--BOTON EDITAR-->    
+                                                    <input type="hidden" name="action" value="edit">
+                                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                    <button type="submit"class="boton-confirmar">Editar</button>
+                                                </form>
+                                                <form class="boton-carrito" action=<?=url.'?controller=product&action=eliminarProduct'?> method="post">
+                                                    <!--BOTON ELIMINAR-->
+                                                    <input type="hidden" name="action" value="eliminar">
+                                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                    <button type="submit"class="boton-confirmar">Eliminar</button>
+                                                </form>
+                                            <?php } else { ?>
+                                                <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
+                                                    <!--BOTON AÑADIR-->
+                                                    <input type="hidden" name="action" value="añadirCarrito">
+                                                    <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                    <button type="submit"class="boton-confirmar">Añadir</button>
+                                                </form>
                                             <?php } ?>
-                                        </div>
+                                        <?php } else { ?>
+                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
+                                                <!--BOTON AÑADIR-->
+                                                <input type="hidden" name="action" value="añadirCarrito">
+                                                <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                                <button type="submit"class="boton-confirmar">Añadir</button>
+                                            </form>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>

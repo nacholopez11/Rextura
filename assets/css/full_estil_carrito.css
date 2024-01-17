@@ -1,44 +1,6 @@
-@charset "utf-8";
-/* CSS Document */
-
-/* FONTS */
-/* Letra grande banner slider */
-@font-face {
-    font-family: "OPTICrawClaredon-Book";
-    src: url(../fonts/OPTICrawClarendon-Book.otf);
-}
-/* Titulos secciones */
-@font-face {
-    font-family: "ClaredonBTPro-Bold";
-    src: url(../fonts/ClarendonBTPro-Bold.ttf);
-}
-/* Primaria normal */
-@font-face {
-    font-family: "Neutra Text TF Book";
-    src: url(../fonts/Neutra\ Text\ TF\ Book.otf);
-}
-/* Primaria gruesa */
-@font-face {
-    font-family: "Neutra Text TF Bold";
-    src: url(../fonts/neutra-text-tf-bold.otf);
-}
-/* Primaria fina */
-@font-face {
-    font-family: "Neutra Text TF Light";
-    src: url(../fonts/neutra-text-tf-light-5871e0fe13bff.otf);
-}
-/* Letra menu y banner slider */
-@font-face {
-    font-family: "Neutra Text TF SC";
-    src: url(../fonts/neutra-text-tf-sc.otf);
-}
-
-
-
 /*Variables CSS*/
-
 /* CSS TITULO PAGINA */
-.texto-titulo {
+/* .texto-titulo {
     font-family: "OPTICrawClaredon-Book";
     font-size: 29px;
     color: #212529;
@@ -48,13 +10,13 @@
     max-width: 1260px;
     margin: 0px;
     margin: auto !important;
-}
+} */
 
 /* CSS PAGINACION */
-.paginacion {
+/* .paginacion {
     max-width: 1260px !important;
     margin: auto !important;
-    padding-top: 8px;
+    padding-top: 10px;
 }
 
 .breadcrumb-item.active {
@@ -77,7 +39,7 @@
     font-size: 18px;
     font-family: "Neutra Text TF Book";
     font-weight: 700 !important;
-}
+} */
 
 
 /* CSS CONTENIDO CARRITO */
@@ -396,6 +358,7 @@ a.seguir-comprando {
     height: 100%;
     margin-top: 16px;
     border-style:solid;
+    border-color: #231F20;
 }
 .boton-confirmar:hover {
     background-color: #fff;

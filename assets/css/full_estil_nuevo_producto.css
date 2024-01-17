@@ -1,38 +1,3 @@
-@charset "utf-8";
-/* CSS Document */
-
-/* FONTS */
-/* Letra grande banner slider */
-@font-face {
-    font-family: "OPTICrawClaredon-Book";
-    src: url(../fonts/OPTICrawClarendon-Book.otf);
-}
-/* Titulos secciones */
-@font-face {
-    font-family: "ClaredonBTPro-Bold";
-    src: url(../fonts/ClarendonBTPro-Bold.ttf);
-}
-/* Primaria normal */
-@font-face {
-    font-family: "Neutra Text TF Book";
-    src: url(../fonts/Neutra\ Text\ TF\ Book.otf);
-}
-/* Primaria gruesa */
-@font-face {
-    font-family: "Neutra Text TF Bold";
-    src: url(../fonts/neutra-text-tf-bold.otf);
-}
-/* Primaria fina */
-@font-face {
-    font-family: "Neutra Text TF Light";
-    src: url(../fonts/neutra-text-tf-light-5871e0fe13bff.otf);
-}
-/* Letra menu y banner slider */
-@font-face {
-    font-family: "Neutra Text TF SC";
-    src: url(../fonts/neutra-text-tf-sc.otf);
-}
-
 /* VARIABLES CSS */
 section.container {
     max-width: 1440px !important;

@@ -7,6 +7,7 @@
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_register.css" rel="stylesheet" type="text/css" media="screen">
+    <link href="./assets/css/full_estil_general.css" rel="stylesheet" type="text/css" media="screen">
 </head>
 <body>
 <?php
@@ -38,7 +39,7 @@ include_once 'header.php';
                         <label class="n-label" for="password">Contraseña:</label>
                         <input type="password" name="password" required>
 
-                        <button class="boton-principal" type="submit">Registrarse</button>
+                        <button class="boton-confirmar" type="submit">Registrarse</button>
                     </form>
                 </div>             
             </div>
@@ -52,7 +53,7 @@ include_once 'header.php';
                         <label class="n-label" for="password">Contraseña:</label>
                         <input type="password" id="password" name="password" required>
 
-                        <button class="boton-principal" type="submit">Iniciar Sesión</button>
+                        <button class="boton-confirmar" type="submit">Iniciar Sesión</button>
                     </form>
                 </div>
             </div>
