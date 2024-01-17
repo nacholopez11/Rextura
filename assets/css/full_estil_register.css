@@ -5,47 +5,6 @@
     padding: 0px;
 }
 
-/* .texto-titulo {
-    font-family: "OPTICrawClaredon-Book";
-    font-size: 30px;
-    color: #212529;
-}
-
-.texto-titulo-carrito {
-    max-width: 1260px;
-    margin: 0px;
-    margin: auto !important;
-} */
-
-/* CSS PAGINACION*/
-/* .paginacion {
-    max-width: 1260px !important;
-    margin: auto !important;
-    padding-top: 10px;
-}
-
-.breadcrumb-item.active {
-    color: #8F8178 !important;
-    font-size: 18px;
-    font-family: "Neutra Text TF Book";
-    font-weight: 700 !important;
-}
-
-.breadcrumb-item.active::before {
-    color: #8F8178 !important;
-    font-size: 18px;
-    font-family: "Neutra Text TF Book";
-    font-weight: 700 !important;
-}
-
-.a-breadcrumb {
-    text-decoration: none;
-    color: #8F8178;
-    font-size: 18px;
-    font-family: "Neutra Text TF Book";
-    font-weight: 700 !important;
-} */
-
 /* CSS SECCION REGISTRO/LOGIN*/
 .row {
     display: flex;
@@ -64,30 +23,14 @@ input {
     margin-bottom: 16px !important;
 }
 
-.boton-principal {
-    background-color: #231F20;
-    color: #fff;
-    font-family: "Neutra Text TF";
-    font-size: 18px;
-    font-weight: 600 !important;
-    text-align: center;
-    width: 100%;
-    height: auto;
-    margin-top: 16px;
-    border-style:solid;
-    padding: 10px 0px;
-    margin-top: 20px;
-}
-.boton-principal:hover {
-    background-color: #fff;
-    color: black;
-    border: black 3px double; 
-    border-width: 0,1px !important;
+/* CSS ESPECIFICO BOTON EN ESTA PAGINA */
+.boton-confirmar {
+    font-size: 18px !important;
+    min-height: 52px !important;
 }
 
 .container {
     display: flex;
-    /* margin-top: 20px; */
     align-items: center;
     flex-direction: column;
     padding: 0px 50px 100px 50px !important;

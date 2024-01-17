@@ -165,10 +165,8 @@ include_once 'controller/productController.php';
         </div>
         <div class="container text-center">
             <div class="row fila-productos">
-                <?php 
-                $products = ProductDAO::getFourProducts(); 
-                foreach ($products as $product) { 
-                ?>
+                <?php foreach ($products as $product) { 
+?>
                     <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
                             <div class="card">
                                 <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
@@ -188,14 +186,14 @@ include_once 'controller/productController.php';
                                             </div>
                                             <?php endif; ?>
                                         </div>
-                                        <div class="botones col-6">
-                                            <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarritoDesdeCarrito'?> method="post">
-                                                <!--BOTON AÑADIR-->
-                                                <input type="hidden" name="action" value="añadirCarrito">
-                                                <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                <button type="submit"class="boton-principal">Añadir</button>
-                                            </form>
-                                        </div>
+                                    </div>
+                                    <div class="botones">
+                                        <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarritoDesdeCarrito'?> method="post">
+                                            <!--BOTON AÑADIR-->
+                                            <input type="hidden" name="action" value="añadirCarrito">
+                                            <input type="hidden" name="id" value="<?=$product->getId(); ?>">
+                                            <button type="submit"class="boton-confirmar">Añadir</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

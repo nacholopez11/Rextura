@@ -1,47 +1,4 @@
 /*Variables CSS*/
-/* CSS TITULO PAGINA */
-/* .texto-titulo {
-    font-family: "OPTICrawClaredon-Book";
-    font-size: 29px;
-    color: #212529;
-}
-
-.texto-titulo-carrito {
-    max-width: 1260px;
-    margin: 0px;
-    margin: auto !important;
-} */
-
-/* CSS PAGINACION */
-/* .paginacion {
-    max-width: 1260px !important;
-    margin: auto !important;
-    padding-top: 10px;
-}
-
-.breadcrumb-item.active {
-    color: #8F8178 !important;
-    font-size: 18px;
-    font-family: "Neutra Text TF Book";
-    font-weight: 700 !important;
-}
-
-.breadcrumb-item.active::before {
-    color: #8F8178 !important;
-    font-size: 18px;
-    font-family: "Neutra Text TF Book";
-    font-weight: 700 !important;
-}
-
-.a-breadcrumb {
-    text-decoration: none;
-    color: #8F8178;
-    font-size: 18px;
-    font-family: "Neutra Text TF Book";
-    font-weight: 700 !important;
-} */
-
-
 /* CSS CONTENIDO CARRITO */
 .contenido {
     display: flex;
@@ -234,6 +191,8 @@
 
 }
 
+
+
 /* DETALLES PRODUCTO */
 .palabra-categoria {
     color: #8F8178;
@@ -346,37 +305,13 @@ a.seguir-comprando {
     background-color: #F6F6F6;
 }
 
-/* BOTON */
-.boton-confirmar {
-    background-color: #231F20;
-    color: #fff;
-    font-family: "Neutra Text TF";
-    font-size: 24px;
-    font-weight: 600 !important;
-    text-align: center;
-    width: 100%;
-    height: 100%;
-    margin-top: 16px;
-    border-style:solid;
-    border-color: #231F20;
-}
-.boton-confirmar:hover {
-    background-color: #fff;
-    color: black;
-    border: black 3px double; 
-    border-width: 0,1px !important;
-}
-
-
 
 /* CSS TITULO 2 */
 .titulos-secciones {
-    text-align: center;
-    padding-top: 55px;
-    padding-bottom: 10px;
-    font-family: 'ClaredonBTPro-Bold';
-    font-size: 32px;
+    padding-top: 55px !important;
 }
+
+
 
 /* CSS PRODUCTOS */
 section.container {
@@ -528,17 +463,6 @@ p.palabra-mayor-de-18 {
 }
 
 /* BOTONES */
-.botones {
-    display: flex;
-    justify-content:flex-end;
-    padding: 0px !important;
-}
-
-.boton-carrito {
-    display: flex;
-    align-items: flex-end;
-}
-
 .boton-principal {
     background-color: black;
     color: #fff;
@@ -560,10 +484,6 @@ p.palabra-mayor-de-18 {
     color: black;
     border: black 3px double; 
     border-width: 0,1px !important;
-}
-
-.row {
-    padding-bottom: 24px;
 }
 
 p.no-art {

@@ -99,6 +99,7 @@ class ProductController {
     // FUNCION PARA IR A PAGINA DE CARRITO
     public function panelCompra() {
         session_start();
+        $products = ProductDAO::getFourProducts();
         include_once 'view/header.php';
         include_once 'view/panelCompra.php';
         include_once 'view/footer.php';

@@ -107,12 +107,11 @@ a.texto-boton {
 }
 
 .titulos-secciones {
-    text-align: center;
-    padding-top: 75px;
-    padding-bottom: 10px;
-    font-family: 'ClaredonBTPro-Bold';
-    font-size: 32px;
+    padding-top: 75px !important;
 }
+
+
+
 
 /* CSS PRODUCTOS */
 div.container.text-center {
