@@ -1,17 +1,14 @@
 <?php
 // CLASE USUARIO
 class Usuario {
-    protected $id;
-    protected $username;
-    protected $password;
-    protected $rol;
+    public $id;
+    public $username;
+    public $password;
+    public $rol;
     
     
-    public function __construct(/*$id, $username, $password, $rol*/) {
-        // $this->id = $id; 
-        // $this->username = $username;
-        // $this->password = $password; 
-        // $this->rol = $rol; 
+    public function __construct() {
+        
     }
 
     /**

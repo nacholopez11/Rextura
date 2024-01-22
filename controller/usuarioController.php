@@ -25,15 +25,20 @@ class UsuarioController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['username'];
             $password = $_POST['password'];
-
+    
             // Obtiene el usuario de la base de datos
             $user = UsuarioDAO::getUserByUsername($username);
-
+    
             // Verifica las credenciales
             if ($user && password_verify($password, $user->getPassword())) {
-                // Crea un objeto Usuario y almacénalo en la sesión
-                $usuario = new Usuario($user->getId(), $user->getUsername(), $user->getPassword(), $user->getRol());
                 session_start();
+
+                // Crea un objeto Usuario y almacena información esencial en la sesión
+                $usuario = new Usuario();
+                $usuario->setId($user-> getId());
+                $usuario->setUsername($user-> getUsername());
+                $usuario->setRol($user-> getRol());
+
                 $_SESSION['user'] = $usuario;
 
                 header("Location: index.php?controller=product&action=panelHome");

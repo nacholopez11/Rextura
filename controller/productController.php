@@ -15,6 +15,15 @@ class ProductController {
     public function añadirCarrito() {
         session_start();
     
+        // Verifica si el usuario ha iniciado sesión
+        if (!isset($_SESSION['user'])) {
+            // Si el usuario no ha iniciado sesión, redirige a la página de inicio de sesión
+            header("Location: index.php?controller=usuario&action=index");
+            exit();
+        }
+    
+        // Continúa con el código solo si el usuario ha iniciado sesión
+    
         if (!isset($_SESSION['selecciones'])) {
             $_SESSION['selecciones'] = array();
         }
@@ -142,75 +151,70 @@ class ProductController {
     public function confirmar() {
         session_start();
     
-        // Verifica si hay productos en el carrito
-        if (isset($_SESSION['selecciones']) && !empty($_SESSION['selecciones'])) {
-            // Obtén la información del carrito
-            $carritoInfo = array();
-            $totalPedido = 0; // Inicializa el total del pedido
+        // Verifica si el usuario está autenticado
+        if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Usuario) {
+            // Verifica si hay productos en el carrito
+            if (isset($_SESSION['selecciones']) && !empty($_SESSION['selecciones'])) {
+                // Obtiene la información del carrito
+                $carritoInfo = array();
+                $totalPedido = 0;
     
-            foreach ($_SESSION['selecciones'] as $pedido) {
-                if ($pedido->getCantidad() > 0) {
-                    $productoInfo = array(
-                        'id' => $pedido->getProducto()->getId(),
-                        'nombre' => $pedido->getProducto()->getNombre(),
-                        'precio' => $pedido->getProducto()->getPrecio(),
-                        'cantidad' => $pedido->getCantidad(),
-                        'subtotal' => $pedido->devuelvePrecioTotal()
-                    );
-                    $carritoInfo[] = $productoInfo;
-        
-                    // Suma al total del pedido
-                    $totalPedido += $pedido->devuelvePrecioTotal();
+                foreach ($_SESSION['selecciones'] as $pedido) {
+                    if ($pedido->getCantidad() > 0) {
+                        $productoInfo = array(
+                            'id' => $pedido->getProducto()->getId(),
+                            'nombre' => $pedido->getProducto()->getNombre(),
+                            'precio' => $pedido->getProducto()->getPrecio(),
+                            'cantidad' => $pedido->getCantidad(),
+                            'subtotal' => $pedido->devuelvePrecioTotal()
+                        );
+                        $carritoInfo[] = $productoInfo;
+    
+                        // Suma al total del pedido
+                        $totalPedido += $pedido->devuelvePrecioTotal();
+                    }
                 }
-            }
     
-            // Obtiene el nombre de usuario del usuario actual desde la sesión
-            // $username = $_SESSION['user']->getUsername();
+                // Obtiene el usuario actual
+                $user = $_SESSION['user'];
 
-            if ($_SESSION['user'] instanceof Usuario) {
-                // $_SESSION['user'] es una instancia de la clase Usuario
-                $username = $_SESSION['user']->getUsername();
-                
-                // Continúa con el resto del código...
-                
-            } else {
-                // $_SESSION['user'] no es una instancia de la clase Usuario
-                // Puedes manejar el caso en el que $_SESSION['user'] no sea lo que esperas
-                echo 'El usuario no es una instancia de la clase Usuario.';
-            }
+                // Obtiene el id del usuario actual
+                $usuario_id = $user->getId();
     
-            // Obtiene el id del usuario actual usando la función getUserId de UsuarioDAO
-            $usuario_id = UsuarioDAO::getUserId($username);
-    
-            // Inserta el pedido en la tabla pedidos
-            $con = DB::getConnection();
-            $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, total) VALUES (?, ?)");
-            $stmt->bind_param("id", $usuario_id, $totalPedido);
-            $stmt->execute();
-            $pedido_id = $stmt->insert_id; // Obtiene el ID del pedido recién insertado
-    
-            // Inserta los productos del carrito en la tabla productos_pedido
-            foreach ($carritoInfo as $producto) {
-                $stmt = $con->prepare("INSERT INTO productos_pedido (pedido_id, producto_id, precio, cantidad, subtotal) VALUES (?, ?, ?, ?, ?)");
-                $stmt->bind_param("iisid", $pedido_id, $producto['id'], $producto['precio'], $producto['cantidad'], $producto['subtotal']);
+                // Inserta el pedido en la tabla pedidos
+                $con = DB::getConnection();
+                $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, total) VALUES (?, ?)");
+                $stmt->bind_param("id", $usuario_id, $totalPedido);
                 $stmt->execute();
+                $pedido_id = $stmt->insert_id; 
+    
+                // Inserta los productos del carrito en la tabla productos_pedido
+                foreach ($carritoInfo as $producto) {
+                    $stmt = $con->prepare("INSERT INTO productos_pedido (pedido_id, producto_id, precio, cantidad, subtotal) VALUES (?, ?, ?, ?, ?)");
+                    $stmt->bind_param("iisid", $pedido_id, $producto['id'], $producto['precio'], $producto['cantidad'], $producto['subtotal']);
+                    $stmt->execute();
+                }
+    
+                // Limpia el carrito en la sesión
+                unset($_SESSION['selecciones']);
+    
+                // Después de insertar el pedido en la tabla pedidos
+                $pedido_id = $stmt->insert_id;
+    
+                // Actualiza la cookie para incluir el ID del usuario y el ID del pedido
+                $carritoInfo['usuario_id'] = $usuario_id;
+                $carritoInfo['pedido_id'] = $pedido_id;
+                $carritoJson = json_encode($carritoInfo);
+                setcookie('carrito', $carritoJson, time() + (30 * 1), "/"); // Cookie válida por 30 días
+    
+                $con->close();
+    
+                header("Location: index.php?controller=product&action=panelHome");
+                exit();
             }
-    
-            // Limpia el carrito en la sesión
-            unset($_SESSION['selecciones']);
-    
-            // Después de insertar el pedido en la tabla pedidos
-            $pedido_id = $stmt->insert_id;
-    
-            // Actualiza la cookie para incluir el ID del usuario y el ID del pedido
-            $carritoInfo['usuario_id'] = $usuario_id;
-            $carritoInfo['pedido_id'] = $pedido_id;
-            $carritoJson = json_encode($carritoInfo);
-            setcookie('carrito', $carritoJson, time() + (30 * 1), "/"); // Cookie válida por 30 días
-    
-            $con->close();
-
-            header("Location: index.php?controller=product&action=panelHome");
+        } else {
+            // Redirige al usuario a la página de inicio de sesión si no está autenticado
+            header("Location: index.php?controller=usuario&action=index");
             exit();
         }
     }

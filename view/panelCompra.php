@@ -142,7 +142,7 @@ include_once 'controller/productController.php';
                 </table>
                 <form action=<?=url.'?controller=product&action=confirmar'?> method='post'>
                     <td class="boton-confirmar">
-                        <button class="boton-confirmar" type="submit"> 
+                        <button class="boton-confirmar-pedido" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
                         </button>
                     </td>                  
