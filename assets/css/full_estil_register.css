@@ -27,6 +27,14 @@ input {
 .boton-confirmar {
     font-size: 18px !important;
     min-height: 52px !important;
+    visibility: visible !important;
+}
+
+.boton-confirmar:hover {
+    background-color: #fff;
+    color: black;
+    border: black 3px double; 
+    border-width: 0,1px !important;
 }
 
 .container {

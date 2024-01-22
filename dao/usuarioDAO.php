@@ -21,16 +21,16 @@ class UsuarioDAO{
         $stmt->execute();
         $result = $stmt->get_result();
         $con->close();
-
+    
         if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-
+            $user = $result->fetch_object();
+    
             // Verificar la contraseña
-            if (password_verify($password, $user['password'])) {
+            if (password_verify($password, $user->password)) {
                 return $user;
             }
         }
-
+    
         return null;
     }
     
@@ -42,23 +42,31 @@ class UsuarioDAO{
         $stmt->execute();
         $result = $stmt->get_result();
         $con->close();
-        return $result->fetch_assoc();
+        
+        // Verifica si se encontraron resultados
+        if ($result && $user = $result->fetch_object('Usuario')) {
+            return $user;
+        }
+
+        return null; // Retorna null si no se encontró el usuario
     }
 
+
+
     // FUNCION PARA OBTENEREL ID DE UN USUARIO QUE LE PASAS EL NOMBRE, DESPUES SE USA PARA ASIGNAR UN USUARIO A UN PEDIDO
-    public static function getUserId($username) {
+        public static function getUserId($username) {
         $con = DB::getConnection();
         $stmt = $con->prepare("SELECT id FROM usuarios WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
         $con->close();
-
+    
         if ($result->num_rows > 0) {
-            $user = $result->fetch_assoc();
-            return $user['id'];
+            $user = $result->fetch_object();
+            return $user->id;
         }
-
+    
         return null;
     }
 }

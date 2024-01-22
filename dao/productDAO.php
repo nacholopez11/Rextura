@@ -30,24 +30,26 @@ class ProductDAO {
     }
 
     // FUNCION PARA RECUPERAR TODOS LOS PRODUCTOS SEGUN LA CATEGORIA
-    public static function getAllProductsByType($tipo){
+       public static function getAllProductsByType($tipo){
         $con = DB::getConnection(); 
         $stmt = $con->prepare("SELECT * FROM products WHERE categoria=?");
-        $stmt->bind_param("s",$tipo);
+        $stmt->bind_param("s", $tipo);
         $stmt->execute();
         $result = $stmt->get_result();
         $con->close();
         $products = [];
     
-        while ($row = $result->fetch_assoc()) {
-            $product = $tipo === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) : new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
+        while ($row = $result->fetch_object()) {
+            $product = $tipo === 'Bebida' ? new Bebida($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id, $row->conAlcohol) : new Product($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id);
     
             $products[] = $product;
         }
     
         return $products;
     }
-   
+
+
+
     // FUNCION PARA RECUPERAR UN PRODUCTO SEGUN EL ID QUE LE PASAS
     public static function getProductById($id) {
         $con = DB::getConnection();
@@ -106,7 +108,7 @@ class ProductDAO {
     }
 
     // FUNCION PARA OBTENER TAN SOLO LOS ÚLTIMOS 4 PRODUCTOS
-    public static function getFourProducts() {
+        public static function getFourProducts() {
         $con = DB::getConnection();
         $stmt = $con->prepare("SELECT * FROM products ORDER BY id DESC LIMIT 4");
         $stmt->execute();
@@ -114,14 +116,16 @@ class ProductDAO {
         $con->close();
     
         $products = [];
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_object()) {
             // Verifica si es una bebida
-            $product = $row['categoria'] === 'Bebida' ? new Bebida($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id'], $row['conAlcohol']) : new Product($row['id'], $row['nombre'], $row['categoria'], $row['precio'], $row['precio_premium'], $row['image'], $row['categoria_id']);
-            
+            $product = $row->categoria === 'Bebida' ? new Bebida($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id, $row->conAlcohol) : new Product($row->id, $row->nombre, $row->categoria, $row->precio, $row->precio_premium, $row->image, $row->categoria_id);
+    
             $products[] = $product;
         }
     
         return $products;
     }
+
+
 }
 ?>

@@ -165,7 +165,19 @@ class ProductController {
             }
     
             // Obtiene el nombre de usuario del usuario actual desde la sesión
-            $username = $_SESSION['user']['username'];
+            // $username = $_SESSION['user']->getUsername();
+
+            if ($_SESSION['user'] instanceof Usuario) {
+                // $_SESSION['user'] es una instancia de la clase Usuario
+                $username = $_SESSION['user']->getUsername();
+                
+                // Continúa con el resto del código...
+                
+            } else {
+                // $_SESSION['user'] no es una instancia de la clase Usuario
+                // Puedes manejar el caso en el que $_SESSION['user'] no sea lo que esperas
+                echo 'El usuario no es una instancia de la clase Usuario.';
+            }
     
             // Obtiene el id del usuario actual usando la función getUserId de UsuarioDAO
             $usuario_id = UsuarioDAO::getUserId($username);
@@ -205,7 +217,7 @@ class ProductController {
 
 
     // FUNCION PARA RECUPERAR ÚLTIMO PEDIDO DE CADA USUARIO
-    public function recuperarUltimoPedido() {
+        public function recuperarUltimoPedido() {
         session_start();
     
         // Verifica si hay un usuario activo
@@ -222,8 +234,8 @@ class ProductController {
             $stmt->close();
     
             // Verifica si se hay el último pedido
-            if ($result && $row = $result->fetch_assoc()) {
-                $ultimoPedidoID = $row['ultimo_pedido_id'];
+            if ($result && $row = $result->fetch_object()) {
+                $ultimoPedidoID = $row->ultimo_pedido_id;
     
                 // Consulta los productos asociados al último pedido
                 $stmt = $con->prepare("SELECT * FROM productos_pedido WHERE pedido_id = ?");
@@ -248,6 +260,8 @@ class ProductController {
             }
         }
     }
+
+
 
     // FUNCION PARA IR A PANEL DE EDICION DE UN PRODUCTO (ADMIN)
     public function edit() {

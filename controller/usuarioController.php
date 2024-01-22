@@ -5,7 +5,6 @@ include_once './dao/usuarioDAO.php';
 class UsuarioController {
     // FUNCION PRINCIPAL
     public function index() {  
-
         include_once 'view\register.php'; 
     }
 
@@ -20,7 +19,7 @@ class UsuarioController {
         header("Location: index.php?controller=product&action=panelHome");
     }
 
-    // FUNCION PARA  INICIAR SESION
+    // FUNCION PARA INICIAR SESION
     public function login() {
         // Verifica si se ha enviado el formulario de login
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,10 +30,11 @@ class UsuarioController {
             $user = UsuarioDAO::getUserByUsername($username);
 
             // Verifica las credenciales
-            if ($user && password_verify($password, $user['password'])) {
-                // Inicia sesión y redirige según el rol
+            if ($user && password_verify($password, $user->getPassword())) {
+                // Crea un objeto Usuario y almacénalo en la sesión
+                $usuario = new Usuario($user->getId(), $user->getUsername(), $user->getPassword(), $user->getRol());
                 session_start();
-                $_SESSION['user'] = $user;
+                $_SESSION['user'] = $usuario;
 
                 header("Location: index.php?controller=product&action=panelHome");
             }

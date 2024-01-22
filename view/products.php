@@ -17,8 +17,9 @@
     <section class="container">
         <div class="container">
             <?php if (isset($_SESSION['user'])) { ?>
-                <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
-                <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
+                <?php $user = $_SESSION['user']; ?>
+                <!-- COMPRUEBA EL ROL QUE TIENES AL INICIAR SESIÓN -->
+                <?php if ($user->getRol() === 'admin') { ?>
                     <h1 class="titulos-secciones">Panel Administrador Productos</h1>
                 <?php } else { ?>
                     <h1 class="titulos-secciones">Carta</h1>
@@ -28,22 +29,23 @@
                 <?php } ?>
             <?php } else { ?>
                 <h1 class="titulos-secciones">Carta</h1>
-                    <div class="banner-products">
-                        <img src="./assets/images/img-banner-products.png" class="img-banner-products" alt="imagen banner pagina de productos">
-                    </div>
+                <div class="banner-products">
+                    <img src="./assets/images/img-banner-products.png" class="img-banner-products" alt="imagen banner pagina de productos">
+                </div>
             <?php } ?>
         </div>
     </section>
     <section class="container">
         <div class="container text-center">
             <div class="botonadd">            
-                <!--COMPRUEBA QUE SE HA INICIADO SESION-->
+                <!-- COMPRUEBA QUE SE HA INICIADO SESIÓN -->
                 <?php if (isset($_SESSION['user'])) { ?>
-                    <!--COMPRUEBA SI TIENES ROL ADMINISTRADOR AL INICIAR SESION-->
-                    <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
+                    <?php $user = $_SESSION['user']; ?>
+                    <!-- COMPRUEBA SI TIENES ROL ADMINISTRADOR AL INICIAR SESIÓN -->
+                    <?php if ($user->getRol() === 'admin') { ?>
                         <form class="boton-carrito" action=<?=url.'?controller=product&action=panelAñadirProducto'?> method="post">
-                            <!--BOTON AÑADIR NUEVO PRODUCTO-->
-                            <button type="submit"class="boton-principal">Añadir producto nuevo</button>
+                            <!-- BOTON AÑADIR NUEVO PRODUCTO -->
+                            <button type="submit" class="boton-confirmar">Añadir producto nuevo</button>
                         </form>
                     <?php } ?>
                 <?php } ?>
@@ -71,36 +73,37 @@
                                         </div>
                                     </div>
                                     <div class="botones">
-                                        <!--COMPRUEBA QUE SE HA INICIADO SESION-->
+                                        <!-- COMPRUEBA QUE SE HA INICIADO SESIÓN -->
                                         <?php if (isset($_SESSION['user'])) { ?>
-                                            <!--COMPRUEBA EL ROL QUE TIENES AL INICIAR SESION-->
-                                            <?php if ($_SESSION['user']['rol'] === 'admin') { ?>
+                                            <?php $user = $_SESSION['user']; ?>
+                                            <!-- COMPRUEBA EL ROL QUE TIENES AL INICIAR SESIÓN -->
+                                            <?php if ($user->getRol() === 'admin') { ?>
                                                 <form class="boton-carrito" action=<?=url.'?controller=product&action=edit'?> method="post">
-                                                    <!--BOTON EDITAR-->    
+                                                    <!-- BOTON EDITAR -->    
                                                     <input type="hidden" name="action" value="edit">
                                                     <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                    <button type="submit"class="boton-confirmar">Editar</button>
+                                                    <button type="submit" class="boton-confirmar">Editar</button>
                                                 </form>
                                                 <form class="boton-carrito" action=<?=url.'?controller=product&action=eliminarProduct'?> method="post">
-                                                    <!--BOTON ELIMINAR-->
+                                                    <!-- BOTON ELIMINAR -->
                                                     <input type="hidden" name="action" value="eliminar">
                                                     <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                    <button type="submit"class="boton-confirmar">Eliminar</button>
+                                                    <button type="submit" class="boton-confirmar">Eliminar</button>
                                                 </form>
                                             <?php } else { ?>
                                                 <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
-                                                    <!--BOTON AÑADIR-->
+                                                    <!-- BOTON AÑADIR -->
                                                     <input type="hidden" name="action" value="añadirCarrito">
                                                     <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                    <button type="submit"class="boton-confirmar">Añadir</button>
+                                                    <button type="submit" class="boton-confirmar">Añadir</button>
                                                 </form>
                                             <?php } ?>
                                         <?php } else { ?>
                                             <form class="boton-carrito" action=<?=url.'?controller=product&action=añadirCarrito'?> method="post">
-                                                <!--BOTON AÑADIR-->
+                                                <!-- BOTON AÑADIR -->
                                                 <input type="hidden" name="action" value="añadirCarrito">
                                                 <input type="hidden" name="id" value="<?=$product->getId(); ?>">
-                                                <button type="submit"class="boton-confirmar">Añadir</button>
+                                                <button type="submit" class="boton-confirmar">Añadir</button>
                                             </form>
                                         <?php } ?>
                                     </div>

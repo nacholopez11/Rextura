@@ -37,7 +37,8 @@
                         <div class="as" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <?php if (isset($_SESSION['user'])) : ?>
-                                    <?php if ($_SESSION['user']['rol'] === 'admin') : ?>
+                                    <?php $user = $_SESSION['user']; ?>
+                                    <?php if ($user->getRol() === 'admin') : ?>
                                         <!-- Admin -->
                                         <li class="nav-item">
                                             <a href=<?= "index.php?controller=usuario&action=logout" ?>><img class="icon-menu-header" src="./assets/icons/cuenta.png" alt="imagen icono cerrar sesion"/></a>
