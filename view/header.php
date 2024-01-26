@@ -60,7 +60,7 @@
                                         </li>
                                         <li class="nav-item">
                                             <a href=<?= "index.php?controller=product&action=panelCompra" ?>><img class="icon-menu-header" src="./assets/icons/bolsa.png" alt="imagen icono bolsa"/></a>
-                                            <a class="nav-link" href=<?= "index.php?controller=product&action=panelCompra" ?>>Bolsa</a>
+                                            <a class="nav-link" href="<?= isset($_SESSION['selecciones']) ? "index.php?controller=product&action=panelCompra" : "#" ?>">Bolsa (<?= isset($_SESSION['selecciones']) ? count($_SESSION['selecciones']) : 0 ?>)</a>
                                         </li>
                                     <?php endif; ?>
                                 <?php else : ?>

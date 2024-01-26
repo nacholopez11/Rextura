@@ -45,7 +45,7 @@
                     <?php if ($user->getRol() === 'admin') { ?>
                         <form class="boton-carrito" action=<?=url.'?controller=product&action=panelAñadirProducto'?> method="post">
                             <!-- BOTON AÑADIR NUEVO PRODUCTO -->
-                            <button type="submit" class="boton-confirmar">Añadir producto nuevo</button>
+                            <button type="submit" class="boton-nuevo-producto">Añadir producto nuevo</button>
                         </form>
                     <?php } ?>
                 <?php } ?>

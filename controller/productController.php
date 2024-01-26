@@ -226,8 +226,11 @@ class ProductController {
     
         // Verifica si hay un usuario activo
         if (isset($_SESSION['user'])) {
-            // Obtén el ID del usuario activo
-            $usuario_id = $_SESSION['user']['id'];
+            // Obtiene el usuario actual
+            $user = $_SESSION['user'];
+
+            // Obtiene el id del usuario actual
+            $usuario_id = $user->getId();
     
             // Consulta el último pedido del usuario
             $con = DB::getConnection();

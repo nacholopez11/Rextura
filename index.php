@@ -19,6 +19,14 @@ if (!isset($_GET['controller'])) {
             
             // Instancia el controlador usuarioController
             $controller = new $nombre_controller();
+        } elseif ($nombre_controller === 'reviewController') {
+            // Si el controlador es reviewController, asegúrate de tener una acción válida
+            $action = isset($_GET['action']) ? $_GET['action'] : 'api';
+            
+            // Instancia el controlador reviewController
+            $controller = new $nombre_controller();
+            $controller->$action(); // Llama directamente a la acción sin necesidad de la lógica adicional
+            exit(); // Sale del script después de manejar la acción de reviewController
         } else {
             // Para otros controladores, sigue la lógica anterior
             $controller = new $nombre_controller();

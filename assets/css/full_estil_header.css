@@ -167,6 +167,15 @@ a.nav-link:hover {
         flex-wrap: wrap !important;
         justify-content: center !important;
     }
+
+    div#navbarSupportedContent{
+        min-width: 200px;
+    }
+
+    a.nav-link{
+        min-height: 100px;
+        align-items: center;
+    }
 }
 
 @media (min-width: 993px) {

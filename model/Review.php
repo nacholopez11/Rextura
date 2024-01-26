@@ -1,14 +1,15 @@
 <?php
 // CLASE RESEÑA
 class Review {
-    protected $id;
-    protected $comentario;
-    protected $valoracion;
-
+    public $id;
+    public $usuario_id;
+    public $comentario;
+    public $valoracion;
 
     public function __construct() {
-     
+
     }
+    
 
     /**
      * Get the value of id
@@ -24,6 +25,24 @@ class Review {
     public function setId($id): self
     {
         $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of usuario_id
+     */
+    public function getUsuarioId()
+    {
+        return $this->usuario_id;
+    }
+
+    /**
+     * Set the value of usuario_id
+     */
+    public function setUsuarioId($usuario_id): self
+    {
+        $this->usuario_id = $usuario_id;
 
         return $this;
     }

@@ -1,29 +1,26 @@
 <?php
-// include_once './model/Usuario.php';
-// include_once './dao/usuarioDAO.php';
+require_once 'reviewDAO.php';
 
 class ReviewController {
     public function api() {
-        // Implementa lógica para gestionar reseñas, por ejemplo, recibir datos por AJAX
-        // y realizar operaciones en la base de datos, etc.
-        // Puedes usar métodos GET, POST, etc., según tus necesidades.
+        header('Content-Type: application/json');
 
-        // Ejemplo de cómo recibir datos por POST:
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $usuario_id = $_POST['usuario_id'];
-            $comentario = $_POST['comentario'];
-            $valoracion = $_POST['valoracion'];
+        $action = isset($_GET['action']) ? $_GET['action'] : null;
 
-            // Lógica para almacenar la reseña en la base de datos
-            // ...
-
-            // Puedes devolver una respuesta en formato JSON, por ejemplo:
-            $response = array('status' => 'success', 'message' => 'Reseña agregada con éxito');
-            echo json_encode($response);
-            exit();
+        switch ($action) {
+            case 'getReviews':
+                echo json_encode(ReviewDAO::getReviews());
+                break;
+            case 'addReview':
+                // Aquí debes implementar la lógica para agregar una nueva reseña
+                // Puedes obtener los datos del comentario y la valoración desde $_POST o $_GET
+                // Luego, utiliza ReviewDAO::addReview() para guardar la nueva reseña
+                break;
+            default:
+                http_response_code(400);
+                echo json_encode(array('error' => 'Invalid action.'));
+                break;
         }
-
-        // Puedes implementar más lógica según tus necesidades
     }
 }
 ?>
