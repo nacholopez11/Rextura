@@ -163,6 +163,12 @@
                         <h3 class="texto-1-info">envíos gratis a partir de 50€</h3>
                         <p class="texto-2-info">Para todos aquellos que les gusta estar en casa.</p>
                         <p class="texto-2-info">Tus pedidos llegarán en menos de 30 minutos.</p>
+                        <form class="boton-carrito" action=<?= url.'?controller=review&action=panelReviews' ?> method="post">
+                            <!-- BOTÓN RESEÑA -->
+                            <input type="hidden" name="action" value="panelReviews">
+                            <input type="hidden" name="id" value="<?= $product->getId(); ?>">
+                            <button type="submit" class="boton">Añadir</button>
+                        </form>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-md-4 col-lg-4 div-info">
