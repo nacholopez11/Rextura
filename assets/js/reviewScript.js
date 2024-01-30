@@ -1,66 +1,44 @@
-// Función para obtener y mostrar reseñas al cargar la página
-function getReviews() {
-    fetch('index.php?controller=review&action=api', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: 'action=getReviews', 
+document.addEventListener('DOMContentLoaded', (event) => {
+    fetch('https://localhost/rextura/controller/index.php?controller=api&action=api&accion=get_reviews', {
+        method: 'GET',
     })
     .then(response => response.json())
-    .then(reviews => {
-        const reviewsList = document.getElementById('reviewsList');
-        reviewsList.innerHTML = '';
-
-        reviews.forEach(review => {
-            const reviewItem = document.createElement('div');
-            reviewItem.innerHTML = `<strong>${review.usuario_id}:</strong> ${review.comentario} - Valoración: ${review.valoracion}`;
-            reviewsList.appendChild(reviewItem);
+    .then(data => {
+        let reviewsList = document.getElementById('reviewsList');
+        data.forEach(review => {
+            let reviewElement = document.createElement('div');
+            reviewElement.innerHTML = `
+                <h2>${review.usuario_id}</h2>
+                <p>${review.comentario}</p>
+                <p>Valoración: ${review.valoracion}</p>
+            `;
+            reviewsList.appendChild(reviewElement);
         });
     })
-    .catch(error => console.error('Error fetching reviews:', error));
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Agrega el manejador de eventos al formulario
-    document.getElementById('reviewForm').addEventListener('submit', function(event) {
-        // Evita que el formulario se envíe de manera tradicional
-        event.preventDefault();
-
-        // Captura los valores del formulario
-        const comentario = document.getElementById('comentario').value;
-        const valoracion = document.getElementById('valoracion').value;
-
-        // Llama a la función addReview con los valores del formulario
-        addReview(comentario, valoracion);
+    .catch((error) => {
+        console.error('Error:', error);
     });
-
-    // Llama a getReviews al cargar la página para obtener las reseñas existentes
-    getReviews();
 });
 
-// Modifica la función addReview para aceptar parámetros
-function addReview() {
-    const comentario = document.getElementById('comentario').value;
-    const valoracion = document.getElementById('valoracion').value;
+// function getReviews() {
+//     fetch('https://localhost/rextura/controller/index.php?controller=api&action=api&accion=get_reviews')
+//         .then(response => response.json())
+//         .then(reviews => {
+//             displayReviews(reviews);
+//         })
+//         .catch(error => console.error('Error fetching reviews:', error));
+// }
 
-    fetch('index.php?controller=review&action=addReview', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded', // Cambiado a 'application/x-www-form-urlencoded'
-        },
-        body: `comentario=${comentario}&valoracion=${valoracion}`, // Cambiado a formato de cadena de consulta
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log(result);
-        getReviews(); // Actualiza la lista de reseñas después de agregar una nueva
-    })
-    .catch(error => console.error('Error adding review:', error));
-}
+// function displayReviews(reviews) {
+//     const reviewsList = document.getElementById('reviewsList');
+//     reviewsList.innerHTML = ''; 
 
-// Llama a getReviews al cargar la página para obtener las reseñas existentes
-document.addEventListener('DOMContentLoaded', () => {
-    getReviews();
-});
+//     reviews.forEach(review => {
+//         const reviewElement = document.createElement('div');
+//         reviewElement.innerHTML = `<p><strong>Usuario ID:</strong> ${review.usuario_id}</p>
+//                                    <p><strong>Comentario:</strong> ${review.comentario}</p>
+//                                    <p><strong>Valoración:</strong> ${review.valoracion}</p>
+//                                    <hr>`;
+//         reviewsList.appendChild(reviewElement);
+//     });
+// }

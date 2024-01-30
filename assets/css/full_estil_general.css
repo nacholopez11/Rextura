@@ -216,6 +216,7 @@ div.row {
     font-size: 18px;
     font-weight: 400;
     height: auto;
+    min-height: 55px;
     line-height: 27px;
     list-style-image: none;
     list-style-position: outside;
