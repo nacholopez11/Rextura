@@ -18,7 +18,7 @@
 
         <label for="valoracion">Valoración:</label>
         <input type="number" id="valoracion" name="valoracion" min="1" max="5" required>
-        <button type="submit">Agregar Reseña</button>
+        <button type="button">Agregar Reseña</button>
     </form>
 
     <!-- RESEÑAS -->

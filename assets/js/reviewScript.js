@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return response.json();
     })
     .then(data => {
-        console.log(data)
+        console.log(data);
         verComentarios(data);
     })
     .catch(error => console.error(error));
@@ -16,14 +16,14 @@ function verComentarios(comentarios) {
 
     comentarios.forEach(comentario => {
         let divComentarios = document.createElement('div');
-        divComentarios.classList.add('col-12', 'col-md-6', 'col-lg-3', `valoracion-'${comentario.valoracion}`);
+        divComentarios.classList.add('col-12', 'col-md-6', 'col-lg-3', `valoracion-${comentario.valoracion}`);
 
         divComentarios.innerHTML = `
-            <div class="mx-16 mb-12 mb-lg-0 mx-6 m-lg-0">
-                <div class="contenidoReseñas">
-                <p class="valoracion">${valoracionClientes(comentario.valoracion)}<p>
-                <p class="comentario">${comentario.comentario}<p>
-                <p class="nombre">${comentario.nombre}<p>
+        <div class="mx-16 mb-12 mb-lg-0 mx-6 m-lg-0">
+            <div class="contenidoReseñas">
+                <p class="valoracion">${valoracionClientes(comentario.valoracion)}</p>
+                <p class="comentario">${comentario.comentario}</p>
+                <p class="nombre">${comentario.nombre}</p>
             <div>
         </div>
         `;
