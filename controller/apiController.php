@@ -1,16 +1,28 @@
 <?php
 require_once 'Review.php';
 require_once 'ReviewDAO.php';
+require_once 'usuarioDAO.php';
 
 class APIController {    
     public function api() {
-        $reviewDAO = new ReviewDAO();
-
-        if ($_POST["accion"] == 'add_review') {
-            ReviewDAO::getReviews();
+        if ($_GET["accion"] == 'buscar_review') {
+            $comentarios = ReviewDAO::getComentarios();
+            $comenArray = [];
+            foreach ($comentarios as $comentario) {
+                $comenArray[] = [
+                    'id' => $comentario->getId(),
+                    'nombre' => $comentario->getNombre(),
+                    'comentario' => $comentario->getComentario(),
+                    'valoracion' => $comentario->getValoracion(),
+                ];
+            }
+            header("Content.Type: application/json");
+            echo json_encode($comenArray, JSON_UNESCAPED_UNICODE);
+            return;
         } elseif ($_POST["accion"] == 'get_reviews') {
+            ReviewDAO::getReviews();
             $reviews = $reviewDAO->getReviews();
-            echo json_encode($reviews);
+            return json_encode($reviews);
         }
     }
 }

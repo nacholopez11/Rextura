@@ -1,44 +1,38 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    fetch('https://localhost/rextura/controller/index.php?controller=api&action=api&accion=get_reviews', {
-        method: 'GET',
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('https://localhost/rextura/?controller=api&action=api&accion=get_reviews')
+    .then(response =>{
+        return response.json();
     })
-    .then(response => response.json())
     .then(data => {
-        let reviewsList = document.getElementById('reviewsList');
-        data.forEach(review => {
-            let reviewElement = document.createElement('div');
-            reviewElement.innerHTML = `
-                <h2>${review.usuario_id}</h2>
-                <p>${review.comentario}</p>
-                <p>Valoración: ${review.valoracion}</p>
-            `;
-            reviewsList.appendChild(reviewElement);
-        });
+        console.log(data)
+        verComentarios(data);
     })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
+    .catch(error => console.error(error));
 });
 
-// function getReviews() {
-//     fetch('https://localhost/rextura/controller/index.php?controller=api&action=api&accion=get_reviews')
-//         .then(response => response.json())
-//         .then(reviews => {
-//             displayReviews(reviews);
-//         })
-//         .catch(error => console.error('Error fetching reviews:', error));
-// }
+function verComentarios(comentarios) {
+    let reseñasClientes = document.getElementById('container');
+    console.log(reseñasClientes);
 
-// function displayReviews(reviews) {
-//     const reviewsList = document.getElementById('reviewsList');
-//     reviewsList.innerHTML = ''; 
+    comentarios.forEach(comentario => {
+        let divComentarios = document.createElement('div');
+        divComentarios.classList.add('col-12', 'col-md-6', 'col-lg-3', `valoracion-'${comentario.valoracion}`);
 
-//     reviews.forEach(review => {
-//         const reviewElement = document.createElement('div');
-//         reviewElement.innerHTML = `<p><strong>Usuario ID:</strong> ${review.usuario_id}</p>
-//                                    <p><strong>Comentario:</strong> ${review.comentario}</p>
-//                                    <p><strong>Valoración:</strong> ${review.valoracion}</p>
-//                                    <hr>`;
-//         reviewsList.appendChild(reviewElement);
-//     });
-// }
+        divComentarios.innerHTML = `
+            <div class="mx-16 mb-12 mb-lg-0 mx-6 m-lg-0">
+                <div class="contenidoReseñas">
+                <p class="valoracion">${valoracionClientes(comentario.valoracion)}<p>
+                <p class="comentario">${comentario.comentario}<p>
+                <p class="nombre">${comentario.nombre}<p>
+            <div>
+        </div>
+        `;
+
+        reseñasClientes.appendChild(divComentarios);
+    });
+}
+
+const valoracionClientes = (puntuacion) => {
+    const numeros = '*'.repeat(puntuacion) + '*'.repeat(5-puntuacion);
+    return `<span class="valoracion-${puntuacion}" style="color: var(--bg-col4);">${numeros}</span>`;
+}

@@ -5,12 +5,12 @@ class Review {
     public $usuario_id;
     public $comentario;
     public $valoracion;
+    public $nombre;
 
     public function __construct() {
 
     }
 
-    
 
     /**
      * Get the value of id
@@ -80,6 +80,24 @@ class Review {
     public function setValoracion($valoracion): self
     {
         $this->valoracion = $valoracion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of nombre
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set the value of nombre
+     */
+    public function setNombre($nombre): self
+    {
+        $this->nombre = $nombre;
 
         return $this;
     }

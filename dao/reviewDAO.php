@@ -3,36 +3,21 @@ include_once 'config/DB.php';
 include_once 'model/Review.php';
 
 class ReviewDAO {
-    public function addReview($review) {
+    public static function getComentarios() {
         $con = DB::getConnection();
-        $stmt = $con->prepare("INSERT INTO reviews (usuario_id, comentario, valoracion) VALUES (?, ?, ?)");
-        $stmt->bind_param("iss", $review->getUsuarioId(), $review->getComentario(), $review->getValoracion());
-        $stmt->execute();
-    }
 
-    // public function getReviews() {
-    //     $con = DB::getConnection();
-    //     $stmt = $con->prepare("SELECT * FROM reviews");
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
+        $query = "SELECT reviews.id, reviews.usuario_id, reviews.comentario, reviews.valoracion, reviews.nombre
+        FROM reviews JOIN usuarios ON reviews.usuario_id = usuarios.id;";
 
-    //     $reviews = array();
-
-    //     while ($row = $result->fetch_assoc()) {
-    //         $review = new Review($row['usuario_id'], $row['comentario'], $row['valoracion']);
-    //         array_push($reviews, $review);
-    //     }
-
-    //     return $reviews;
-    // }
-
-    public function getReviews() {
-        $con = DB::getConnection();
-        $stmt = $con->prepare("SELECT * FROM reviews");
+        $stmt = $con->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
-        $reviews = $result->fetch_all(MYSQLI_ASSOC);
-        return $reviews;
+        $comentario = [];
+        while ($row = $result->fetch_object('Comentarios')) {
+            $comentario[] = $row;
+        }
+
+        return $comentario;
     }
 
 }
