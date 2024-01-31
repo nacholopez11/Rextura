@@ -19,10 +19,8 @@ class APIController {
             header("Content.Type: application/json");
             echo json_encode($comenArray, JSON_UNESCAPED_UNICODE);
             return;
-        } elseif ($_POST["accion"] == 'get_reviews') {
-            ReviewDAO::getReviews();
-            $reviews = $reviewDAO->getReviews();
-            return json_encode($reviews);
+        } elseif ($_POST["accion"] == 'insertar') {
+            
         }
     }
 }

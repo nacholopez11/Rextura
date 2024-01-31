@@ -21,8 +21,14 @@
         <button type="submit">Agregar Reseña</button>
     </form>
 
-    <div id="reviewsList">
-    </div>
+    <!-- RESEÑAS -->
+    <section class="">
+        <div class="container">
+            <div class="row" id="container">
+
+            </div>
+        </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="assets/js/reviewScript.js"></script>

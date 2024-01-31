@@ -13,7 +13,7 @@ class ReviewDAO {
         $stmt->execute();
         $result = $stmt->get_result();
         $comentario = [];
-        while ($row = $result->fetch_object('Comentarios')) {
+        while ($row = $result->fetch_object('Review')) {
             $comentario[] = $row;
         }
 

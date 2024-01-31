@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('https://localhost/rextura/?controller=api&action=api&accion=get_reviews')
+    fetch('https://localhost/rextura/index.php?controller=api&action=api&accion=buscar_review')
     .then(response =>{
         return response.json();
     })
