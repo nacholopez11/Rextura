@@ -3,7 +3,7 @@ include_once 'config/DB.php';
 include_once 'model/Review.php';
 
 class ReviewDAO {
-    public static function getComentarios() {
+    public static function mostrarReviews() {
         $con = DB::getConnection();
 
         $query = "SELECT reviews.id, reviews.usuario_id, reviews.comentario, reviews.valoracion, reviews.nombre
@@ -18,6 +18,20 @@ class ReviewDAO {
         }
 
         return $comentario;
+    }
+
+    public static function insertarReview($review) {
+        $con = DB::getConnection();
+        $query = "INSERT INTO reviews (usuario_id, comentario, valoracion, nombre) VALUES (?, ?, ?, ?)";
+        $stmt = $con->prepare($query);
+        $usuarioId = $review->getUsuarioId();
+        // $nombre = $review->getNombre();
+        $nombre = 'f';
+        $comentario = $review->getComentario();
+        $valoracion = $review->getValoracion();
+
+        $stmt->bind_param("isis", $usuarioId, $nombre, $comentario, $valoracion);
+        $stmt->execute();
     }
 
 }

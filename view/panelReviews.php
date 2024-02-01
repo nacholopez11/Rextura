@@ -18,11 +18,11 @@
 
         <label for="valoracion">Valoración:</label>
         <input type="number" id="valoracion" name="valoracion" min="1" max="5" required>
-        <button type="button">Agregar Reseña</button>
+        <button type="submit">Agregar Reseña</button>
     </form>
 
     <!-- RESEÑAS -->
-    <section class="">
+    <section class="reviews">
         <div class="container">
             <div class="row" id="container">
 
@@ -31,6 +31,7 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="assets/js/reviewScript.js"></script>
+    <script src="assets/js/mostrarReview.js"></script>
+    <script src="assets/js/insertarReview.js"></script>
 </body>
 </html>
