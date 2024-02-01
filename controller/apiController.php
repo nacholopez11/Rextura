@@ -1,10 +1,12 @@
 <?php
 require_once './model/Review.php';
+require_once './model/Usuario.php';
 require_once './dao/ReviewDAO.php';
 require_once './dao/usuarioDAO.php';
 
 class APIController {    
     public function api() {
+        session_start();
         if ($_GET["accion"] == 'buscar_review') {
             $comentarios = ReviewDAO::mostrarReviews();
             $comenArray = [];
@@ -20,15 +22,16 @@ class APIController {
             echo json_encode($comenArray, JSON_UNESCAPED_UNICODE);
             return;
         } elseif ($_GET["accion"] == 'insertarReview') {
-            // $nombre = $_POST['nombre'];
-            $comentario = $_POST['comentario'];
-            $valoracion = $_POST['valoracion'];
+            $data = json_decode(file_get_contents('php://input'), true);
+            $comentario = $data['comentario'];
+            $valoracion = $data['valoracion'];
             if (isset($_SESSION['user'])) {
-                $usuarioId = $_SESSION['user']->getId();
-                $nombre = $_SESSION['user']->getUsername();
+                $user = $_SESSION['user'];
+                $usuarioId = $user->getId();
+                $nombre = $user->getUsername();
             } else {
                 $usuarioId = null;
-                $nombre = 'h';
+                $nombre = null;
             }
             $review = new Review($usuarioId, $comentario, $valoracion, $nombre);
             ReviewDAO::insertarReview($review);

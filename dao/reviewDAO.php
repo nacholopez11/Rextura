@@ -25,13 +25,12 @@ class ReviewDAO {
         $query = "INSERT INTO reviews (usuario_id, comentario, valoracion, nombre) VALUES (?, ?, ?, ?)";
         $stmt = $con->prepare($query);
         $usuarioId = $review->getUsuarioId();
-        // $nombre = $review->getNombre();
-        $nombre = 'f';
+        $nombre = $review->getNombre();
         $comentario = $review->getComentario();
         $valoracion = $review->getValoracion();
-
-        $stmt->bind_param("isis", $usuarioId, $nombre, $comentario, $valoracion);
-        $stmt->execute();
+        echo( $usuarioId.$nombre.$comentario.$valoracion);
+        // $stmt->bind_param("isis", $usuarioId, $comentario, $valoracion, $nombre);
+        // $stmt->execute();
     }
 
 }
