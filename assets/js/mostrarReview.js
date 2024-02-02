@@ -16,7 +16,7 @@ function verComentarios(comentarios) {
 
     comentarios.forEach(comentario => {
         let divComentarios = document.createElement('div');
-        divComentarios.classList.add('col-12', 'col-md-6', 'col-lg-3', `valoracion-${comentario.valoracion}`);
+        divComentarios.classList.add('review', 'col-12', 'col-md-6', 'col-lg-3', `valoracion-${comentario.valoracion}`);
 
         divComentarios.innerHTML = `
         <div class="mx-16 mb-12 mb-lg-0 mx-6 m-lg-0">

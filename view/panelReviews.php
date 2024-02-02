@@ -24,7 +24,10 @@
     <input type="checkbox" id="rating5" name="rating5" value="5">
     <label for="rating5">5</label><br>
 </form>
-
+<select id="orderSelect">
+    <option value="asc">Ascendente</option>
+    <option value="desc">Descendente</option>
+</select>
     <form id="reviewForm">
         <label for="comentario">Comentario:</label>
         <textarea id="comentario" name="comentario" required></textarea>
@@ -46,5 +49,6 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="assets/js/mostrarReview.js"></script>
     <script src="assets/js/insertarReview.js"></script>
+    <script src="assets/js/filtroReview.js"></script>
 </body>
 </html>
