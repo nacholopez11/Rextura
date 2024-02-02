@@ -8,6 +8,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_review.css" rel="stylesheet" type="text/css" media="screen">
     <link href="./assets/css/full_estil_general.css" rel="stylesheet" type="text/css" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 </head>
 <body>
     <h1>Panel de Reseñas</h1>
@@ -50,5 +51,6 @@
     <script src="assets/js/mostrarReview.js"></script>
     <script src="assets/js/insertarReview.js"></script>
     <script src="assets/js/filtroReview.js"></script>
+    <script src="https://unpkg.com/notie"></script>
 </body>
 </html>
