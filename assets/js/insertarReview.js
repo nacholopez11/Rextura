@@ -34,3 +34,9 @@ document.querySelector('#reviewForm button[type="submit"]').addEventListener('cl
         notie.alert({ type: 'error', text: 'Error al añadir la reseña', time: 2 });
     });
 });
+
+
+
+
+
+//SI QUIERO RECARGAR LA PAGINA UTILIZAR UN TIMEOUT CON LA FUNCION RELOAD
