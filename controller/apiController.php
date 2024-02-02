@@ -21,20 +21,18 @@ class APIController {
             header("Content-Type: application/json");
             echo json_encode($comenArray, JSON_UNESCAPED_UNICODE);
             return;
-        } elseif ($_GET["accion"] == 'insertarReview') {
+        } elseif ($_REQUEST["accion"] == 'insertarReview') {
             $data = json_decode(file_get_contents('php://input'), true);
             $comentario = $data['comentario'];
             $valoracion = $data['valoracion'];
             if (isset($_SESSION['user'])) {
-                $user = $_SESSION['user'];
-                $usuarioId = $user->getId();
-                $nombre = $user->getUsername();
+                $usuarioId = $_SESSION['user']->getId();
+                $nombre = $_SESSION['user']->getUsername();
             } else {
                 $usuarioId = null;
                 $nombre = null;
             }
-            $review = new Review($usuarioId, $comentario, $valoracion, $nombre);
-            ReviewDAO::insertarReview($review);
+            ReviewDAO::insertarReview($usuarioId, $comentario, $valoracion, $nombre);
         }
     }
 }

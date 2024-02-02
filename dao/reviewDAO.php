@@ -20,17 +20,12 @@ class ReviewDAO {
         return $comentario;
     }
 
-    public static function insertarReview($review) {
+    public static function insertarReview($usuarioId, $comentario, $valoracion, $nombre) {
         $con = DB::getConnection();
         $query = "INSERT INTO reviews (usuario_id, comentario, valoracion, nombre) VALUES (?, ?, ?, ?)";
         $stmt = $con->prepare($query);
-        $usuarioId = $review->getUsuarioId();
-        $nombre = $review->getNombre();
-        $comentario = $review->getComentario();
-        $valoracion = $review->getValoracion();
-        echo( $usuarioId.$nombre.$comentario.$valoracion);
-        // $stmt->bind_param("isis", $usuarioId, $comentario, $valoracion, $nombre);
-        // $stmt->execute();
+        $stmt->bind_param("isis", $usuarioId, $comentario, $valoracion, $nombre);
+        $stmt->execute();
     }
 
 }
