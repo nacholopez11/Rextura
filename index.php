@@ -3,6 +3,7 @@ include_once('controller/productController.php');
 include_once('controller/usuarioController.php'); 
 include_once('controller/reviewController.php');  
 include_once('controller/apiController.php');  
+include_once('controller/pedidoController.php');  
 include_once('config/parameters.php');
 
 if (!isset($_GET['controller'])) {

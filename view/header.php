@@ -50,9 +50,14 @@
                                         </li>
                                     <?php else : ?>
                                         <!-- User -->
-                                        <li class="nav-item">
-                                            <a href=<?= "index.php?controller=usuario&action=logout" ?>><img class="icon-menu-header" src="./assets/icons/cuenta.png" alt="imagen icono cerrar sesion"/></a>
-                                            <a class="nav-link active" aria-current="page" href=<?= "index.php?controller=usuario&action=logout" ?>>Cerrar Sesión</a>
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Mi cuenta
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                                <a class="dropdown-item" href=<?= "index.php?controller=pedido&action=panelPedidos" ?>>Mis Pedidos</a>
+                                                <a class="dropdown-item" href="index.php?controller=usuario&action=logout">Cerrar Sesión</a>
+                                            </div>
                                         </li>
                                         <li class="nav-item">
                                             <a href=<?= "index.php?controller=product&action=products" ?>><img class="icon-menu-header" src="./assets/icons/carta.png" alt="imagen icono carta"/></a>
