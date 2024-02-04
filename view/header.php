@@ -55,7 +55,7 @@
                                                 Mi cuenta
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                                <a class="dropdown-item" href=<?= "index.php?controller=pedido&action=panelPedidos" ?>>Mis Pedidos</a>
+                                                <a class="dropdown-item" href=<?= url.'?controller=review&action=panelReviews' ?>>Reseñas</a>
                                                 <a class="dropdown-item" href="index.php?controller=usuario&action=logout">Cerrar Sesión</a>
                                             </div>
                                         </li>
