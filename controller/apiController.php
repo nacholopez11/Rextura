@@ -16,6 +16,7 @@ class APIController {
                     'nombre' => $comentario->getNombre(),
                     'comentario' => $comentario->getComentario(),
                     'valoracion' => $comentario->getValoracion(),
+                    'pedido_id' => $comentario->getPedidoId(), // Asegúrate de tener esta línea
                 ];
             }
             header("Content-Type: application/json");
@@ -25,6 +26,7 @@ class APIController {
             $data = json_decode(file_get_contents('php://input'), true);
             $comentario = $data['comentario'];
             $valoracion = $data['valoracion'];
+            $pedidoId = $data['pedido_id']; 
             if (isset($_SESSION['user'])) {
                 $usuarioId = $_SESSION['user']->getId();
                 $nombre = $_SESSION['user']->getUsername();
@@ -32,7 +34,7 @@ class APIController {
                 $usuarioId = null;
                 $nombre = null;
             }
-            ReviewDAO::insertarReview($usuarioId, $comentario, $valoracion, $nombre);
+            ReviewDAO::insertarReview($usuarioId, $pedidoId, $comentario, $valoracion, $nombre);
         }
     }
 }

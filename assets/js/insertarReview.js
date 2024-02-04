@@ -3,6 +3,7 @@ document.querySelector('#reviewForm button[type="submit"]').addEventListener('cl
 
     let com = document.getElementById('comentario').value;
     let val = document.getElementById('valoracion').value;
+    let pedidoId = document.getElementById('pedido_id').value;
 
     if (!com || !val) {
         notie.alert({ type: 'error', text: 'Por favor, rellena todos los campos', time: 2 });
@@ -12,6 +13,7 @@ document.querySelector('#reviewForm button[type="submit"]').addEventListener('cl
     fetch('https://localhost/rextura/index.php?controller=api&action=api&accion=insertarReview', {
         method: 'POST',
         body: JSON.stringify({
+            pedido_id: pedidoId,
             comentario: com,
             valoracion: val,
         }),

@@ -24,6 +24,7 @@ function verComentarios(comentarios) {
                 <p class="valoracion">${valoracionClientes(comentario.valoracion)}</p>
                 <p class="comentario">${comentario.comentario}</p>
                 <p class="nombre">${comentario.nombre}</p>
+                <p class="pedido_id">Pedido ID: ${comentario.pedido_id}</p> 
             <div>
         </div>
         `;
@@ -33,6 +34,6 @@ function verComentarios(comentarios) {
 }
 
 const valoracionClientes = (puntuacion) => {
-    const numeros = '*'.repeat(puntuacion) + '*'.repeat(5-puntuacion);
-    return `<span class="valoracion-${puntuacion}" style="color: var(--bg-col4);">${numeros}</span>`;
+    const estrellas = '★'.repeat(puntuacion) + '☆'.repeat(5-puntuacion);
+    return `<span class="valoracion-${puntuacion}" style="color: var(--bg-col4);">${estrellas}</span>`;
 }

@@ -3,6 +3,7 @@
 class Review {
     public $id;
     public $usuario_id;
+    public $pedido_id;
     public $comentario;
     public $valoracion;
     public $nombre;
@@ -44,6 +45,24 @@ class Review {
     public function setUsuarioId($usuario_id): self
     {
         $this->usuario_id = $usuario_id;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of pedido_id
+     */
+    public function getPedidoId()
+    {
+        return $this->pedido_id;
+    }
+
+    /**
+     * Set the value of pedido_id
+     */
+    public function setPedidoId($pedido_id): self
+    {
+        $this->pedido_id = $pedido_id;
 
         return $this;
     }
