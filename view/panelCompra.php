@@ -14,6 +14,7 @@ include_once 'controller/productController.php';
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_carrito.css" rel="stylesheet" type="text/css" media="screen">
     <link href="./assets/css/full_estil_general.css" rel="stylesheet" type="text/css" media="screen">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
 </head>
 <body>
 <?php
@@ -136,11 +137,11 @@ include_once 'controller/productController.php';
                         </tr>
                         <tr class="total-pedido">
                             <th class="palabra-tres">Total del pedido</th>
-                            <td class="precio-dos"><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?> €</td>
+                            <td class="precio-dos" id="totalPedido"><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?> €</td>
                         </tr>
                     <tbody>
                 </table>
-                <form action=<?=url.'?controller=product&action=confirmar'?> method='post'>
+                <form id="pedido" action=<?=url.'?controller=product&action=confirmar'?> method='post'>
                     <td class="boton-confirmar">
                         <button class="boton-confirmar-pedido" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
@@ -208,4 +209,6 @@ include_once 'controller/productController.php';
     ?>
 </body>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/puntosFidelidad.js"></script>
+<script src="https://unpkg.com/notie"></script>
 </html>

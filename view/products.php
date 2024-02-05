@@ -51,8 +51,11 @@
                 <?php } ?>
             </div>
             <div class="row">
-                <div class="filtros col-3" style="background-color:black">
-
+                <div class="filtros col-3">
+                        <div class="filtro-categorias">
+                            <h3 class="titulo-categoria">CATEGORIAS</h3>
+                            
+                        </div>
                 </div>
                 <div class="row col-9">
                     <?php foreach ($products as $product): ?>

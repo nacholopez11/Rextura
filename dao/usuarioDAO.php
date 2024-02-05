@@ -71,5 +71,18 @@ class UsuarioDAO{
     
         return null;
     }
+
+
+    public static function actualizarPuntosFidelidad($usuarioId, $puntos) {
+        $con = DB::getConnection();
+        $stmt = $con->prepare("UPDATE usuarios SET puntos_fidelidad = puntos_fidelidad + ? WHERE id = ?");
+        $stmt->bind_param("ii", $puntos, $usuarioId);
+        $resultado = $stmt->execute();
+        $con->close();
+    
+        return $resultado;
+    }
+
+
 }
 ?>

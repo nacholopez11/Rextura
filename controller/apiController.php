@@ -35,6 +35,17 @@ class APIController {
                 $nombre = null;
             }
             ReviewDAO::insertarReview($usuarioId, $pedidoId, $comentario, $valoracion, $nombre);
+        } elseif ($_REQUEST["accion"] == 'actualizarPuntos') {
+            $data = json_decode(file_get_contents('php://input'), true);
+            $puntos = $data['puntos'];
+            if (isset($_SESSION['user'])) {
+                $usuarioId = $_SESSION['user']->getId();
+            } else {
+                $usuarioId = null;
+            }
+
+            UsuarioDAO::actualizarPuntosFidelidad($usuarioId, $puntos);
+            echo "actualizado";
         }
     }
 }
