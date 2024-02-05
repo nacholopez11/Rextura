@@ -46,6 +46,13 @@ class APIController {
 
             UsuarioDAO::actualizarPuntosFidelidad($usuarioId, $puntos);
             echo "actualizado";
+        } elseif ($_REQUEST["accion"] == 'obtenerPuntos') {
+            $data = json_decode(file_get_contents('php://input'), true);
+            $usuarioId = $data['usuario_id'];
+        
+            $puntos = UsuarioDAO::obtenerPuntosFidelidad($usuarioId);
+
+            echo json_encode(['puntos' => $puntos]);
         }
     }
 }

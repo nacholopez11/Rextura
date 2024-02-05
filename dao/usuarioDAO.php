@@ -72,7 +72,7 @@ class UsuarioDAO{
         return null;
     }
 
-
+    // FUNCION PARA AÑADIR PUNTOS AL USUARIO DESPUÉS DE TRAMITAR PEDIDO
     public static function actualizarPuntosFidelidad($usuarioId, $puntos) {
         $con = DB::getConnection();
         $stmt = $con->prepare("UPDATE usuarios SET puntos_fidelidad = puntos_fidelidad + ? WHERE id = ?");
@@ -83,6 +83,19 @@ class UsuarioDAO{
         return $resultado;
     }
 
+    // FUNCION PARA MOSTRAR LOS PUNTOS DE UN USUARIO
+    public static function obtenerPuntosFidelidad($usuarioId) {
+        $con = DB::getConnection();
+    
+        $stmt = $con->prepare("SELECT puntos_fidelidad FROM usuarios WHERE id = ?");
+        $stmt->bind_param("i", $usuarioId);
+        $stmt->execute();
+        $stmt->bind_result($puntos);
+        $stmt->fetch();
+        $con->close();
+
+        return $puntos;
+    }
 
 }
 ?>

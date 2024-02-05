@@ -142,6 +142,7 @@ include_once 'controller/productController.php';
                     <tbody>
                 </table>
                 <form id="pedido" action=<?=url.'?controller=product&action=confirmar'?> method='post'>
+                <input type="hidden" id="usuarioId" value="<?= $_SESSION['user']->getId() ?>" />
                     <td class="boton-confirmar">
                         <button class="boton-confirmar-pedido" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
@@ -210,5 +211,6 @@ include_once 'controller/productController.php';
 </body>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/puntosFidelidad.js"></script>
+<script src="assets/js/mostrarPuntos.js"></script>
 <script src="https://unpkg.com/notie"></script>
 </html>
