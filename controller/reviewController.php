@@ -1,5 +1,5 @@
 <?php
-require_once './dao/reviewDAO.php';
+// require_once './dao/reviewDAO.php';
 
 class ReviewController {
 

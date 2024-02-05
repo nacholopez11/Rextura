@@ -32,8 +32,14 @@
         <label for="comentario">Comentario:</label>
         <textarea id="comentario" name="comentario" required></textarea>
 
-        <label for="valoracion">Valoración:</label>
-        <input type="number" id="valoracion" name="valoracion" min="1" max="5" required>
+        <div class="stars">
+            <span class="star" data-value="1"><i class="fa fa-star"></i></span>
+            <span class="star" data-value="2"><i class="fa fa-star"></i></span>
+            <span class="star" data-value="3"><i class="fa fa-star"></i></span>
+            <span class="star" data-value="4"><i class="fa fa-star"></i></span>
+            <span class="star" data-value="5"><i class="fa fa-star"></i></span>
+            <input type="hidden" id="star-value" name="star-value" />
+        </div>
         <button type="submit">Agregar Reseña</button>
     </form>
 

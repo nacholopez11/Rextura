@@ -51,12 +51,12 @@
                                     <?php else : ?>
                                         <!-- User -->
                                         <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <a class="nav-link dropdown-toggle" href=<?='index.php?controller=review&action=panelReviews' ?> id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 Mi cuenta
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                                 <a class="dropdown-item" href=<?='index.php?controller=review&action=panelReviews' ?>>Reseñas</a>
-                                                <a class="dropdown-item" href="index.php?controller=usuario&action=logout">Cerrar Sesión</a>
+                                                <a class="dropdown-item" href=<?='index.php?controller=usuario&action=logout' ?>>Cerrar Sesión</a>
                                             </div>
                                         </li>
                                         <li class="nav-item">

@@ -1,0 +1,12 @@
+.stars {
+    display: inline-block;
+}
+
+.star {
+    cursor: pointer;
+    color: #ddd;  /* Color de las estrellas vacías */
+}
+
+.star.filled {
+    color: #ffd700;  /* Color de las estrellas llenas */
+}

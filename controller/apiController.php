@@ -16,7 +16,7 @@ class APIController {
                     'nombre' => $comentario->getNombre(),
                     'comentario' => $comentario->getComentario(),
                     'valoracion' => $comentario->getValoracion(),
-                    'pedido_id' => $comentario->getPedidoId(), // Asegúrate de tener esta línea
+                    'pedido_id' => $comentario->getPedidoId(), 
                 ];
             }
             header("Content-Type: application/json");
