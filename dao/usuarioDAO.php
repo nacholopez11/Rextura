@@ -35,9 +35,28 @@ class UsuarioDAO{
     }
     
     // FUNCION PARA OBTENER UN USUARIO POR SU NOMBRE
+    // public static function getUserByUsername($username) {
+    //     $con = DB::getConnection();
+    //     $stmt = $con->prepare("SELECT id, username, password, rol FROM usuarios WHERE username = ?");
+    //     $stmt->bind_param("s", $username);
+    //     $stmt->execute();
+    //     $result = $stmt->get_result();
+    //     $con->close();
+    
+    //     // Verifica si se encontraron resultados
+    //     if ($result && $user = $result->fetch_object('Usuario')) {
+    //         // Asigna el ID al objeto Usuario
+    //         $user->setId($user->id);
+    //         return $user;
+    //     }
+    
+    //     return null; 
+    // }
+
+
     public static function getUserByUsername($username) {
         $con = DB::getConnection();
-        $stmt = $con->prepare("SELECT id, username, password, rol FROM usuarios WHERE username = ?");
+        $stmt = $con->prepare("SELECT id, username, password, rol, puntos_fidelidad FROM usuarios WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -47,6 +66,7 @@ class UsuarioDAO{
         if ($result && $user = $result->fetch_object('Usuario')) {
             // Asigna el ID al objeto Usuario
             $user->setId($user->id);
+            $user->setPuntos($user->puntos_fidelidad); // Añade los puntos al objeto Usuario
             return $user;
         }
     

@@ -38,6 +38,7 @@ class UsuarioController {
                 $usuario->setId($user-> getId());
                 $usuario->setUsername($user-> getUsername());
                 $usuario->setRol($user-> getRol());
+                $usuario->setPuntos($user->getPuntos());
 
                 $_SESSION['user'] = $usuario;
 

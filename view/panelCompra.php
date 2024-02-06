@@ -214,5 +214,6 @@ include_once 'controller/productController.php';
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/puntosFidelidad.js"></script>
 <script src="assets/js/mostrarPuntos.js"></script>
+<script src="assets/js/usarPuntos.js"></script>
 <script src="https://unpkg.com/notie"></script>
 </html>
