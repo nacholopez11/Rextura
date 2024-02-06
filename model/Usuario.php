@@ -5,11 +5,15 @@ class Usuario {
     public $username;
     public $password;
     public $rol;
+    public $puntos_fidelidad;
     
     
     public function __construct() {
         
     }
+
+
+    
 
     /**
      * Get the value of id
@@ -79,6 +83,24 @@ class Usuario {
     public function setRol($rol): self
     {
         $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of puntos_fidelidad
+     */
+    public function getPuntosFidelidad()
+    {
+        return $this->puntos_fidelidad;
+    }
+
+    /**
+     * Set the value of puntos_fidelidad
+     */
+    public function setPuntosFidelidad($puntos_fidelidad): self
+    {
+        $this->puntos_fidelidad = $puntos_fidelidad;
 
         return $this;
     }
