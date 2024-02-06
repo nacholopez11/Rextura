@@ -28,8 +28,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
             // Obtiene el total del pedido
             let totalPedido = parseFloat(totalPedidoElement.innerText.replace('€', ''));
 
+            // Calcula el descuento
+            let descuento = this.checked ? Math.min(totalPedido, puntos) : 0;
+
             // Calcula el nuevo total
-            let nuevoTotal = this.checked ? totalPedido - puntos : totalPedido + puntos;
+            let nuevoTotal = totalPedido - descuento;
 
             // Actualiza el total del pedido en la página
             totalPedidoElement.innerText = nuevoTotal.toFixed(2) + ' €';
