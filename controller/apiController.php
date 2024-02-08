@@ -35,6 +35,16 @@ class APIController {
                 $nombre = null;
             }
             ReviewDAO::insertarReview($usuarioId, $pedidoId, $comentario, $valoracion, $nombre);
+        } elseif ($_REQUEST["accion"] == 'restablecerPuntos') {
+            $puntos = 0;
+            if (isset($_SESSION['user'])) {
+                $usuarioId = $_SESSION['user']->getId();
+            } else {
+                $usuarioId = null;
+            }
+        
+            UsuarioDAO::restarPuntosFidelidad($usuarioId, $puntos);
+            echo "restablecido";
         } elseif ($_REQUEST["accion"] == 'actualizarPuntos') {
             $data = json_decode(file_get_contents('php://input'), true);
             $puntos = $data['puntos'];
@@ -43,7 +53,7 @@ class APIController {
             } else {
                 $usuarioId = null;
             }
-
+        
             UsuarioDAO::actualizarPuntosFidelidad($usuarioId, $puntos);
             echo "actualizado";
         } elseif ($_REQUEST["accion"] == 'obtenerPuntos') {

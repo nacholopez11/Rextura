@@ -66,7 +66,7 @@ class UsuarioDAO{
         if ($result && $user = $result->fetch_object('Usuario')) {
             // Asigna el ID al objeto Usuario
             $user->setId($user->id);
-            $user->setPuntos($user->puntos_fidelidad); // Añade los puntos al objeto Usuario
+            $user->setPuntosFidelidad($user->puntos_fidelidad); // Añade los puntos al objeto Usuario
             return $user;
         }
     
@@ -93,7 +93,7 @@ class UsuarioDAO{
     }
 
     // FUNCION PARA AÑADIR PUNTOS AL USUARIO DESPUÉS DE TRAMITAR PEDIDO
-    public static function actualizarPuntosFidelidad($usuarioId, $puntos) {
+    public static function actualizarPauntosFidelidad($usuarioId, $puntos) {
         $con = DB::getConnection();
         $stmt = $con->prepare("UPDATE usuarios SET puntos_fidelidad = puntos_fidelidad + ? WHERE id = ?");
         $stmt->bind_param("ii", $puntos, $usuarioId);
@@ -117,5 +117,14 @@ class UsuarioDAO{
         return $puntos;
     }
 
+
+    public static function restarPuntosFidelidad($usuarioId, $puntos) {
+        $con = DB::getConnection();
+        $stmt = $con->prepare("UPDATE usuarios SET puntos_fidelidad = 0 WHERE id = ?");
+        $stmt->bind_param("ii", $puntos, $usuarioId);
+        $resultado = $stmt->execute();
+        $con->close();
+        return $resultado;
+    }
 }
 ?>

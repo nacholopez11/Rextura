@@ -3,6 +3,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let checkboxUsarPuntos = document.getElementById('usarPuntos');
     let totalPedidoElement = document.getElementById('totalPedido');
     let usuarioId = document.getElementById('usuarioId').value;
+    let descuentoElement = document.getElementById('descuento');
 
     // Almacena el total original del pedido
     let totalOriginal = parseFloat(totalPedidoElement.innerText.replace('€', ''));
@@ -36,6 +37,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             // Actualiza el total del pedido en la página
             totalPedidoElement.innerText = nuevoTotal.toFixed(2) + ' €';
+
+            // Actualiza el valor del campo oculto "descuento"
+            descuentoElement.value = descuento;
         })
         .catch(error => {
             console.log(error);

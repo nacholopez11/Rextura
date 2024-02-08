@@ -51,12 +51,17 @@
                 <?php } ?>
             </div>
             <div class="row">
-                <div class="filtros col-3">
-                        <div class="filtro-categorias">
-                            <h3 class="titulo-categoria">CATEGORIAS</h3>
-                            
-                        </div>
+            <div class="filtros col-3">
+                <div class="filtro-categorias">
+                    <h3 class="titulo-categoria">CATEGORIAS</h3>
+                    <input type="checkbox" id="platoPrincipal" name="platoPrincipal">
+                    <label for="platoPrincipal">Plato Principal</label><br>
+                    <input type="checkbox" id="bebida" name="bebida">
+                    <label for="bebida">Bebida</label><br>
+                    <input type="checkbox" id="postre" name="postre">
+                    <label for="postre">Postre</label><br>
                 </div>
+            </div>
                 <div class="row col-9">
                     <?php foreach ($products as $product): ?>
                         <article class="col-12 col-lg-3 col-md-3 col-sm-6 col-xs-12 producto-ind">

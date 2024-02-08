@@ -177,9 +177,15 @@ class ProductController {
     
                 // Obtiene el usuario actual
                 $user = $_SESSION['user'];
-
+    
                 // Obtiene el id del usuario actual
                 $usuario_id = $user->getId();
+    
+                // Obtiene el descuento de la solicitud POST
+                $descuento = isset($_POST['descuento']) ? floatval($_POST['descuento']) : 0;
+    
+                // Resta el descuento del total del pedido
+                $totalPedido -= $descuento;
     
                 // Inserta el pedido en la tabla pedidos
                 $con = DB::getConnection();
