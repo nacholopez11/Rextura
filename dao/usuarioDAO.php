@@ -120,7 +120,7 @@ class UsuarioDAO{
 
     public static function restarPuntosFidelidad($usuarioId, $puntos) {
         $con = DB::getConnection();
-        $stmt = $con->prepare("UPDATE usuarios SET puntos_fidelidad = 0 WHERE id = ?");
+        $stmt = $con->prepare("UPDATE usuarios SET puntos_fidelidad = puntos_fidelidad - ? WHERE id = ?");
         $stmt->bind_param("ii", $puntos, $usuarioId);
         $resultado = $stmt->execute();
         $con->close();

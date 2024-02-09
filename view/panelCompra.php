@@ -142,16 +142,17 @@ include_once 'controller/productController.php';
                     <tbody>
                 </table>
                 <form id="pedido" action=<?=url.'?controller=product&action=confirmar'?> method='post'>
-    <input type="hidden" id="usuarioId" value="<?= $_SESSION['user']->getId() ?>" />
-    <input type="hidden" id="descuento" name="descuento" value="0" />
-    <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad para pagar este pedido?</label>
-    <input type="checkbox" id="usarPuntos" name="usarPuntos" value="on">
-    <td class="boton-confirmar">
-        <button class="boton-confirmar-pedido" type="submit"> 
-            <span class="palabra-confirmar">Tramitar pedido</span>
-        </button>
-    </td>                  
-</form>
+                    <input type="hidden" id="usuarioId" value="<?= $_SESSION['user']->getId() ?>" />
+                    <input type="hidden" id="descuento" name="descuento" value="0" />
+                    <input type="hidden" id="puntosUsados" name="puntosUsados" value="0" />
+                    <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad para pagar este pedido?</label>
+                    <input type="checkbox" id="usarPuntos" name="usarPuntos" value="on">
+                    <td class="boton-confirmar">
+                        <button class="boton-confirmar-pedido" type="submit"> 
+                            <span class="palabra-confirmar">Tramitar pedido</span>
+                        </button>
+                    </td>                  
+                </form>
                 <a class="seguir-comprando" href="https://localhost/rextura/index.php?controller=product&action=products">Seguir comprando</a>
             </div>
             <?php } else { ?>

@@ -28,18 +28,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
         })
         .then(data => {
             let puntos = data.puntos;
-
+        
             // Calcula el descuento
             let descuento = this.checked ? Math.min(totalOriginal, puntos) : 0;
-
+        
             // Calcula el nuevo total
             let nuevoTotal = totalOriginal - descuento;
-
+        
             // Actualiza el total del pedido en la página
             totalPedidoElement.innerText = nuevoTotal.toFixed(2) + ' €';
-
+        
             // Actualiza el valor del campo oculto "descuento"
             descuentoElement.value = descuento;
+        
+            // Actualiza el valor del campo oculto "puntosUsados"
+            document.getElementById('puntosUsados').value = descuento; // Nuevo código
         })
         .catch(error => {
             console.log(error);

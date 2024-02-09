@@ -169,54 +169,49 @@ class ProductController {
                             'subtotal' => $pedido->devuelvePrecioTotal()
                         );
                         $carritoInfo[] = $productoInfo;
-    
-                        // Suma al total del pedido
                         $totalPedido += $pedido->devuelvePrecioTotal();
                     }
                 }
-    
-                // Obtiene el usuario actual
                 $user = $_SESSION['user'];
-    
-                // Obtiene el id del usuario actual
                 $usuario_id = $user->getId();
-    
-                // Obtiene el descuento de la solicitud POST
                 $descuento = isset($_POST['descuento']) ? floatval($_POST['descuento']) : 0;
+                $puntosUsados = isset($_POST['puntosUsados']) ? intval($_POST['puntosUsados']) : 0;
     
-                // Resta el descuento del total del pedido
+                // Resta los puntos usados de los puntos totales del usuario
+                UsuarioDAO::restarPuntosFidelidad($usuario_id, $puntosUsados);
+    
+                // Calcula los puntos ganados por el total del pedido
+                $puntosGanados = floor($totalPedido / 10);
+    
+                // Suma los puntos ganados a los puntos totales del usuario
+                UsuarioDAO::actualizarPauntosFidelidad($usuario_id, $puntosGanados);
+    
                 $totalPedido -= $descuento;
-    
-                // Inserta el pedido en la tabla pedidos
                 $con = DB::getConnection();
                 $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, total) VALUES (?, ?)");
                 $stmt->bind_param("id", $usuario_id, $totalPedido);
                 $stmt->execute();
                 $pedido_id = $stmt->insert_id; 
-    
-                // Inserta los productos del carrito en la tabla productos_pedido
                 foreach ($carritoInfo as $producto) {
                     $stmt = $con->prepare("INSERT INTO productos_pedido (pedido_id, producto_id, precio, cantidad, subtotal) VALUES (?, ?, ?, ?, ?)");
                     $stmt->bind_param("iisid", $pedido_id, $producto['id'], $producto['precio'], $producto['cantidad'], $producto['subtotal']);
                     $stmt->execute();
                 }
-    
-                // Limpia el carrito en la sesión
                 unset($_SESSION['selecciones']);
-    
+
                 // Después de insertar el pedido en la tabla pedidos
-                $pedido_id = $stmt->insert_id;
-    
-                // Actualiza la cookie para incluir el ID del usuario y el ID del pedido
-                $carritoInfo['usuario_id'] = $usuario_id;
-                $carritoInfo['pedido_id'] = $pedido_id;
-                $carritoJson = json_encode($carritoInfo);
-                setcookie('carrito', $carritoJson, time() + (30 * 1), "/"); // Cookie válida por 30 días
-    
-                $con->close();
-    
-                header("Location: index.php?controller=product&action=panelHome");
-                exit();
+            $pedido_id = $stmt->insert_id;
+
+            // Actualiza la cookie para incluir el ID del usuario y el ID del pedido
+            $carritoInfo['usuario_id'] = $usuario_id;
+            $carritoInfo['pedido_id'] = $pedido_id;
+            $carritoJson = json_encode($carritoInfo);
+            setcookie('carrito', $carritoJson, time() + (30 * 1), "/"); // Cookie válida por 30 días
+
+            $con->close();
+
+            header("Location: index.php?controller=product&action=panelHome");
+            exit();
             }
         } else {
             // Redirige al usuario a la página de inicio de sesión si no está autenticado
