@@ -137,7 +137,7 @@ include_once 'controller/productController.php';
                         </tr>
                         <tr class="total-pedido">
                             <th class="palabra-tres">Total del pedido</th>
-                            <td class="precio-dos" id="totalPedido"><?=CalculadoraPrecios::calculadorPrecioPedidoConPuntos($_SESSION['selecciones'], $_SESSION['user']->getPuntosFidelidad())?> €</td>
+                            <td class="precio-dos" id="totalPedido"><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?> €</td>
                         </tr>
                     <tbody>
                 </table>
@@ -146,7 +146,7 @@ include_once 'controller/productController.php';
                     <input type="hidden" id="descuento" name="descuento" value="0" />
                     <input type="hidden" id="puntosUsados" name="puntosUsados" value="0" />
                     <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad para pagar este pedido?</label>
-                    <input type="checkbox" id="usarPuntos" name="usarPuntos" value="on">
+                    <input type="checkbox" id="usarPuntos" name="usarPuntos">
                     <td class="boton-confirmar">
                         <button class="boton-confirmar-pedido" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
