@@ -181,7 +181,8 @@ class ProductController {
                 UsuarioDAO::restarPuntosFidelidad($usuario_id, $puntosUsados);
     
                 // Calcula los puntos ganados por el total del pedido
-                $puntosGanados = floor($totalPedido / 10);
+                $totalPuntos = $totalPedido - $puntosUsados;
+                $puntosGanados = floor($totalPuntos / 10);
     
                 // Suma los puntos ganados a los puntos totales del usuario
                 UsuarioDAO::actualizarPauntosFidelidad($usuario_id, $puntosGanados);
