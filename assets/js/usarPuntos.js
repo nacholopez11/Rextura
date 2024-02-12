@@ -1,13 +1,5 @@
-// Añade un campo oculto para los puntos ganados en el formulario
-let puntosGanadosElement = document.createElement('input');
-puntosGanadosElement.type = 'hidden';
-puntosGanadosElement.id = 'puntosGanados';
-document.querySelector('form#pedido').appendChild(puntosGanadosElement);
-
-// Actualiza el valor del campo oculto "puntosGanados" en la función mostrarPuntosAGanar
 function mostrarPuntosAGanar(totalPedido) {
     let puntosGanados = Math.floor(totalPedido / 10);
-    puntosGanadosElement.value = puntosGanados;
     let filaExistente = document.querySelector('.contenido-resumen table tbody .fila-puntos-ganados');
     if (filaExistente) {
         filaExistente.remove();
@@ -18,7 +10,7 @@ function mostrarPuntosAGanar(totalPedido) {
     th.className = 'palabra-dos';
     th.innerText = 'Puntos ganados con este pedido';
     let td = document.createElement('td');
-    td.className = 'precio-final-descontado';
+    td.className = 'precio-uno';
     td.innerText = puntosGanados;
     tr.appendChild(th);
     tr.appendChild(td);
@@ -34,6 +26,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     // Almacena el total original del pedido
     let totalOriginal = parseFloat(totalPedidoElement.innerText.replace('€', ''));
+
+    // Muestra los puntos que se ganarán con el pedido desde que se carga la página
+    mostrarPuntosAGanar(totalOriginal);
 
     // Añade un controlador de eventos al checkbox
     checkboxUsarPuntos.addEventListener('change', function() {
