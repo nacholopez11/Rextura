@@ -180,7 +180,7 @@ class ProductController {
                 $propinaPorcentaje = isset($_POST['propina']) ? floatval($_POST['propina']) : 0;
 
                 // Calcula la propina en base al total del pedido después de aplicar los puntos
-                $propina = ($totalPedido * $propinaPorcentaje) / 100;
+                $propina = ($totalPedido /100 ) * $propinaPorcentaje;
 
                 // Añade la propina al total del pedido
                 $totalPedido += $propina;
@@ -197,8 +197,8 @@ class ProductController {
     
                 $totalPedido -= $descuento;
                 $con = DB::getConnection();
-                $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, total) VALUES (?, ?)");
-                $stmt->bind_param("id", $usuario_id, $totalPedido);
+                $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, total, propina, puntos_usados, puntos_ganados) VALUES (?, ?, ?, ?, ?)");
+                $stmt->bind_param("iddii", $usuario_id, $totalPedido, $propina, $puntosUsados, $puntosGanados);
                 $stmt->execute();
                 $pedido_id = $stmt->insert_id; 
                 foreach ($carritoInfo as $producto) {
