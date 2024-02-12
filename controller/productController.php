@@ -176,6 +176,14 @@ class ProductController {
                 $usuario_id = $user->getId();
                 $descuento = isset($_POST['descuento']) ? floatval($_POST['descuento']) : 0;
                 $puntosUsados = isset($_POST['puntosUsados']) ? intval($_POST['puntosUsados']) : 0;
+                // Obtiene la propina desde el formulario
+                $propinaPorcentaje = isset($_POST['propina']) ? floatval($_POST['propina']) : 0;
+
+                // Calcula la propina en base al total del pedido después de aplicar los puntos
+                $propina = ($totalPedido * $propinaPorcentaje) / 100;
+
+                // Añade la propina al total del pedido
+                $totalPedido += $propina;
     
                 // Resta los puntos usados de los puntos totales del usuario
                 UsuarioDAO::restarPuntosFidelidad($usuario_id, $puntosUsados);

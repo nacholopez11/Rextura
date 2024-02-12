@@ -63,6 +63,17 @@ class APIController {
             $puntos = UsuarioDAO::obtenerPuntosFidelidad($usuarioId);
 
             echo json_encode(['puntos' => $puntos]);
+        } elseif ($_REQUEST["accion"] == 'obtenerTotalPedido') {
+            // Obtiene los pedidos y los puntos desde el cuerpo de la solicitud
+            $data = json_decode(file_get_contents('php://input'), true);
+            $pedidos = $data['pedidos'];
+            $puntos = $data['puntos'];
+        
+            // Calcula el total del pedido con los puntos
+            $totalPedido = CalculadoraPrecios::calculadorPrecioPedidoConPuntos($pedidos, $puntos);
+        
+            // Envía el total del pedido como respuesta
+            echo json_encode(['totalPedido' => $totalPedido]);
         }
     }
 }

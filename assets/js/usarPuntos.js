@@ -21,11 +21,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // Obtén los elementos del DOM
     let checkboxUsarPuntos = document.getElementById('usarPuntos');
     let totalPedidoElement = document.getElementById('totalPedido');
+    let precioFijo = document.getElementById('precioOriginal');
     let usuarioId = document.getElementById('usuarioId').value;
     let descuentoElement = document.getElementById('descuento');
 
     // Almacena el total original del pedido
     let totalOriginal = parseFloat(totalPedidoElement.innerText.replace('€', ''));
+
+    totalPedidoElement.innerText = (totalOriginal+(totalOriginal/100)*3);
+    
+    let nuevoTotalSinPropina = parseFloat(precioFijo.innerText.replace('€', ''));
 
     // Muestra los puntos que se ganarán con el pedido desde que se carga la página
     mostrarPuntosAGanar(totalOriginal);
@@ -56,6 +61,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             // Calcula el nuevo total con descuento
             let nuevoTotal = totalOriginal - descuento;
+            nuevoTotalSinPropina = totalOriginal - descuento;
+
+            // Obtiene la propina desde el input
+            let propinaPorcentaje = parseFloat(document.getElementById('propina').value);
+            let propina = (nuevoTotalSinPropina / 100) * propinaPorcentaje;
+
+            // Añade la propina al total del pedido
+            nuevoTotal += propina;
 
             // Actualiza el total del pedido en la página
             totalPedidoElement.innerText = nuevoTotal.toFixed(2) + ' €';
@@ -74,4 +87,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
             notie.alert({ type: 'error', text: 'Error al obtener los puntos de fidelidad', time: 2 });
         });
     });
+
+    // Añade un controlador de eventos al input de la propina
+    document.getElementById('propina').addEventListener('input', function() {
+        // Obtiene el total original del pedido y la propina desde el input
+        let propinaPorcentaje = parseFloat(this.value);
+        // Calcula la propina y el nuevo total del pedido
+        let propina = (nuevoTotalSinPropina / 100) * propinaPorcentaje;
+        let nuevoTotal = nuevoTotalSinPropina + propina;
+
+        // Actualiza el total del pedido en la página
+        totalPedidoElement.innerText = nuevoTotal.toFixed(2) + ' €';
+
+        mostrarPuntosAGanar(nuevoTotal);
+    });
+
+
 });

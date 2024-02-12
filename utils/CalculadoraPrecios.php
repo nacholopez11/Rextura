@@ -19,5 +19,17 @@ Class CalculadoraPrecios{
 
         return $precioTotalConPuntos;
     }
+
+    public static function calculadorPrecioPedidoConPropinaPred($pedidos){
+        $precioTotal = 0;
+
+        foreach($pedidos as $pedido){
+            $precioTotal += $pedido->devuelvePrecioTotal();
+        }
+
+        $precioFinal = ($precioTotal+($precioTotal/100)*3);
+
+        return $precioFinal;
+    }
 }
 ?>

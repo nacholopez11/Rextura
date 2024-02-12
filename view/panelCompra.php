@@ -133,7 +133,7 @@ include_once 'controller/productController.php';
                     <tbody>
                         <tr>
                             <th class="palabra-dos">Subtotal</th>
-                            <td class="precio-uno"><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?> €</td>
+                            <td class="precio-uno" id="precioOriginal"><?=CalculadoraPrecios::calculadorPrecioPedido($_SESSION['selecciones'])?> €</td>
                         </tr>
                         <tr class="total-pedido">
                             <th class="palabra-tres">Total del pedido</th>
@@ -147,6 +147,12 @@ include_once 'controller/productController.php';
                     <input type="hidden" id="puntosUsados" name="puntosUsados" value="0" />
                     <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad para pagar este pedido?</label>
                     <input type="checkbox" id="usarPuntos" name="usarPuntos">
+                    <!--PROPINAS -->
+                    <label for="propina">Propina:</label>
+                    <input type="number" id="propina" name="propina" value="3" min="1" max="100" step="1"> %
+                    <button type="button" id="aumentarPropina">Aumentar propina</button>
+                    <button type="button" id="disminuirPropina">Disminuir propina</button>
+                    <button type="button" id="omitirPropina">Omitir propina</button>
                     <td class="boton-confirmar">
                         <button class="boton-confirmar-pedido" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
@@ -217,5 +223,6 @@ include_once 'controller/productController.php';
 <script src="assets/js/puntosFidelidad.js"></script>
 <script src="assets/js/mostrarPuntos.js"></script>
 <script src="assets/js/usarPuntos.js"></script>
+<script src="assets/js/controlPropinas.js"></script>
 <script src="https://unpkg.com/notie"></script>
 </html>
