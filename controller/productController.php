@@ -178,6 +178,11 @@ class ProductController {
                 $puntosUsados = isset($_POST['puntosUsados']) ? intval($_POST['puntosUsados']) : 0;
                 // Obtiene la propina desde el formulario
                 $propinaPorcentaje = isset($_POST['propina']) ? floatval($_POST['propina']) : 0;
+                $aplicarPropinas = isset($_POST['aplicarPropinas']) ? $_POST['aplicarPropinas'] : 'off';
+
+                if ($aplicarPropinas == 'off') {
+                    $propinaPorcentaje = 0;
+                }
 
                 // Calcula la propina en base al total del pedido después de aplicar los puntos
                 $propina = ($totalPedido /100 ) * $propinaPorcentaje;

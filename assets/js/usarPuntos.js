@@ -25,6 +25,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let usuarioId = document.getElementById('usuarioId').value;
     let descuentoElement = document.getElementById('descuento');
 
+    let checkboxAplicarPropinas = document.getElementById('aplicarPropinas');
+    let campoPropina = document.getElementById('campoPropina');
+    let inputPropina = document.getElementById('propina');
+
+
     // Almacena el total original del pedido
     let totalOriginal = parseFloat(totalPedidoElement.innerText.replace('€', ''));
 
@@ -58,7 +63,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             // Calcula el descuento
             // MIRAR ESTA LINEA
-            let descuento = this.checked ? Math.min(totalOriginal, puntos) : 0;
+            let descuento = this.checked ? Math.min(nuevoTotalSinPropina, puntos) : 0;
 
             // Calcula el nuevo total con descuento
             let nuevoTotal = totalOriginal - descuento;
@@ -66,6 +71,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             // Obtiene la propina desde el input
             let propinaPorcentaje = parseFloat(document.getElementById('propina').value);
+            
+            if(propinaPorcentaje = 1 && document.getElementById('aplicarPropinas').value == 'off'){
+                propinaPorcentaje = 0;
+            }
+
             let propina = (nuevoTotalSinPropina / 100) * propinaPorcentaje;
 
             // Añade la propina al total del pedido
@@ -102,6 +112,33 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         mostrarPuntosAGanar(nuevoTotal);
     });
+
+
+
+    // Añade un controlador de eventos al checkbox
+    checkboxAplicarPropinas.addEventListener('change', function() {
+        if (this.checked) {
+            // Si el checkbox está marcado, muestra el campo de entrada de la propina y establece su valor en 3
+            campoPropina.style.display = 'block';
+            inputPropina.value = 3;
+            // let porcentaje = inputPropina.value;
+            let propina = (nuevoTotalSinPropina / 100) * inputPropina.value;
+            let nuevoTotal = nuevoTotalSinPropina + propina;
+
+            totalPedidoElement.innerText = nuevoTotal.toFixed(2) + ' €';
+            mostrarPuntosAGanar(nuevoTotal);
+        } else {
+            // Si el checkbox no está marcado, oculta el campo de entrada de la propina y establece su valor en 0
+            campoPropina.style.display = 'none';
+            inputPropina.value = 1;
+
+            mostrarPuntosAGanar(nuevoTotalSinPropina);
+            totalPedidoElement.innerText = nuevoTotalSinPropina.toFixed(2) + ' €';
+        }
+    });
+
+    // Dispara el evento change para inicializar el estado del campo de entrada de la propina
+    checkboxAplicarPropinas.dispatchEvent(new Event('change'));
 
 
 });

@@ -145,14 +145,14 @@ include_once 'controller/productController.php';
                     <input type="hidden" id="usuarioId" value="<?= $_SESSION['user']->getId() ?>" />
                     <input type="hidden" id="descuento" name="descuento" value="0" />
                     <input type="hidden" id="puntosUsados" name="puntosUsados" value="0" />
-                    <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad para pagar este pedido?</label>
+                    <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad en este pedido?</label>
                     <input type="checkbox" id="usarPuntos" name="usarPuntos">
-                    <!--PROPINAS -->
-                    <label for="propina">Propina(%):</label>
-                    <input type="number" id="propina" name="propina" value="3" min="1" max="100" step="1"> 
-                    <!-- <button type="button" id="aumentarPropina">Aumentar propina</button>
-                    <button type="button" id="disminuirPropina">Disminuir propina</button>
-                    <button type="button" id="omitirPropina">Omitir propina</button> -->
+                    <label for="aplicarPropinas">¿Quieres aplicar propinas?</label>
+                    <input type="checkbox" id="aplicarPropinas" name="aplicarPropinas">
+                    <div id="campoPropina">
+                        <label for="propina">Propina(%):</label>
+                        <input type="number" id="propina" name="propina" value="3" min="1" max="100" step="1">
+                    </div>
                     <td class="boton-confirmar">
                         <button class="boton-confirmar-pedido" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
@@ -177,8 +177,7 @@ include_once 'controller/productController.php';
         </div>
         <div class="container text-center">
             <div class="row fila-productos">
-                <?php foreach ($products as $product) { 
-?>
+                <?php foreach ($products as $product) { ?>
                     <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind">
                             <div class="card">
                                 <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
@@ -223,7 +222,7 @@ include_once 'controller/productController.php';
 <script src="assets/js/puntosFidelidad.js"></script>
 <script src="assets/js/mostrarPuntos.js"></script>
 <script src="assets/js/usarPuntos.js"></script>
-<script src="assets/js/controlPropinas.js"></script>
+<!-- <script src="assets/js/controlPropinas.js"></script> -->
 <script src="assets/qrcode/qrcode.js"></script>
 <script src="https://unpkg.com/notie"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
