@@ -148,11 +148,11 @@ include_once 'controller/productController.php';
                     <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad para pagar este pedido?</label>
                     <input type="checkbox" id="usarPuntos" name="usarPuntos">
                     <!--PROPINAS -->
-                    <label for="propina">Propina:</label>
-                    <input type="number" id="propina" name="propina" value="3" min="1" max="100" step="1"> %
-                    <button type="button" id="aumentarPropina">Aumentar propina</button>
+                    <label for="propina">Propina(%):</label>
+                    <input type="number" id="propina" name="propina" value="3" min="1" max="100" step="1"> 
+                    <!-- <button type="button" id="aumentarPropina">Aumentar propina</button>
                     <button type="button" id="disminuirPropina">Disminuir propina</button>
-                    <button type="button" id="omitirPropina">Omitir propina</button>
+                    <button type="button" id="omitirPropina">Omitir propina</button> -->
                     <td class="boton-confirmar">
                         <button class="boton-confirmar-pedido" type="submit"> 
                             <span class="palabra-confirmar">Tramitar pedido</span>
@@ -224,5 +224,7 @@ include_once 'controller/productController.php';
 <script src="assets/js/mostrarPuntos.js"></script>
 <script src="assets/js/usarPuntos.js"></script>
 <script src="assets/js/controlPropinas.js"></script>
+<script src="assets/qrcode/qrcode.js"></script>
 <script src="https://unpkg.com/notie"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
