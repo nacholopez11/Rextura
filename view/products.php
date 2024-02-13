@@ -8,6 +8,12 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="./assets/css/full_estil_products.css" rel="stylesheet" type="text/css" media="screen">
     <link href="./assets/css/full_estil_general.css" rel="stylesheet" type="text/css" media="screen">
+    <style>
+        /* Agrega estilos según sea necesario */
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <?php
@@ -54,17 +60,14 @@
             <div class="filtros col-3">
                 <div class="filtro-categorias">
                     <h3 class="titulo-categoria">CATEGORIAS</h3>
-                    <input type="checkbox" id="platoPrincipal" name="platoPrincipal">
-                    <label for="platoPrincipal">Plato Principal</label><br>
-                    <input type="checkbox" id="bebida" name="bebida">
-                    <label for="bebida">Bebida</label><br>
-                    <input type="checkbox" id="postre" name="postre">
-                    <label for="postre">Postre</label><br>
+                    <label><input type="checkbox" id="platoPrincipalCheckbox"> Plato Principal</label><br>
+                    <label><input type="checkbox" id="postreCheckbox"> Postre</label><br>
+                    <label><input type="checkbox" id="bebidaCheckbox"> Bebida</label><br>
                 </div>
             </div>
                 <div class="row col-9">
                     <?php foreach ($products as $product): ?>
-                        <article class="col-12 col-lg-3 col-md-3 col-sm-6 col-xs-12 producto-ind">
+                        <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind" data-categoria="<?=$product->getCategoria(); ?>">
                                 <div class="card">
                                     <img src="./assets/images/productos/<?=$product->getImage(); ?>" class="card-img-top" alt="<?=$product->getNombre(); ?>">
                                     <div class="card-body">
@@ -133,4 +136,5 @@ include_once 'footer.php';
 ?>
 </body>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/filtroProductos.js"></script>
 </html>

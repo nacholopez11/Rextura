@@ -57,6 +57,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let puntos = data.puntos;
 
             // Calcula el descuento
+            // MIRAR ESTA LINEA
             let descuento = this.checked ? Math.min(totalOriginal, puntos) : 0;
 
             // Calcula el nuevo total con descuento
