@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let propina = (nuevoTotalSinPropina / 100) * propinaPorcentaje;
 
             // Añade la propina al total del pedido
-            nuevoTotal += propina;
+            nuevoTotal = nuevoTotal + propina;
 
             // Actualiza el total del pedido en la página
             totalPedidoElement.innerText = nuevoTotal.toFixed(2) + ' €';
@@ -92,6 +92,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             // Llama a la función para mostrar los puntos ganados
             mostrarPuntosAGanar(nuevoTotal);
+
+            let desc = document.getElementById('aplicarPropinas');
+            desc.checked = false;
         })
         .catch(error => {
             console.log(error);
