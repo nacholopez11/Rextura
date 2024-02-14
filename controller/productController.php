@@ -388,5 +388,18 @@ class ProductController {
         // Redirige de vuelta a la página del carrito
         header("Location: index.php?controller=product&action=panelCompra");
     }
+
+    // FUNCION PARA IR A PAGINA DE INFO DEL PEDIDO
+    public function panelInfoPedido() {
+        session_start();
+        $pedido = productDAO::getPedidoById($usuarioId, $pedidoId);
+        include_once 'view/header.php';
+        include_once 'view/panelInfoPedido.php';
+        include_once 'view/footer.php';
+    }
+
+
+
+
 }
 ?>

@@ -3,6 +3,7 @@ require_once './model/Review.php';
 require_once './model/Usuario.php';
 require_once './dao/ReviewDAO.php';
 require_once './dao/usuarioDAO.php';
+require_once './dao/productDAO.php';
 
 class APIController {    
     public function api() {
@@ -63,18 +64,30 @@ class APIController {
             $puntos = UsuarioDAO::obtenerPuntosFidelidad($usuarioId);
 
             echo json_encode(['puntos' => $puntos]);
-        } elseif ($_REQUEST["accion"] == 'obtenerTotalPedido') {
-            // Obtiene los pedidos y los puntos desde el cuerpo de la solicitud
+        }elseif($_GET["accion"] == 'crearQR'){
             $data = json_decode(file_get_contents('php://input'), true);
-            $pedidos = $data['pedidos'];
-            $puntos = $data['puntos'];
-        
-            // Calcula el total del pedido con los puntos
-            $totalPedido = CalculadoraPrecios::calculadorPrecioPedidoConPuntos($pedidos, $puntos);
-        
-            // Envía el total del pedido como respuesta
-            echo json_encode(['totalPedido' => $totalPedido]);
+            $usuarioId = $data['usuario_id'];
+            $pedidoId = $_GET['pedidoId'];
+
+            $pedido = productDAO::getPedidoById($usuarioId, $pedidoId);
+
+            // require_once 'views/panelInfoPedido.php';
+            echo json_encode(['pedido' => $pedido]);
         }
     }
 }
+//         } elseif ($_REQUEST["accion"] == 'obtenerTotalPedido') {
+//             // Obtiene los pedidos y los puntos desde el cuerpo de la solicitud
+//             $data = json_decode(file_get_contents('php://input'), true);
+//             $pedidos = $data['pedidos'];
+//             $puntos = $data['puntos'];
+        
+//             // Calcula el total del pedido con los puntos
+//             $totalPedido = CalculadoraPrecios::calculadorPrecioPedidoConPuntos($pedidos, $puntos);
+        
+//             // Envía el total del pedido como respuesta
+//             echo json_encode(['totalPedido' => $totalPedido]);
+//         }
+//     }
+// }
 ?>

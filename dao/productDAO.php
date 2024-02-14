@@ -127,5 +127,21 @@ class ProductDAO {
     }
 
 
+    public static function getPedidoById($id, $pedidoId) {
+        $con = DB::getConnection();
+        $query = "SELECT * FROM productos_pedido WHERE id = $id AND pedido_id = $pedidoId";
+        $result = $con->query($query);
+        $row = $result->fetch_object();
+
+        $pedido = new Pedido($row->producto_id, $row->cantidad);    
+        $con->close();
+    
+        return $pedido;
+    }
+
+
+
+
+
 }
 ?>

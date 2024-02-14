@@ -159,6 +159,7 @@ include_once 'controller/productController.php';
                         </button>
                     </td>                  
                 </form>
+                <div id="qrcode"></div>
                 <a class="seguir-comprando" href="https://localhost/rextura/index.php?controller=product&action=products">Seguir comprando</a>
             </div>
             <?php } else { ?>
@@ -218,12 +219,12 @@ include_once 'controller/productController.php';
     include_once 'footer.php';
     ?>
 </body>
+<script src="assets/qrcode/qrcode.js"></script>
+<script src="https://unpkg.com/notie"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/puntosFidelidad.js"></script>
 <script src="assets/js/mostrarPuntos.js"></script>
 <script src="assets/js/usarPuntos.js"></script>
-<!-- <script src="assets/js/controlPropinas.js"></script> -->
-<script src="assets/qrcode/qrcode.js"></script>
-<script src="https://unpkg.com/notie"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="assets/js/scriptQR.js"></script>
 </html>
