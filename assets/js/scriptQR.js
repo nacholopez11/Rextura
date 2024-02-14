@@ -12,15 +12,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     confirmarPedido.addEventListener('submit', function() {
         // Obtiene los puntos del usuario
-        fetch('https://localhost/rextura/index.php?controller=api&action=api&accion=crearQR&pedidoId=122', {
-            method: 'GET',
-            body: JSON.stringify({
-                usuario_id: usuarioId,
-            }),
-            headers: {
-                'Content-Type': 'application/json;',
-            },
-        })
+        fetch('https://localhost/rextura/index.php?controller=api&action=api&accion=crearQR&pedidoId=122')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Error de red');
@@ -52,7 +44,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         })
         .catch(error => {
             console.log(error);
-            notie.alert({ type: 'error', text: 'Error al crear el QR', time: 2 });
+            notie.alert({ type: 'error', text: 'Error al crear el QR', time: 22 });
         });
     });
 });

@@ -72,7 +72,8 @@ class APIController {
             $pedido = productDAO::getPedidoById($usuarioId, $pedidoId);
 
             // require_once 'views/panelInfoPedido.php';
-            echo json_encode(['pedido' => $pedido]);
+            header("Content-Type: application/json");
+            echo json_encode($pedido, JSON_UNESCAPED_UNICODE);
         }
     }
 }
