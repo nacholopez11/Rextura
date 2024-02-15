@@ -213,8 +213,12 @@ class ProductController {
                 }
                 unset($_SESSION['selecciones']);
 
-                // Después de insertar el pedido en la tabla pedidos
+            // Después de insertar el pedido en la tabla pedidos
             $pedido_id = $stmt->insert_id;
+
+            // // Devuelve el ID del pedido recién creado al cliente
+            // echo json_encode(['pedido_id' => $pedido_id]);
+            // exit();
 
             // Actualiza la cookie para incluir el ID del usuario y el ID del pedido
             $carritoInfo['usuario_id'] = $usuario_id;
@@ -226,6 +230,7 @@ class ProductController {
 
             header("Location: index.php?controller=product&action=panelHome");
             exit();
+            
             }
         } else {
             // Redirige al usuario a la página de inicio de sesión si no está autenticado
@@ -233,6 +238,21 @@ class ProductController {
             exit();
         }
     }
+
+    public function mostrarPedido() {
+        // Obtiene el ID del usuario de la URL
+        $usuarioId = $_GET['usuarioId'];
+    
+        // Obtiene el último pedido del usuario
+        $pedidoId = UsuarioDAO::obtenerUltimoPedidoPorUsuarioId($usuarioId);
+    
+        // Obtiene la información del pedido
+        $pedido = UsuarioDAO::obtenerPedidoPorId($pedidoId);
+    
+        // Carga la vista con la información del pedido
+        include_once 'view/panelInfoPedido.php';
+    }
+
 
 
     // FUNCION PARA RECUPERAR ÚLTIMO PEDIDO DE CADA USUARIO
@@ -389,14 +409,14 @@ class ProductController {
         header("Location: index.php?controller=product&action=panelCompra");
     }
 
-    // FUNCION PARA IR A PAGINA DE INFO DEL PEDIDO
-    public function panelInfoPedido() {
-        session_start();
-        $pedido = productDAO::getPedidoById($usuarioId, $pedidoId);
-        include_once 'view/header.php';
-        include_once 'view/panelInfoPedido.php';
-        include_once 'view/footer.php';
-    }
+    // // FUNCION PARA IR A PAGINA DE INFO DEL PEDIDO
+    // public function panelInfoPedido($pedidoId) {
+    //     session_start();
+    //     $pedido = productDAO::getPedidoById($_SESSION['user']->getId(), $pedidoId);
+    //     include_once 'view/header.php';
+    //     include_once 'view/panelInfoPedido.php';
+    //     include_once 'view/footer.php';
+    // }
 
 
 

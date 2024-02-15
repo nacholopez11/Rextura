@@ -127,18 +127,41 @@ class ProductDAO {
     }
 
 
-    public static function getPedidoById($id, $pedidoId) {
-        $con = DB::getConnection();
-        $query = "SELECT * FROM productos_pedido WHERE id = $id AND pedido_id = $pedidoId";
-        $result = $con->query($query);
-        $row = $result->fetch_object();
+    // public static function getPedidoById($id, $pedidoId) {
+    //     $con = DB::getConnection();
+    //     $query = "SELECT * FROM productos_pedido WHERE id = $id AND pedido_id = $pedidoId";
+    //     $result = $con->query($query);
+    //     $row = $result->fetch_object();
 
-        $pedido = new Pedido($row->producto_id, $row->cantidad);    
+    //     $pedido = new Pedido($row->producto_id, $row->cantidad);    
+    //     $con->close();
+    
+    //     return $pedido;
+    // }
+
+
+    public static function getPedidoById($pedidoId) {
+        $con = DB::getConnection();
+        $query = "SELECT * FROM productos_pedido WHERE pedido_id = ?"; 
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("i", $pedidoId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $pedido = array();
+        while ($row = $result->fetch_assoc()) {
+            $producto = array(
+                'id' => $row['producto_id'],
+                'cantidad' => $row['cantidad'],
+            );
+            $pedido[] = $producto;
+        }
+    
+        $stmt->close();
         $con->close();
     
         return $pedido;
     }
-
 
 
 

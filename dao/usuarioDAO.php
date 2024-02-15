@@ -126,5 +126,53 @@ class UsuarioDAO{
         $con->close();
         return $resultado;
     }
+
+
+
+
+    public static function obtenerUltimoPedidoPorUsuarioId($usuarioId) {
+        $con = DB::getConnection();
+        $query = "SELECT MAX(id) as ultimo_pedido FROM pedidos WHERE usuario_id = ?"; 
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("i", $usuarioId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $pedidoId = null;
+        if ($row = $result->fetch_assoc()) {
+            $pedidoId = $row['ultimo_pedido'];
+        }
+        
+        $stmt->close();
+        $con->close();
+        
+        return $pedidoId;
+    }
+    
+    public static function obtenerPedidoPorId($pedidoId) {
+        $con = DB::getConnection();
+        $query = "SELECT * FROM productos_pedido WHERE pedido_id = ?"; 
+        $stmt = $con->prepare($query);
+        $stmt->bind_param("i", $pedidoId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        $pedido = array();
+        while ($row = $result->fetch_assoc()) {
+            $producto = array(
+                'id' => $row['producto_id'],
+                'cantidad' => $row['cantidad'],
+            );
+            $pedido[] = $producto;
+        }
+        
+        $stmt->close();
+        $con->close();
+        
+        return $pedido;
+    }
+
+
+
 }
 ?>

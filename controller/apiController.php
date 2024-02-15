@@ -64,16 +64,17 @@ class APIController {
             $puntos = UsuarioDAO::obtenerPuntosFidelidad($usuarioId);
 
             echo json_encode(['puntos' => $puntos]);
-        }elseif($_GET["accion"] == 'crearQR'){
-            $data = json_decode(file_get_contents('php://input'), true);
-            $usuarioId = $data['usuario_id'];
-            $pedidoId = $_GET['pedidoId'];
-
-            $pedido = productDAO::getPedidoById($usuarioId, $pedidoId);
-
-            // require_once 'views/panelInfoPedido.php';
+        } elseif($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET["accion"] == 'crearQR'){
+            $usuarioId = $_POST['usuarioId'];
+        
+            // Suponiendo que obtienes el pedidoId de $_POST
+            $pedidoId = $_POST['pedidoId'];
+        
+            $pedido = productDAO::getPedidoById($pedidoId);
+        
             header("Content-Type: application/json");
-            echo json_encode($pedido, JSON_UNESCAPED_UNICODE);
+            echo json_encode(['pedido_id' => $pedidoId]);
+            exit();
         }
     }
 }

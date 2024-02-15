@@ -95,6 +95,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
             let desc = document.getElementById('aplicarPropinas');
             desc.checked = false;
+            campoPropina.style.display = 'none';
+
         })
         .catch(error => {
             console.log(error);
