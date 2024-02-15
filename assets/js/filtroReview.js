@@ -21,11 +21,24 @@ document.getElementById('orderSelect').addEventListener('change', function(e) {
 
 document.querySelectorAll('#filterForm input[type="checkbox"]').forEach(function(checkbox) {
     checkbox.addEventListener('change', function(e) {
-        let selectedRatings = [];
-        document.querySelectorAll('#filterForm input[type="checkbox"]:checked').forEach(function(checkbox) {
-            selectedRatings.push('valoracion-' + checkbox.value);
+        // Guarda el estado del checkbox en localStorage
+        localStorage.setItem('rating-' + checkbox.value, checkbox.checked);
+        filterReviews();
+    });
+});
+
+function filterReviews() {
+    let selectedRatings = [];
+    document.querySelectorAll('#filterForm input[type="checkbox"]:checked').forEach(function(checkbox) {
+        selectedRatings.push('valoracion-' + checkbox.value);
+    });
+    let allReviews = document.querySelectorAll('.review');
+    if (selectedRatings.length === 0) {
+        allReviews.forEach(function(review) {
+            review.style.display = 'block';
         });
-        document.querySelectorAll('.review').forEach(function(review) {
+    } else {
+        allReviews.forEach(function(review) {
             let ratingClass = Array.from(review.classList).find(cls => cls.startsWith('valoracion-'));
             if (selectedRatings.includes(ratingClass)) {
                 review.style.display = 'block';
@@ -33,6 +46,16 @@ document.querySelectorAll('#filterForm input[type="checkbox"]').forEach(function
                 review.style.display = 'none';
             }
         });
-        orderReviews(document.getElementById('orderSelect').value);
+    }
+    orderReviews(document.getElementById('orderSelect').value);
+}
+
+window.onload = function() {
+    document.querySelectorAll('#filterForm input[type="checkbox"]').forEach(function(checkbox) {
+        // Recupera el estado del checkbox de localStorage
+        let isChecked = localStorage.getItem('rating-' + checkbox.value) === 'true';
+        checkbox.checked = isChecked;
     });
-});
+    // Filtra las reseñas según los checkboxes marcados
+    filterReviews();
+};
