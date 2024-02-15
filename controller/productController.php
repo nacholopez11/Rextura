@@ -228,7 +228,10 @@ class ProductController {
 
             $con->close();
 
-            header("Location: index.php?controller=product&action=panelHome");
+            // header("Location: index.php?controller=product&action=panelHome");
+            // exit();
+            header('Content-Type: application/json');
+            echo json_encode(['pedido_id' => $pedido_id]);
             exit();
             
             }
