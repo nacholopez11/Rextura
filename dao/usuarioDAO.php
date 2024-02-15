@@ -151,17 +151,29 @@ class UsuarioDAO{
     
     public static function obtenerPedidoPorId($pedidoId) {
         $con = DB::getConnection();
-        $query = "SELECT * FROM productos_pedido WHERE pedido_id = ?"; 
+        $query = "SELECT pedidos.id, pedidos.usuario_id, pedidos.fecha_pedido, pedidos.total, pedidos.propina, pedidos.puntos_usados, pedidos.puntos_ganados, productos_pedido.producto_id, productos_pedido.precio, productos_pedido.cantidad, productos_pedido.subtotal 
+                  FROM pedidos 
+                  JOIN productos_pedido ON pedidos.id = productos_pedido.pedido_id 
+                  WHERE pedidos.id = ?"; 
         $stmt = $con->prepare($query);
         $stmt->bind_param("i", $pedidoId);
         $stmt->execute();
         $result = $stmt->get_result();
         
         $pedido = array();
-        while ($row = $result->fetch_assoc()) {
+        while ($row = $result->fetch_object()) {
             $producto = array(
-                'id' => $row['producto_id'],
-                'cantidad' => $row['cantidad'],
+                'pedido_id' => $row->id,
+                'usuario_id' => $row->usuario_id,
+                'fecha_pedido' => $row->fecha_pedido,
+                'total' => $row->total,
+                'propina' => $row->propina,
+                'puntos_usados' => $row->puntos_usados,
+                'puntos_ganados' => $row->puntos_ganados,
+                'producto_id' => $row->producto_id,
+                'precio' => $row->precio,
+                'cantidad' => $row->cantidad,
+                'subtotal' => $row->subtotal,
             );
             $pedido[] = $producto;
         }

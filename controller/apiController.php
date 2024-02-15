@@ -64,18 +64,19 @@ class APIController {
             $puntos = UsuarioDAO::obtenerPuntosFidelidad($usuarioId);
 
             echo json_encode(['puntos' => $puntos]);
-        } elseif($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET["accion"] == 'crearQR'){
-            $usuarioId = $_POST['usuarioId'];
+        } 
+        // elseif($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET["accion"] == 'crearQR'){
+        //     $usuarioId = $_POST['usuarioId'];
         
-            // Suponiendo que obtienes el pedidoId de $_POST
-            $pedidoId = $_POST['pedidoId'];
+        //     // Suponiendo que obtienes el pedidoId de $_POST
+        //     $pedidoId = $_POST['pedidoId'];
         
-            $pedido = productDAO::getPedidoById($pedidoId);
+        //     $pedido = productDAO::getPedidoById($pedidoId);
         
-            header("Content-Type: application/json");
-            echo json_encode(['pedido_id' => $pedidoId]);
-            exit();
-        }
+        //     header("Content-Type: application/json");
+        //     echo json_encode(['pedido_id' => $pedidoId]);
+        //     exit();
+        // }
     }
 }
 //         } elseif ($_REQUEST["accion"] == 'obtenerTotalPedido') {
