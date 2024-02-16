@@ -65,32 +65,6 @@ class APIController {
 
             echo json_encode(['puntos' => $puntos]);
         } 
-        // elseif($_SERVER['REQUEST_METHOD'] == 'POST' && $_GET["accion"] == 'crearQR'){
-        //     $usuarioId = $_POST['usuarioId'];
-        
-        //     // Suponiendo que obtienes el pedidoId de $_POST
-        //     $pedidoId = $_POST['pedidoId'];
-        
-        //     $pedido = productDAO::getPedidoById($pedidoId);
-        
-        //     header("Content-Type: application/json");
-        //     echo json_encode(['pedido_id' => $pedidoId]);
-        //     exit();
-        // }
     }
 }
-//         } elseif ($_REQUEST["accion"] == 'obtenerTotalPedido') {
-//             // Obtiene los pedidos y los puntos desde el cuerpo de la solicitud
-//             $data = json_decode(file_get_contents('php://input'), true);
-//             $pedidos = $data['pedidos'];
-//             $puntos = $data['puntos'];
-        
-//             // Calcula el total del pedido con los puntos
-//             $totalPedido = CalculadoraPrecios::calculadorPrecioPedidoConPuntos($pedidos, $puntos);
-        
-//             // Envía el total del pedido como respuesta
-//             echo json_encode(['totalPedido' => $totalPedido]);
-//         }
-//     }
-// }
 ?>

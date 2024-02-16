@@ -396,7 +396,6 @@ class ProductController {
                 $_SESSION['selecciones'] = array_values($_SESSION['selecciones']);
             }
         }
-    
         // Redirige de vuelta a la página del carrito
         header("Location: index.php?controller=product&action=panelCompra");
     }

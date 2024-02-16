@@ -5,7 +5,7 @@ include_once './dao/usuarioDAO.php';
 class UsuarioController {
     // FUNCION PRINCIPAL
     public function index() {  
-        include_once 'view\register.php'; 
+        include_once 'view/register.php'; 
     }
 
     // FUNCION PARA REGISTRAR UN USUARIO 
