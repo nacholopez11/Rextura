@@ -148,9 +148,5 @@ class ProductDAO {
     
         return $pedido;
     }
-
-
-
-
 }
 ?>
