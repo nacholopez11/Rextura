@@ -39,7 +39,7 @@
         </tbody>
     </table>
 
-    <a class="seguir-comprando" href="https://localhost/rextura/index.php?controller=product&action=panelHome">Volver a Inicio</a>
+    <a class="seguir-comprando" href=<?=url."index.php?controller=product&action=panelHome"?>>Volver a Inicio</a>
 
     <?php
     // Incluye el footer

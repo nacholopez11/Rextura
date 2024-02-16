@@ -160,7 +160,7 @@ include_once 'controller/productController.php';
                     </td>                  
                 </form>
                 <div id="qrcode"></div>
-                <a class="seguir-comprando" href="https://localhost/rextura/index.php?controller=product&action=products">Seguir comprando</a>
+                <a class="seguir-comprando" href=<?=url."index.php?controller=product&action=products"?>>Seguir comprando</a>
             </div>
             <?php } else { ?>
             <p class="no-art">No hay productos en el carrito.</p>
