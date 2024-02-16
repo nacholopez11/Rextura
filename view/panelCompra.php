@@ -145,9 +145,9 @@ include_once 'controller/productController.php';
                     <input type="hidden" id="usuarioId" value="<?= $_SESSION['user']->getId() ?>" />
                     <input type="hidden" id="descuento" name="descuento" value="0" />
                     <input type="hidden" id="puntosUsados" name="puntosUsados" value="0" />
-                    <label for="usarPuntos">¿Quieres usar tus puntos de fidelidad en este pedido?</label>
+                    <label for="usarPuntos" class="mensaje-subtotal">¿Quieres usar tus puntos de fidelidad en este pedido?</label>
                     <input type="checkbox" id="usarPuntos" name="usarPuntos">
-                    <label for="aplicarPropinas">¿Quieres aplicar propinas?</label>
+                    <label for="aplicarPropinas" class="mensaje-subtotal">¿Quieres aplicar propinas?</label>
                     <input type="checkbox" id="aplicarPropinas" name="aplicarPropinas">
                     <div id="campoPropina">
                         <label for="propina">Propina(%):</label>
