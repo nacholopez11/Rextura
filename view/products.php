@@ -56,16 +56,16 @@
                     <?php } ?>
                 <?php } ?>
             </div>
-            <div class="row">
-                <div class="filtros col-3">
+            <div class="row cuerpo">
+                <div class="filtros col-2">
                     <div class="filtro-categorias">
                         <h3 class="titulo-categoria">CATEGORIAS</h3>
-                        <label><input type="checkbox" id="platoPrincipalCheckbox"> Plato Principal</label><br>
-                        <label><input type="checkbox" id="postreCheckbox"> Postre</label><br>
-                        <label><input type="checkbox" id="bebidaCheckbox"> Bebida</label><br>
+                        <label><input type="checkbox" id="platoPrincipalCheckbox"><p class="titi"> Plato Principal</p></label>
+                        <label><input type="checkbox" id="postreCheckbox"><p class="titi"> Postre</p></label>
+                        <label><input type="checkbox" id="bebidaCheckbox"><p class="titi"> Bebida</p></label>
                     </div>
                 </div>
-                <div class="row col-9">
+                <div class="row col-12 col-lg-10">
                     <?php foreach ($products as $product): ?>
                         <article class="col-12 col-lg-3 col-md-6 col-sm-6 col-xs-12 producto-ind" data-categoria="<?=$product->getCategoria(); ?>">
                                 <div class="card">
