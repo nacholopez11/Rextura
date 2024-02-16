@@ -4,9 +4,21 @@
 
 .star {
     cursor: pointer;
-    color: #ddd;  /* Color de las estrellas vacías */
+    color: #ddd;
 }
 
 .star.filled {
-    color: #ffd700;  /* Color de las estrellas llenas */
+    color: #ffd700;
 }
+
+.contenidoReseñas{
+    background-color: red;
+    text-align: left;
+}
+
+
+.asc-btn{
+    display: flex;
+    flex-direction: column;
+}
+

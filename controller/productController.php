@@ -23,7 +23,6 @@ class ProductController {
         }
     
         // Continúa con el código solo si el usuario ha iniciado sesión
-    
         if (!isset($_SESSION['selecciones'])) {
             $_SESSION['selecciones'] = array();
         }
@@ -150,7 +149,6 @@ class ProductController {
     // FUNCION PARA GUARDAR DATOS DELL CARRITO EN LA BASE DE DATOS Y EN UNA COOKIE
     public function confirmar() {
         session_start();
-    
         // Verifica si el usuario está autenticado
         if (isset($_SESSION['user']) && $_SESSION['user'] instanceof Usuario) {
             // Verifica si hay productos en el carrito
@@ -213,27 +211,20 @@ class ProductController {
                 }
                 unset($_SESSION['selecciones']);
 
-            // Después de insertar el pedido en la tabla pedidos
-            $pedido_id = $stmt->insert_id;
+                // Después de insertar el pedido en la tabla pedidos
+                $pedido_id = $stmt->insert_id;
 
-            // // Devuelve el ID del pedido recién creado al cliente
-            // echo json_encode(['pedido_id' => $pedido_id]);
-            // exit();
+                // Actualiza la cookie para incluir el ID del usuario y el ID del pedido
+                $carritoInfo['usuario_id'] = $usuario_id;
+                $carritoInfo['pedido_id'] = $pedido_id;
+                $carritoJson = json_encode($carritoInfo);
+                setcookie('carrito', $carritoJson, time() + (30 * 1), "/"); // Cookie válida por 30 días
 
-            // Actualiza la cookie para incluir el ID del usuario y el ID del pedido
-            $carritoInfo['usuario_id'] = $usuario_id;
-            $carritoInfo['pedido_id'] = $pedido_id;
-            $carritoJson = json_encode($carritoInfo);
-            setcookie('carrito', $carritoJson, time() + (30 * 1), "/"); // Cookie válida por 30 días
+                $con->close();
 
-            $con->close();
-
-            // header("Location: index.php?controller=product&action=panelHome");
-            // exit();
-            header('Content-Type: application/json');
-            echo json_encode(['pedido_id' => $pedido_id]);
-            exit();
-            
+                header('Content-Type: application/json');
+                echo json_encode(['pedido_id' => $pedido_id]);
+                exit();    
             }
         } else {
             // Redirige al usuario a la página de inicio de sesión si no está autenticado
@@ -241,7 +232,8 @@ class ProductController {
             exit();
         }
     }
-
+    
+    // FUNCION PARA MOSTRAR INFORMACION DEL PEDIDO CON QR
     public function mostrarPedido() {
         // Obtiene el ID del usuario de la URL
         $usuarioId = $_GET['usuarioId'];
@@ -261,7 +253,6 @@ class ProductController {
     // FUNCION PARA RECUPERAR ÚLTIMO PEDIDO DE CADA USUARIO
         public function recuperarUltimoPedido() {
         session_start();
-    
         // Verifica si hay un usuario activo
         if (isset($_SESSION['user'])) {
             // Obtiene el usuario actual
@@ -305,8 +296,6 @@ class ProductController {
             }
         }
     }
-
-
 
     // FUNCION PARA IR A PANEL DE EDICION DE UN PRODUCTO (ADMIN)
     public function edit() {
@@ -411,18 +400,5 @@ class ProductController {
         // Redirige de vuelta a la página del carrito
         header("Location: index.php?controller=product&action=panelCompra");
     }
-
-    // // FUNCION PARA IR A PAGINA DE INFO DEL PEDIDO
-    // public function panelInfoPedido($pedidoId) {
-    //     session_start();
-    //     $pedido = productDAO::getPedidoById($_SESSION['user']->getId(), $pedidoId);
-    //     include_once 'view/header.php';
-    //     include_once 'view/panelInfoPedido.php';
-    //     include_once 'view/footer.php';
-    // }
-
-
-
-
 }
 ?>

@@ -57,6 +57,20 @@ div.container {
     padding-bottom: 10px;
 }
 
+/* APARTADO FILTRO */
+.filtro-categorias label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .filtro-categorias input {
+    margin-right: 5px; /* Ajusta el espacio entre el input y el label */
+    max-width: 13px;
+    padding-left: 0px;
+  }
+
+
+
 /* MEDIAS */
 @media (min-width: 992px) {
     section.container {
@@ -69,6 +83,28 @@ div.container {
     div.container {
         padding: 0px !important;
     }
+
+    .titulo-categoria{
+        color: rgb(35, 31, 32); 
+        text-align: left;
+        cursor: pointer;
+        font-family: "Neutra Text TF";
+        font-size: 18px;
+        font-weight: 500;
+        height: auto;
+        min-height: 55px;
+        line-height: 27px;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+        text-align: left;
+        text-decoration-color: rgb(35, 31, 32);
+        text-decoration-line: none;
+        text-decoration-style: solid;
+        text-decoration-thickness: auto;
+    }
+
+
 }
 
 

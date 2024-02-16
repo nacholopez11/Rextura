@@ -16,36 +16,41 @@
     include_once 'header.php';
     ?>
     <h1>Panel de Reseñas</h1>
-    <!-- FILTROS -->
-    <form id="filterForm">
-        <input type="checkbox" id="rating1" name="rating1" value="1">
-        <label for="rating1">1</label><br>
-        <input type="checkbox" id="rating2" name="rating2" value="2">
-        <label for="rating2">2</label><br>
-        <input type="checkbox" id="rating3" name="rating3" value="3">
-        <label for="rating3">3</label><br>
-        <input type="checkbox" id="rating4" name="rating4" value="4">
-        <label for="rating4">4</label><br>
-        <input type="checkbox" id="rating5" name="rating5" value="5">
-        <label for="rating5">5</label><br>
-    </form>
-    <select id="orderSelect">
-        <option value="asc">Ascendente</option>
-        <option value="desc">Descendente</option>
-    </select>
-
-    <button onclick="window.location.href='index.php?controller=review&action=panelInsertarReview'">Añadir reseña</button>
 
 
 
-    <!-- RESEÑAS -->
-    <section class="reviews">
-        <div class="container">
-            <div class="row" id="container">
-
+    <div class="row">
+        <div class="col-3">
+            <!-- FILTROS -->
+            <form id="filterForm">
+                <input type="checkbox" id="rating1" name="rating1" value="1">
+                <label for="rating1">1</label><br>
+                <input type="checkbox" id="rating2" name="rating2" value="2">
+                <label for="rating2">2</label><br>
+                <input type="checkbox" id="rating3" name="rating3" value="3">
+                <label for="rating3">3</label><br>
+                <input type="checkbox" id="rating4" name="rating4" value="4">
+                <label for="rating4">4</label><br>
+                <input type="checkbox" id="rating5" name="rating5" value="5">
+                <label for="rating5">5</label><br>
+            </form>
+            <div class="asc-btn">
+                <select id="orderSelect">
+                    <option value="asc">Ascendente</option>
+                    <option value="desc">Descendente</option>
+                </select>
+                <button onclick="window.location.href='index.php?controller=review&action=panelInsertarReview'">Añadir reseña</button>
             </div>
         </div>
-    </section>
+        <div class="col-9">
+            <!-- RESEÑAS -->
+            <section class="reviews">
+                <div class="container">
+                    <div class="row" id="container"></div>
+                </div>
+            </section>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="assets/js/mostrarReview.js"></script>

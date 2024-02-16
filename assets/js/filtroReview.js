@@ -23,32 +23,28 @@ document.querySelectorAll('#filterForm input[type="checkbox"]').forEach(function
     checkbox.addEventListener('change', function(e) {
         // Guarda el estado del checkbox en localStorage
         localStorage.setItem('rating-' + checkbox.value, checkbox.checked);
-        filterReviews();
+        let selectedRatings = [];
+        document.querySelectorAll('#filterForm input[type="checkbox"]:checked').forEach(function(checkbox) {
+            selectedRatings.push('valoracion-' + checkbox.value);
+        });
+        let allReviews = document.querySelectorAll('.review');
+        if (selectedRatings.length === 0) {
+            allReviews.forEach(function(review) {
+                review.style.display = 'block';
+            });
+        } else {
+            allReviews.forEach(function(review) {
+                let ratingClass = Array.from(review.classList).find(cls => cls.startsWith('valoracion-'));
+                if (selectedRatings.includes(ratingClass)) {
+                    review.style.display = 'block';
+                } else {
+                    review.style.display = 'none';
+                }
+            });
+        }
+        orderReviews(document.getElementById('orderSelect').value);
     });
 });
-
-function filterReviews() {
-    let selectedRatings = [];
-    document.querySelectorAll('#filterForm input[type="checkbox"]:checked').forEach(function(checkbox) {
-        selectedRatings.push('valoracion-' + checkbox.value);
-    });
-    let allReviews = document.querySelectorAll('.review');
-    if (selectedRatings.length === 0) {
-        allReviews.forEach(function(review) {
-            review.style.display = 'block';
-        });
-    } else {
-        allReviews.forEach(function(review) {
-            let ratingClass = Array.from(review.classList).find(cls => cls.startsWith('valoracion-'));
-            if (selectedRatings.includes(ratingClass)) {
-                review.style.display = 'block';
-            } else {
-                review.style.display = 'none';
-            }
-        });
-    }
-    orderReviews(document.getElementById('orderSelect').value);
-}
 
 window.onload = function() {
     document.querySelectorAll('#filterForm input[type="checkbox"]').forEach(function(checkbox) {
@@ -56,6 +52,8 @@ window.onload = function() {
         let isChecked = localStorage.getItem('rating-' + checkbox.value) === 'true';
         checkbox.checked = isChecked;
     });
-    // Filtra las reseñas según los checkboxes marcados
-    filterReviews();
+    // Llama a tu función para filtrar las reseñas inicialmente
+    document.querySelectorAll('#filterForm input[type="checkbox"]').forEach(function(checkbox) {
+        checkbox.dispatchEvent(new Event('change'));
+    });
 };
