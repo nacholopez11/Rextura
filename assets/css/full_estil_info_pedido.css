@@ -1,0 +1,66 @@
+a.seguir-comprando {
+    margin-top: 10px;
+    padding: 4px 24px;
+    text-align: center;
+    color: #231F20 !important;
+    font-size: 18px;
+    font-family: "Neutra Text TF Book";
+}
+
+.titulos{
+    font-family: "Neutra Text TF Book";
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: #212529;
+    font-weight: 600;
+}
+
+.texto-titulo{
+    padding-bottom: 30px !important;
+}
+
+.info{
+    min-height: 400px;
+}
+
+.link-volver{
+    padding: 44px 0px 60px 0px !important;
+    text-align: left;
+}
+
+.seguir-comprando{
+    padding-left: 0px !important;
+}
+
+.tabla-info{
+    width: 100%;
+}
+
+.palabra-nombre {
+    color: #231F20;
+    font-size: 16px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 600 !important;
+    margin: 0px;
+}
+
+.titulo-categoria {
+    color: rgb(35, 31, 32); 
+    text-align: left;
+    cursor: pointer;
+    font-family: "Neutra Text TF";
+    font-size: 18px;
+    font-weight: 500;
+    height: auto;
+    line-height: 27px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    text-align: left;
+    text-decoration-color: rgb(35, 31, 32);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    border-bottom: 1px solid black; 
+    padding-left: 5px;
+}

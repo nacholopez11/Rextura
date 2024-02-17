@@ -181,12 +181,6 @@ class ProductController {
                 if ($aplicarPropinas == 'off') {
                     $propinaPorcentaje = 0;
                 }
-
-                // Calcula la propina en base al total del pedido después de aplicar los puntos
-                $propina = ($totalPedido /100 ) * $propinaPorcentaje;
-
-                // Añade la propina al total del pedido
-                $totalPedido += $propina;
     
                 // Resta los puntos usados de los puntos totales del usuario
                 UsuarioDAO::restarPuntosFidelidad($usuario_id, $puntosUsados);
@@ -199,6 +193,16 @@ class ProductController {
                 UsuarioDAO::actualizarPauntosFidelidad($usuario_id, $puntosGanados);
     
                 $totalPedido -= $descuento;
+
+
+                // Calcula la propina en base al total del pedido después de aplicar los puntos
+                $propina = ($totalPedido /100 ) * $propinaPorcentaje;
+
+                // Añade la propina al total del pedido
+                $totalPedido += $propina;
+
+                
+
                 $con = DB::getConnection();
                 $stmt = $con->prepare("INSERT INTO pedidos (usuario_id, total, propina, puntos_usados, puntos_ganados) VALUES (?, ?, ?, ?, ?)");
                 $stmt->bind_param("iddii", $usuario_id, $totalPedido, $propina, $puntosUsados, $puntosGanados);
