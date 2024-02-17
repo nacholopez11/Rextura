@@ -26,7 +26,7 @@ document.querySelector('#reviewForm button[type="submit"]').addEventListener('cl
     let com = document.getElementById('comentario').value;
     let pedidoId = document.getElementById('pedido_id').value;
 
-    // Obtén la valoración de las estrellas
+    // Obtiene la valoración de las estrellas
     let val = starValueInput.value;
 
     if (!com || !val) {

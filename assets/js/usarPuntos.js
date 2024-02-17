@@ -5,7 +5,7 @@ function mostrarPuntosAGanar(totalPedido) {
         filaExistente.remove();
     }
     let tr = document.createElement('tr');
-    tr.className = 'fila-puntos-ganados';  // Añade una clase para poder encontrar esta fila más tarde
+    tr.className = 'fila-puntos-ganados';  
     let th = document.createElement('th');
     th.className = 'palabra-dos';
     th.innerText = 'Puntos ganados con este pedido';
@@ -62,7 +62,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             let puntos = data.puntos;
 
             // Calcula el descuento
-            // MIRAR ESTA LINEA
             let descuento = this.checked ? Math.min(nuevoTotalSinPropina, puntos) : 0;
 
             // Calcula el nuevo total con descuento
