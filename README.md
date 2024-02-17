@@ -32,4 +32,26 @@ Para aplicar filtros a las reseñas se ha usado un archivo js distinto, y contro
 
 
 
-2-AÑADIR PROGRAMA DE FIDELIDAD
+2-AÑADIR PROGRAMA DE FIDELIDAD Y USAR PROPINAS EN EL CARRITO
+
+En esta imagen se ve el trozo de HTML en el que se trabajara con los puntos del usuario, tanto para mostrarlos como para calcular el total segun este marcado o no la opcion de usarlos.También con las propinas, que segun el valor del campo el total del carrito se actualiza.
+![alt text](image-11.png)
+
+Esta funcion permite calcular y mostrar los puntos que se ganara en el pedido segun el total de el carrito en ese momento.
+![alt text](image-12.png)
+
+En esta imagen se hace una peticion a la api con la accion de 'obtenerPuntos' para controlar controlar el valor de los puntos para calcular el total del carrito.
+![alt text](image-13.png)
+
+Esta es la api.
+![alt text](image-15.png)
+
+En esta imagen también controla el valor, pero esta vez de las propinas, para así poder mostrar el valor dependiendo de si estan los checkbox marcados o no.
+![alt text](image-14.png)
+
+Y en esta imagen se ve el js que controla los puntos cuando se realiza el pedido. Se encarga de restar los puntos usados y posteriormente sumar los puntos ganados en ese pedido. Para hecer estas 2 cosas hace uso de la api, la accion 'restablecerPuntos' para eliminarlos y la accion 'actualizarPuntos' para sumar los nuevos.
+![alt text](image-16.png)
+
+ Estas son las acciones en la api.
+ ![alt text](image-17.png)
+ 
