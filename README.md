@@ -69,3 +69,22 @@ Este es el js que maneja el filtro de los productos segun el estado del checkbox
 
 Para mostrar o ocultar los productos hace uso de añadir o quitar una clase llamada 'hidden', que mediante el display: none; hace que no se vea ese producto.
 ![alt text](image-21.png)
+
+
+
+
+4-QR CON INFORMACION PEDIDO
+Para crear los QR se ha hecho uso de una libreria llamada 'qrcodejs'. Y este es el script que controla la creacion del QR al confirmar el pedido.
+![alt text](image-22.png)
+
+En el script se usa el '.preventDefault' para que no se realize la accion de confirmar el pedido y poder obtener los datos, despues se envia a la funcion confirmar de productController los datos del pedido usando un FormData, la cual después de hacer su funcion de insertar el pedido a la base de datos devuelve un json con el valor del 'pedido_id'.
+![alt text](image-23.png)
+
+Seguidamente el script crea el QR usando la libreria de 'qrcodejs', y usando la libreria de 'Sweet Alert' muetra un pop up con la imagen del QR y cuando cierras el pop up te redirije a la Home.
+
+
+El QR tiene como enlace una funcion en productController llamada mostrarPedido, la cual se encarga de recoger el id del usuario mediante el metodo $_GET y con este id saca los datos del ultimo pedido de ese usuario mediante unas funciones DAO, y muestra estos datos en el HTML de 'panelInfoPedido.php'.
+![alt text](image-24.png)
+
+Así són las funciones DAO.
+![alt text](image-25.png)
