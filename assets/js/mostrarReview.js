@@ -19,11 +19,11 @@ function verComentarios(comentarios) {
         divComentarios.classList.add('review', 'col-12', 'col-md-6', 'col-lg-3', `valoracion-${comentario.valoracion}`);
 
         divComentarios.innerHTML = `
-        <div class="mx-16 mb-12 mb-lg-0 mx-6 m-lg-0">
+        <div class="mx-16 mb-12 mb-lg-0 mx-6 m-lg-0 linea">
             <div class="contenidoReseñas">
-                <p class="pedido_id">Pedido ID: ${comentario.pedido_id}</p>
-                <p class="nombre">Usuario: ${comentario.nombre}</p> 
-                <p class="comentario">${comentario.comentario}</p>
+                <p class="pedido_id s-titulo">Pedido ID: ${comentario.pedido_id}</p>
+                <p class="nombre palabra-nombre">Usuario: ${comentario.nombre}</p> 
+                <p class="comentario palabra-categoria">${comentario.comentario}</p>
                 <p class="valoracion">${valoracionClientes(comentario.valoracion)}</p>
             <div>
         </div>

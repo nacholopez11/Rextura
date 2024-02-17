@@ -12,13 +12,138 @@
 }
 
 .contenidoReseñas{
-    background-color: red;
     text-align: left;
 }
 
-
-.asc-btn{
-    display: flex;
-    flex-direction: column;
+div.review{
+    padding: 0px 0px 20px 40px;
 }
 
+div.linea{
+    border-bottom: 1px solid #ccc; 
+    
+}
+
+
+
+
+#filterForm {
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+  
+  #filterForm div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0px !important;
+  }
+  
+  #filterForm input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 1px solid #8F8178;
+    position: relative;
+    margin-right: 10px;
+  }
+  
+  #filterForm input[type="checkbox"]:checked {
+    background: white;
+  }
+  
+  #filterForm input[type="checkbox"]:checked:after {
+    content: '✖';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+  }
+  
+  .asc-btn{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+  }
+
+  .selector{
+    margin-bottom: 50px;
+  }
+
+
+  .titulo-categoria {
+    color: rgb(35, 31, 32); 
+    text-align: left;
+    cursor: pointer;
+    font-family: "Neutra Text TF";
+    font-size: 18px;
+    font-weight: 500;
+    height: auto;
+    line-height: 27px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    text-align: left;
+    text-decoration-color: rgb(35, 31, 32);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+}
+
+
+
+/* TIPOGRAFIAS */
+.titi{
+    color: #8F8178 !important;
+    font-size: 16px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 700 !important;
+}
+
+.titulos-secciones {
+    padding-top: 30px !important;
+    padding-bottom: 20px !important;
+    font-family: 'ClaredonBTPro-Light' !important;
+    font-size: 32px;
+    margin: 0px;
+}
+
+.p-orden{
+    padding-top: 40px;
+}
+
+.palabra-nombre {
+    color: #231F20;
+    font-size: 16px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 600 !important;
+    margin: 0px;
+}
+
+.palabra-categoria {
+    color: #8F8178;
+    font-size: 16px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 100 !important;
+    margin: 0px;
+    max-width: 200px;
+
+}
+
+.s-titulo {
+    color: #212529;
+    font-size: 20px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 600 !important;
+}
+
+.review p {
+    word-wrap: break-word; 
+    max-width: 100%; 
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
+  }
