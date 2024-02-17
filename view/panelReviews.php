@@ -16,7 +16,7 @@
     include_once 'header.php';
     ?>
     <section class="container">
-        <h1 class="titulos-secciones">Panel de Reseñas</h1>
+        <h1 class="titulos-secciones">Panel de reseñas</h1>
         <div class="row p-0">
             <div class="col-2 p-0">
                 <!-- FILTROS -->

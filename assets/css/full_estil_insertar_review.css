@@ -1,0 +1,33 @@
+.stars {
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.star {
+    cursor: pointer;
+    color: #ddd;
+}
+
+.star.filled {
+    color: #ffd700;
+}
+
+.titulos-secciones {
+    padding-top: 30px !important;
+    padding-bottom: 20px !important;
+    font-family: 'ClaredonBTPro-Light' !important;
+    margin: 0px;
+}
+
+form#reviewForm{
+    display: flex;
+    flex-direction: column;
+    min-height: 350px;
+}
+
+.s-titulo {
+    color: #212529;
+    font-size: 20px;
+    font-family: "Neutra Text TF Book";
+    font-weight: 600 !important;
+}
