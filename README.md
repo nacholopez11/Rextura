@@ -54,4 +54,18 @@ Y en esta imagen se ve el js que controla los puntos cuando se realiza el pedido
 
  Estas son las acciones en la api.
  ![alt text](image-17.png)
- 
+
+Por ultimo, este es el js que maneja el mostrar los puntos que tiene el usuario disponibles para usar en el pedido. También hace uso de la accion 'obtenerPuntos' de la api.
+![alt text](image-18.png)
+
+
+
+3-FILTROS PRODUCTOS
+Este es el HTML donde se añade el div con los distintos checkbox para filtrar por categoria.
+![alt text](image-19.png)
+
+Este es el js que maneja el filtro de los productos segun el estado del checkbox, mostrara todos los productos que tengan la misma categoria que el/los checkbox marcados, también maneja el caso en el que no hay ningun checkbox marcado para que muestre todos los productos. 
+![alt text](image-20.png)
+
+Para mostrar o ocultar los productos hace uso de añadir o quitar una clase llamada 'hidden', que mediante el display: none; hace que no se vea ese producto.
+![alt text](image-21.png)
